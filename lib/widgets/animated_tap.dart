@@ -30,7 +30,7 @@ class AnimatedTap extends StatefulWidget {
 
 class _AnimatedTapCardState extends State<AnimatedTap> {
   bool tapping = false;
-  _setTap(bool value) => setState(() => tapping = value);
+  void _setTap(bool value) => setState(() => tapping = value);
 
   @override
   Widget build(BuildContext context) {
