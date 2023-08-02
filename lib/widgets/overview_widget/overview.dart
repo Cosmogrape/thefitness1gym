@@ -17,7 +17,12 @@ class _OverviewState extends State<Overview> {
     final theme = Theme.of(context);
     return Expanded(
       child: AnimatedTap(
-        onTap: () {},
+        tapDownOpacity: .6,
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const Scaffold(body: Center(child: Text("Overview"))),
+          ),
+        ),
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(PredefinedSize.radiusMedium),
