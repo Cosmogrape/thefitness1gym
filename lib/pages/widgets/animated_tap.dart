@@ -3,16 +3,26 @@ import 'package:flutter/material.dart';
 class AnimatedTap extends StatefulWidget {
   const AnimatedTap({
     this.child,
-    this.onTap,
     this.tapDownScale = .95,
     this.tapDownOpacity = .9,
+    this.opacityDuration = const Duration(milliseconds: 300),
+    this.scaleDuration = const Duration(milliseconds: 100),
+    this.onTap,
+    this.onTapDown,
+    this.onTapUp,
+    this.onTapCancel,
     super.key,
   });
 
   final Widget? child;
-  final VoidCallback? onTap;
   final double tapDownScale;
   final double tapDownOpacity;
+  final Duration opacityDuration;
+  final Duration scaleDuration;
+  final Function()? onTap;
+  final Function(TapDownDetails)? onTapDown;
+  final Function(TapUpDetails)? onTapUp;
+  final Function()? onTapCancel;
 
   @override
   State<AnimatedTap> createState() => _AnimatedTapCardState();
@@ -20,25 +30,26 @@ class AnimatedTap extends StatefulWidget {
 
 class _AnimatedTapCardState extends State<AnimatedTap> {
   bool tapping = false;
+  _setTap(bool value) => setState(() => tapping = value);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTapDown: (_) => setState(() => tapping = true),
-      // onTapUp: (_) => setState(() => tapping = false),
-      onTapCancel: () => setState(() => tapping = false),
+      onTapDown: (tapDownDetails) => {_setTap(true), widget.onTapDown?.call(tapDownDetails)},
+      onTapUp: (tapUpDetails) => {_setTap(false), widget.onTapUp?.call(tapUpDetails)},
+      onTapCancel: () => {_setTap(false), widget.onTapCancel?.call()},
       onTap: () {
-        widget.onTap?.call();
         //? Need this to reset if the tapUp event was skipped (ex: in case of pop up)
-        Future.delayed(const Duration(milliseconds: 100), () => setState(() => tapping = false));
+        Future.delayed(widget.scaleDuration, () => _setTap(false));
+        widget.onTap?.call();
       },
       child: AnimatedOpacity(
         opacity: tapping ? widget.tapDownOpacity : 1,
-        duration: const Duration(milliseconds: 300),
+        duration: widget.opacityDuration,
         curve: Curves.easeOut,
         child: AnimatedScale(
           scale: tapping ? widget.tapDownScale : 1,
-          duration: const Duration(milliseconds: 100),
+          duration: widget.scaleDuration,
           curve: Curves.easeOut,
           child: widget.child,
         ),
