@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:thefitness1gym/assets/values/size.dart';
+import 'package:thefitness1gym/assets/values/predefiend_size.dart';
 import 'package:thefitness1gym/pages/widgets/headline_text.dart';
 import 'package:thefitness1gym/pages/widgets/overview_widget/overview.dart';
 
