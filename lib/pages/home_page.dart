@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:thefitness1gym/assets/values/size.dart';
 import 'package:thefitness1gym/pages/widgets/headline_text.dart';
 import 'package:thefitness1gym/pages/widgets/overview_widget/overview.dart';
-
-import 'values/size.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,7 +15,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(toolbarHeight: 0),
+      //? Intentionally empty app bar:
+      //? Gives the screen an opening/closing animation
+      //? Controls status bar color
+      appBar: AppBar(
+        toolbarHeight: 0,
+        backgroundColor: Theme.of(context).colorScheme.background,
+      ),
       body: Padding(
         padding: EdgeInsets.all(PredefinedSize.paddingBig),
         child: ListView(
