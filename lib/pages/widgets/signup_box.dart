@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../home_page.dart';
+
 class SignupBox extends StatefulWidget {
   const SignupBox({this.signin = false, super.key});
 
@@ -93,7 +95,17 @@ class _SignupBoxState extends State<SignupBox> {
                         : theme.colorScheme.secondary.withOpacity(.5),
                     foregroundColor: isLastStep ? theme.colorScheme.onPrimary : theme.colorScheme.onSecondary,
                   ),
-                  onPressed: nextEnabled ? () => setState(() => {if (!isLastStep) index++}) : null,
+                  onPressed: nextEnabled
+                      ? () => setState(
+                            () {
+                              if (!isLastStep) {
+                                index++;
+                              } else {
+                                Navigator.of(context).push(MaterialPageRoute(builder: (_) => const HomePage()));
+                              }
+                            },
+                          )
+                      : null,
                 ),
               ],
             )
