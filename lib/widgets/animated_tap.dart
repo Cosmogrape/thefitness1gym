@@ -38,6 +38,7 @@ class _AnimatedTapCardState extends State<AnimatedTap> {
       onTapDown: (tapDownDetails) => {_setTap(true), widget.onTapDown?.call(tapDownDetails)},
       onTapUp: (tapUpDetails) => {_setTap(false), widget.onTapUp?.call(tapUpDetails)},
       onTapCancel: () => {_setTap(false), widget.onTapCancel?.call()},
+      behavior: HitTestBehavior.translucent,
       onTap: () {
         //? Need this to reset if the tapUp event was skipped (ex: in case of pop up)
         Future.delayed(widget.scaleDuration, () => _setTap(false));
