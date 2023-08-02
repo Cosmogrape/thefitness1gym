@@ -20,7 +20,7 @@ class _OverviewState extends State<Overview> {
         onTap: () {},
         child: Card(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(PredefinedSize.radiusBig),
+            borderRadius: BorderRadius.circular(PredefinedSize.radiusMedium),
           ),
           color: theme.colorScheme.primary,
           child: Padding(
