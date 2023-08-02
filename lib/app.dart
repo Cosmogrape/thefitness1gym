@@ -45,7 +45,6 @@ class App extends StatelessWidget {
         Locale('en'), // English
         Locale('ar'), // Arabic
       ],
-      debugShowCheckedModeBanner: false,
       home: const SignupPage(),
     );
   }
