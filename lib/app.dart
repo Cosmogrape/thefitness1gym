@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/pages/home_page.dart';
+import 'package:thefitness1gym/pages/signup_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -34,7 +34,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'The Fitness 1 Gym',
       theme: defaultTheme,
-      home: HomePage(),
+      home: SignupPage(),
       debugShowCheckedModeBanner: false,
     );
   }
