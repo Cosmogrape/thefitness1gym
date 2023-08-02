@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:thefitness1gym/assets/values/predefiend_size.dart';
-import 'package:thefitness1gym/widgets/headline_text.dart';
-import 'package:thefitness1gym/widgets/overview_widget/overview.dart';
+
+import '../assets/values/predefined_size.dart';
+import '../widgets/headline_text.dart';
+import '../widgets/overview_widget/overview.dart';
+import '../widgets/user_menu.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,27 +14,36 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey(); // Create a key
+
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
+      key: _scaffoldKey,
+      endDrawer: UserMenu(),
       //? Intentionally empty app bar:
       //? Gives the screen an opening/closing animation
       //? Controls status bar color
       appBar: AppBar(
         toolbarHeight: 0,
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: theme.colorScheme.background,
+        automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: EdgeInsets.all(PredefinedSize.paddingBig),
         child: ListView(
+          //? not an app bar because this is more flexible
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const HeadlineText(),
                 IconButton(
-                  onPressed: () {},
                   icon: const Icon(FontAwesomeIcons.user),
+                  color: theme.colorScheme.onBackground,
+                  highlightColor: theme.colorScheme.primary,
+                  onPressed: () => _scaffoldKey.currentState?.openEndDrawer(),
                 ),
               ],
             ),
