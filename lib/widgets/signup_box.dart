@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../home_page.dart';
+import '../pages/home_page.dart';
 
 class SignupBox extends StatefulWidget {
   const SignupBox({this.signin = false, super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/pages/widgets/signup_box.dart';
+import 'package:thefitness1gym/widgets/signup_box.dart';
 
-import 'widgets/fitness1_title.dart';
+import '../widgets/fitness1_title.dart';
 
 @immutable
 class SignupPage extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thefitness1gym/assets/values/predefiend_size.dart';
-import 'package:thefitness1gym/pages/widgets/animated_tap.dart';
+import 'package:thefitness1gym/widgets/animated_tap.dart';
 
 class Overview extends StatefulWidget {
   const Overview({super.key});
