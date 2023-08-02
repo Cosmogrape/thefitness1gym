@@ -78,7 +78,10 @@ class _SignupBoxState extends State<SignupBox> {
                     style: TextButton.styleFrom(
                       foregroundColor: theme.colorScheme.secondary,
                     ),
-                    onPressed: isBackEnabled ? () => setState(() => index--) : null,
+                    onPressed: () {
+                      //? keep the function so the button doesn't look bad while hiding (don't let it become "disabled" and greyed out)
+                      if (isBackEnabled) setState(() => index--);
+                    },
                     icon: const Icon(FontAwesomeIcons.circleArrowLeft),
                   ),
                 ),
