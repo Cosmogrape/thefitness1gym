@@ -24,28 +24,6 @@ class App extends StatelessWidget {
         onError: Colors.white,
       );
 
-  // ColorScheme get defaultColorScheme => ColorScheme(
-  //       brightness: Brightness.dark,
-  //       //
-  //       primary: Colors.amber,
-  //       onPrimary: Colors.black87,
-  //       primaryContainer: Colors.amber.shade700,
-  //       onPrimaryContainer: Colors.black87,
-  //       secondary: Colors.amber.shade700,
-  //       onSecondary: Colors.black87,
-  //       //
-  //       //
-  //       background: Colors.black,
-  //       onBackground: Colors.white,
-  //       surface: Colors.black87,
-  //       onSurface: Colors.white70,
-  //       surfaceVariant: Colors.black54,
-  //       onSurfaceVariant: Colors.white70,
-  //       surfaceTint: Colors.amberAccent,
-  //       //
-  //       error: Colors.amber.shade900,
-  //       onError: Colors.white70,
-  //     );
   ThemeData get defaultTheme => ThemeData(
         colorScheme: defaultColorScheme,
         useMaterial3: true,
