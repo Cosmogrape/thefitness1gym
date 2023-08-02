@@ -34,7 +34,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'The Fitness 1 Gym',
       theme: defaultTheme,
-      home: SignupPage(),
+      home: const SignupPage(),
       debugShowCheckedModeBanner: false,
     );
   }
