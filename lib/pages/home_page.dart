@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:thefitness1gym/widgets/calendar_reminder.dart';
 
 import '../assets/values/predefined_size.dart';
 import '../widgets/headline_text.dart';
@@ -48,6 +49,8 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             SizedBox(height: PredefinedSize.paddingBig),
+            CalendarReminder(text: "Aerobatics with Osman in 42m", onTap: () {}),
+            SizedBox(height: PredefinedSize.padding),
             const Row(children: [
               Overview(),
               Overview(),
