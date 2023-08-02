@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:thefitness1gym/pages/signup_page.dart';
 
 class App extends StatelessWidget {
@@ -34,8 +35,18 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'The Fitness 1 Gym',
       theme: defaultTheme,
-      home: const SignupPage(),
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'), // English
+        Locale('ar'), // Arabic
+      ],
+      debugShowCheckedModeBanner: false,
+      home: const SignupPage(),
     );
   }
 }
