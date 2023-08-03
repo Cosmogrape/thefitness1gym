@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../assets/values/predefined_size.dart';
-import '../animated_tap.dart';
+import '../../global/widgets/animated_tap.dart';
 
 class OverviewItem extends StatelessWidget {
   const OverviewItem({
