@@ -12,9 +12,18 @@ class Overview extends StatefulWidget {
 }
 
 class _OverviewState extends State<Overview> {
+  final borderRadius = BorderRadius.circular(PredefinedSize.radiusMedium);
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
+    final itemPadding = EdgeInsets.symmetric(
+      horizontal: PredefinedSize.padding,
+      vertical: PredefinedSize.padding * .7,
+    );
+    const spacer = SizedBox(height: 2);
+
     return Expanded(
       child: AnimatedTap(
         tapDownOpacity: .6,
@@ -24,54 +33,74 @@ class _OverviewState extends State<Overview> {
           ),
         ),
         child: Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(PredefinedSize.radiusMedium),
-          ),
+          shape: RoundedRectangleBorder(borderRadius: borderRadius),
           color: theme.colorScheme.primary,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: PredefinedSize.paddingMedium, vertical: PredefinedSize.padding),
+            padding: EdgeInsets.all(PredefinedSize.paddingSmall),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  "Overview",
-                  style: theme.textTheme.titleMedium!.copyWith(
-                    fontSize: 18,
-                    color: theme.colorScheme.onPrimary,
-                    fontWeight: FontWeight.bold,
+                // Text(
+                //   "Overview",
+                //   style: theme.textTheme.titleMedium!.copyWith(
+                //     fontSize: 18,
+                //     color: theme.colorScheme.onPrimary,
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                // ),
+                // SizedBox(height: PredefinedSize.padding),
+                ClipRRect(
+                  borderRadius: borderRadius,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      OverviewItem(
+                        textBig: "6",
+                        text: 'days streak',
+                        icon: FontAwesomeIcons.fire,
+                        color: theme.colorScheme.primary,
+                        backgroundColor: theme.colorScheme.background.withOpacity(.7),
+                        padding: itemPadding,
+                        onTap: () {},
+                      ),
+                      spacer,
+                      OverviewItem(
+                        textBig: "18",
+                        text: "workout days",
+                        icon: FontAwesomeIcons.handFist,
+                        color: Colors.red.shade400,
+                        padding: itemPadding,
+                        onTap: () {},
+                      ),
+                      spacer,
+                      OverviewItem(
+                        textBig: "5",
+                        text: "rest days",
+                        icon: FontAwesomeIcons.moon,
+                        color: Colors.blueGrey.shade200,
+                        padding: itemPadding,
+                        onTap: () {},
+                      ),
+                      spacer,
+                      OverviewItem(
+                        textBig: "4",
+                        text: "events soon",
+                        icon: FontAwesomeIcons.calendar,
+                        color: Colors.green.shade200,
+                        padding: itemPadding,
+                        onTap: () {},
+                      ),
+                    ],
                   ),
                 ),
-                SizedBox(height: PredefinedSize.padding),
-                OverViewItem(
-                  textBig: "14",
-                  text: 'days streak',
-                  icon: FontAwesomeIcons.fireFlameSimple,
-                  color: theme.colorScheme.primaryContainer,
-                  onTap: () {},
-                ),
-                SizedBox(height: PredefinedSize.padding / 2),
-                OverViewItem(
-                  textBig: "8",
-                  text: 'days of workout',
-                  icon: FontAwesomeIcons.dumbbell,
-                  color: Colors.red.shade400,
-                  onTap: () {},
-                ),
-                SizedBox(height: PredefinedSize.padding / 2),
-                OverViewItem(
-                  textBig: "3",
-                  text: 'days of rest',
-                  icon: FontAwesomeIcons.moon,
-                  color: Colors.blueGrey.shade300,
-                  onTap: () {},
-                ),
-                SizedBox(height: PredefinedSize.padding),
-                Text(
-                  "View more…",
-                  style: theme.textTheme.bodyMedium!.copyWith(
-                    color: theme.colorScheme.onPrimary,
-                    fontWeight: FontWeight.bold,
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: PredefinedSize.paddingSmall),
+                  child: Text(
+                    "More information",
+                    style: theme.textTheme.bodyMedium!.copyWith(
+                      color: theme.colorScheme.onPrimary,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ],

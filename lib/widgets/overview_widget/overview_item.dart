@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import '../../assets/values/predefined_size.dart';
 import '../animated_tap.dart';
 
-class OverViewItem extends StatelessWidget {
-  const OverViewItem({
+class OverviewItem extends StatelessWidget {
+  const OverviewItem({
     super.key,
     required this.textBig,
     required this.text,
     this.color,
     this.backgroundColor,
     this.icon,
+    this.padding,
     this.onTap,
   });
 
@@ -19,6 +20,7 @@ class OverViewItem extends StatelessWidget {
   final Color? color;
   final Color? backgroundColor;
   final IconData? icon;
+  final EdgeInsets? padding;
   final Function()? onTap;
 
   @override
@@ -28,42 +30,45 @@ class OverViewItem extends StatelessWidget {
     final color = this.color ?? theme.colorScheme.onBackground;
     final backgroundColor = this.backgroundColor ?? theme.colorScheme.background;
 
-    final card = ClipRRect(
-      borderRadius: BorderRadius.circular(PredefinedSize.radiusMedium),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: PredefinedSize.paddingMedium, vertical: PredefinedSize.padding),
-        color: backgroundColor,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+    final children = <Widget>[];
+    if (icon != null) {
+      children.add(Icon(icon, color: color, size: 20));
+      var spaceWidth = PredefinedSize.padding;
+      if (padding != null) spaceWidth = padding!.horizontal / 2;
+      children.add(SizedBox(width: spaceWidth));
+    }
+    children.add(Expanded(
+      child: RichText(
+        text: TextSpan(
           children: [
-            icon == null ? const SizedBox.shrink() : Icon(icon, color: color, size: 20),
-            icon == null ? const SizedBox.shrink() : SizedBox(width: PredefinedSize.padding),
-            Expanded(
-              child: RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: '$textBig ',
-                      style: theme.textTheme.bodyLarge!.copyWith(
-                        color: color,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: -.5,
-                      ),
-                    ),
-                    TextSpan(
-                      text: text,
-                      style: theme.textTheme.bodyMedium!.copyWith(
-                        color: color,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
+            TextSpan(
+              text: '$textBig ',
+              style: theme.textTheme.bodyLarge!.copyWith(
+                fontSize: 20,
+                color: color,
+                fontWeight: FontWeight.bold,
+                letterSpacing: -.5,
+              ),
+            ),
+            TextSpan(
+              text: text,
+              style: theme.textTheme.bodyMedium!.copyWith(
+                color: color,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ],
         ),
+      ),
+    ));
+
+    final card = Container(
+      padding: padding,
+      color: backgroundColor,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: children,
       ),
     );
 
