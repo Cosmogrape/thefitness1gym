@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     final theme = Theme.of(context);
     return Scaffold(
       key: _scaffoldKey,
-      endDrawer: UserMenu(),
+      endDrawer: const UserMenu(),
       //? Intentionally empty app bar:
       //? Gives the screen an opening/closing animation
       //? Controls status bar color
@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
         automaticallyImplyLeading: false,
       ),
       body: Padding(
-        padding: EdgeInsets.all(PredefinedSize.paddingBig),
+        padding: EdgeInsets.all(PredefinedSize.padding),
         child: ListView(
           //? not an app bar because this is more flexible
           children: [
@@ -49,7 +49,10 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             SizedBox(height: PredefinedSize.paddingBig),
-            CalendarReminder(text: "Aerobatics with Osman in 42m", onTap: () {}),
+            CalendarReminder(
+              text: "Aerobatics with Osman in 42m",
+              onTap: () {},
+            ),
             SizedBox(height: PredefinedSize.padding),
             const Row(children: [
               Overview(),
