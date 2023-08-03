@@ -66,7 +66,7 @@ class _OverviewState extends State<Overview> {
                       spacer,
                       OverviewItem(
                         textBig: "18",
-                        text: "workout days",
+                        text: "days workout",
                         icon: FontAwesomeIcons.handFist,
                         color: Colors.red.shade400,
                         padding: itemPadding,
@@ -75,7 +75,7 @@ class _OverviewState extends State<Overview> {
                       spacer,
                       OverviewItem(
                         textBig: "5",
-                        text: "rest days",
+                        text: "days rest",
                         icon: FontAwesomeIcons.moon,
                         color: Colors.blueGrey.shade200,
                         padding: itemPadding,
@@ -85,7 +85,7 @@ class _OverviewState extends State<Overview> {
                       OverviewItem(
                         textBig: "4",
                         text: "events soon",
-                        icon: FontAwesomeIcons.calendar,
+                        icon: FontAwesomeIcons.calendarCheck,
                         color: Colors.green.shade200,
                         padding: itemPadding,
                         onTap: () {},
@@ -97,7 +97,7 @@ class _OverviewState extends State<Overview> {
                   padding: EdgeInsets.symmetric(vertical: PredefinedSize.paddingSmall),
                   child: Text(
                     "More information",
-                    style: theme.textTheme.bodyMedium!.copyWith(
+                    style: theme.textTheme.labelMedium!.copyWith(
                       color: theme.colorScheme.onPrimary,
                       fontWeight: FontWeight.bold,
                     ),
