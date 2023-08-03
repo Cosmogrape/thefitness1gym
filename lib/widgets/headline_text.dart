@@ -2,6 +2,8 @@ import 'dart:async';
 
 import "package:animated_size_and_fade/animated_size_and_fade.dart";
 import 'package:flutter/material.dart';
+import 'package:thefitness1gym/widgets/fitness1_title.dart';
+import 'package:thefitness1gym/widgets/hello_username.dart';
 
 class HeadlineText extends StatefulWidget {
   const HeadlineText({super.key});
@@ -11,32 +13,40 @@ class HeadlineText extends StatefulWidget {
 }
 
 class _HeadlineTextState extends State<HeadlineText> {
-  late Timer _timer;
+  Timer? _timer;
   int index = 0;
   int indexMax = 2;
 
-  @override
-  void initState() {
-    super.initState();
-    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
-      if (index >= indexMax) return;
-      setState(() {
-        index++;
-        if (index >= indexMax) _timer.cancel();
+  _reset() {
+    setState(() {
+      index = 0;
+      if (_timer?.isActive == true) _timer!.cancel();
+      _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+        if (index >= indexMax) return;
+        setState(() {
+          index++;
+          if (index >= indexMax) _timer?.cancel();
+        });
       });
     });
   }
 
   @override
+  void initState() {
+    super.initState();
+    _reset();
+  }
+
+  @override
   void dispose() {
-    if (_timer.isActive) _timer.cancel();
+    _timer?.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    const sizeDuration = Duration(milliseconds: 500);
+    const sizeDuration = Duration(milliseconds: 650);
     const fadeDuration = Duration(seconds: 2);
 
     final textStyle = Theme.of(context).textTheme.headlineSmall!.copyWith(
@@ -46,8 +56,8 @@ class _HeadlineTextState extends State<HeadlineText> {
     final usernameStyle = textStyle.copyWith(
       color: theme.colorScheme.primary,
     );
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -58,15 +68,24 @@ class _HeadlineTextState extends State<HeadlineText> {
             sizeDuration: sizeDuration,
             fadeDuration: fadeDuration,
             child: index == 0
-                ? Text("Hello,", style: textStyle)
+                ? const HelloUsername()
                 : AnimatedSizeAndFade(
                     sizeDuration: sizeDuration,
                     fadeDuration: fadeDuration,
-                    child: index < indexMax ? Text("Keep up the good work!", style: textStyle) : const SizedBox.shrink(),
+                    child: index > 0 && index < indexMax ? Text("Keep up the good work!", style: textStyle) : const SizedBox(),
                   ),
           ),
         ),
-        Text("Jack", style: usernameStyle),
+        AnimatedSizeAndFade(
+          sizeDuration: sizeDuration,
+          fadeDuration: fadeDuration,
+          child: index >= indexMax
+              ? GestureDetector(
+                  onTap: _reset,
+                  child: const Fitness1Title(),
+                )
+              : const SizedBox(),
+        ),
       ],
     );
   }

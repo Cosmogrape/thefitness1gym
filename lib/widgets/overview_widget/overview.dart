@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefiend_size.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:thefitness1gym/assets/values/predefined_size.dart';
 import 'package:thefitness1gym/widgets/animated_tap.dart';
+import 'package:thefitness1gym/widgets/overview_widget/overview_item.dart';
 
 class Overview extends StatefulWidget {
   const Overview({super.key});
@@ -15,10 +17,15 @@ class _OverviewState extends State<Overview> {
     final theme = Theme.of(context);
     return Expanded(
       child: AnimatedTap(
-        onTap: () {},
+        tapDownOpacity: .6,
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const Scaffold(body: Center(child: Text("Overview"))),
+          ),
+        ),
         child: Card(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(PredefinedSize.radiusBig),
+            borderRadius: BorderRadius.circular(PredefinedSize.radiusMedium),
           ),
           color: theme.colorScheme.primary,
           child: Padding(
@@ -36,6 +43,29 @@ class _OverviewState extends State<Overview> {
                   ),
                 ),
                 SizedBox(height: PredefinedSize.padding),
+                OverViewItem(
+                  textBig: "14",
+                  text: 'days streak',
+                  icon: FontAwesomeIcons.fireFlameSimple,
+                  color: theme.colorScheme.primaryContainer,
+                  onTap: () {},
+                ),
+                SizedBox(height: PredefinedSize.padding / 2),
+                OverViewItem(
+                  textBig: "8",
+                  text: 'days of workout',
+                  icon: FontAwesomeIcons.dumbbell,
+                  color: Colors.red.shade400,
+                  onTap: () {},
+                ),
+                SizedBox(height: PredefinedSize.padding / 2),
+                OverViewItem(
+                  textBig: "3",
+                  text: 'days of rest',
+                  icon: FontAwesomeIcons.moon,
+                  color: Colors.blueGrey.shade300,
+                  onTap: () {},
+                ),
                 SizedBox(height: PredefinedSize.padding),
                 Text(
                   "View more…",

@@ -8,5 +8,6 @@ class PredefinedSize {
 
   static double get radiusSmall => _small;
   static double get radius => _regular;
+  static double get radiusMedium => _medium;
   static double get radiusBig => _big;
 }
