@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:thefitness1gym/widgets/signup_box.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:thefitness1gym/widgets/signup_box.dart';
 
 import '../widgets/fitness1_title.dart';
+import 'phone_auth_page.dart';
 
 @immutable
 class SignupPage extends StatefulWidget {
@@ -10,96 +11,6 @@ class SignupPage extends StatefulWidget {
 
   @override
   State<SignupPage> createState() => _SignupPageState();
-}
-
-class OtpVerificationPage extends StatelessWidget {
-  const OtpVerificationPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text('Hi');
-  }
-}
-
-class PhoneNumberAuthScreen extends StatelessWidget {
-  PhoneNumberAuthScreen({super.key});
-
-  final myController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Scaffold(
-        body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.all(32),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        print('Back');
-                      },
-                      icon: Icon(Icons.arrow_back),
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      child: const Text(
-                        'Enter your phone number',
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(30, 14, 30, 14),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white12,
-                  ),
-                  child: Column(
-                    children: [
-                      TextFormField(
-                        controller: myController,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          labelText: 'Enter your phone number',
-                          filled: true,
-                          fillColor: Colors.white10,
-                        ),
-                      ),
-                      SizedBox(height: 14),
-                      ElevatedButton(
-                        onPressed: () {
-                          print(myController.text);
-                          // Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OtpVerificationPage()));
-                        },
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Colors.amber),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          minimumSize: MaterialStateProperty.all(Size.fromHeight(50)),
-                        ),
-                        child: const Text(
-                          'Phone number',
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
-      onTap: () => FocusScope.of(context).unfocus(),
-    );
-  }
 }
 
 class _SignupPageState extends State<SignupPage> {
@@ -130,7 +41,7 @@ class _SignupPageState extends State<SignupPage> {
                   const Text('Sign in', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                   const SizedBox(height: 10),
                   Container(
-                      padding: EdgeInsets.fromLTRB(30, 14, 30, 14),
+                      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 30),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white12,
