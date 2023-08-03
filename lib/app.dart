@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:thefitness1gym/pages/signup_page.dart';
 
 class App extends StatelessWidget {
@@ -27,6 +28,7 @@ class App extends StatelessWidget {
 
   ThemeData get defaultTheme => ThemeData(
         colorScheme: defaultColorScheme,
+        textTheme: GoogleFonts.interTextTheme(),
         useMaterial3: true,
       );
 
