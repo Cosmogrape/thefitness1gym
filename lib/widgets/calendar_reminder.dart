@@ -7,11 +7,11 @@ class CalendarReminder extends StatelessWidget {
   const CalendarReminder({
     super.key,
     required this.text,
-    required this.onTap,
+    this.onTap,
   });
 
   final String text;
-  final Function() onTap;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +19,7 @@ class CalendarReminder extends StatelessWidget {
     return Expanded(
       child: AnimatedTap(
         tapDownOpacity: .6,
+        onTap: onTap,
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(PredefinedSize.radiusMedium),
