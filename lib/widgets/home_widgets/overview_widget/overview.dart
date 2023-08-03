@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:thefitness1gym/assets/values/predefined_size.dart';
 import 'package:thefitness1gym/global/widgets/animated_tap.dart';
-import 'package:thefitness1gym/widgets/overview_widget/overview_item.dart';
+import 'package:thefitness1gym/widgets/home_widgets/overview_widget/overview_item.dart';
 
 class Overview extends StatefulWidget {
   const Overview({super.key});

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:thefitness1gym/widgets/calendar_reminder.dart';
+import 'package:thefitness1gym/widgets/home_widgets/overview_widget/overview.dart';
+import 'package:thefitness1gym/widgets/home_widgets/upcoming_widget/upcoming.dart';
 
 import '../assets/values/predefined_size.dart';
 import '../widgets/headline_text.dart';
-import '../widgets/overview_widget/overview.dart';
 import '../widgets/user_menu.dart';
 
 class HomePage extends StatefulWidget {
@@ -54,10 +55,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
             ),
             SizedBox(height: PredefinedSize.padding),
-            const Row(children: [
-              Overview(),
-              Overview(),
-            ]),
+            const Row(children: [Overview(), Upcoming()]),
           ],
         ),
       ),
