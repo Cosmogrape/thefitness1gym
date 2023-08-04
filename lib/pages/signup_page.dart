@@ -7,6 +7,8 @@ import '../widgets/fitness1_title.dart';
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
 
+  MaterialPageRoute get route => MaterialPageRoute(builder: (context) => const SignupPage());
+
   @override
   State<SignupPage> createState() => _SignupPageState();
 }

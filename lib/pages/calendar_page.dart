@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
 
+  MaterialPageRoute get route => MaterialPageRoute(builder: (context) => const CalendarPage());
+
   @override
   State<StatefulWidget> createState() => _CalendarPageState();
 }
