@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thefitness1gym/assets/values/predefined_size.dart';
+import 'package:thefitness1gym/pages/calendar_page.dart';
 import 'package:thefitness1gym/widgets/home_widgets/home_card.dart';
 
 import 'upcoming_item.dart';
@@ -19,7 +20,13 @@ class _UpcomingState extends State<Upcoming> {
     const spacer = SizedBox(height: 1);
 
     return HomeCard(
+      heroTag: "calendar",
       color: const Color(0xFF828DCA),
+      onTap: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const CalendarPage(),
+        ),
+      ),
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: PredefinedSize.padding),
         child: Column(
@@ -32,7 +39,7 @@ class _UpcomingState extends State<Upcoming> {
               child: Text(
                 "Upcoming",
                 style: theme.textTheme.titleMedium!.copyWith(
-                  fontSize: 18,
+                  fontSize: 18, // because Medium is small and Large is big, need the middle size
                   color: theme.colorScheme.onBackground,
                   fontWeight: FontWeight.bold,
                 ),
