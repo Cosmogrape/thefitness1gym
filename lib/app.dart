@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'pages/signup_page.dart';
+import 'pages/home_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -51,7 +51,7 @@ class App extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: const [Locale("en"), Locale("ar")], // English / Arabic
-      home: const SignupPage(), //const HomePage(),
+      home: const HomePage(),
     );
   }
 }
