@@ -11,12 +11,15 @@ class CalendarPage extends StatefulWidget {
 class _CalendarPageState extends State<CalendarPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Calendar'),
-      ),
-      body: Center(
-        child: Text('Calendar'),
+    return Hero(
+      tag: "calendar",
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Calendar'),
+        ),
+        body: Center(
+          child: Text('Calendar'),
+        ),
       ),
     );
   }
