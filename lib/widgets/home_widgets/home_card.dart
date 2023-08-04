@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefined_size.dart';
+import 'package:thefitness1gym/assets/values/predefined_radius.dart';
 import 'package:thefitness1gym/global/widgets/animated_tap.dart';
 
 class HomeCard extends StatelessWidget {
@@ -20,7 +20,7 @@ class HomeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final borderRadius = BorderRadius.circular(PredefinedSize.radiusMedium);
+    final borderRadius = BorderRadius.circular(PredefinedRadius.medium);
 
     final card = Card(
       shape: RoundedRectangleBorder(borderRadius: borderRadius),

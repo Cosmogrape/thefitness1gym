@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefined_size.dart';
+import 'package:thefitness1gym/assets/values/predefined_padding.dart';
 import 'package:thefitness1gym/pages/calendar_page.dart';
 import 'package:thefitness1gym/widgets/home_widgets/home_card.dart';
 
@@ -17,6 +17,7 @@ class _UpcomingState extends State<Upcoming> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    const spacerAround = SizedBox(height: PredefinedPadding.regular);
     const spacer = SizedBox(height: 1);
 
     return HomeCard(
@@ -24,14 +25,14 @@ class _UpcomingState extends State<Upcoming> {
       color: const Color(0xFF828DCA),
       onTap: () => Navigator.of(context).push(CalendarPage.route),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: PredefinedSize.padding),
+        padding: const EdgeInsets.symmetric(vertical: PredefinedPadding.regular),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: PredefinedSize.paddingMedium),
+              padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.medium),
               child: Text(
                 "Upcoming",
                 style: theme.textTheme.titleMedium!.copyWith(
@@ -41,7 +42,7 @@ class _UpcomingState extends State<Upcoming> {
                 ),
               ),
             ),
-            SizedBox(height: PredefinedSize.padding),
+            spacerAround,
             UpcomingItem(
               date: DateTime.now().add(const Duration(days: 2, hours: 3)),
               text: "Aerobatics with Osman",
@@ -56,7 +57,7 @@ class _UpcomingState extends State<Upcoming> {
               date: DateTime.now().add(const Duration(days: 3, hours: 6)),
               text: "Gymnastic with Shiko at the parking lot",
             ),
-            SizedBox(height: PredefinedSize.padding),
+            spacerAround,
             Center(
               child: Text(
                 "View all…",

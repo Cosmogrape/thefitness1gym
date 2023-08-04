@@ -1,6 +1,6 @@
 import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefined_size.dart';
+import 'package:thefitness1gym/assets/values/predefined_padding.dart';
 
 class UpcomingItem extends StatelessWidget {
   const UpcomingItem({
@@ -41,7 +41,7 @@ class UpcomingItem extends StatelessWidget {
     );
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: PredefinedSize.padding, vertical: PredefinedSize.paddingSmall),
+      padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.regular, vertical: PredefinedPadding.small),
       color: Colors.black.withOpacity(.2),
       child: Column(
         mainAxisSize: MainAxisSize.min,

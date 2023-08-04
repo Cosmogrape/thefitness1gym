@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:thefitness1gym/assets/values/predefined_size.dart';
+import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/assets/values/predefined_radius.dart';
 import 'package:thefitness1gym/global/widgets/animated_tap.dart';
 
 class CalendarReminder extends StatelessWidget {
@@ -22,17 +23,17 @@ class CalendarReminder extends StatelessWidget {
         onTap: onTap,
         child: Card(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(PredefinedSize.radiusMedium),
+            borderRadius: BorderRadius.circular(PredefinedRadius.medium),
           ),
           color: Colors.green.shade900.withOpacity(.5),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: PredefinedSize.paddingBig, vertical: PredefinedSize.paddingMedium),
+            padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.big, vertical: PredefinedPadding.medium),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Icon(FontAwesomeIcons.calendar, color: Colors.green.shade200),
-                SizedBox(width: PredefinedSize.paddingMedium),
+                const SizedBox(width: PredefinedPadding.medium),
                 Text(
                   text,
                   style: theme.textTheme.bodyLarge!.copyWith(

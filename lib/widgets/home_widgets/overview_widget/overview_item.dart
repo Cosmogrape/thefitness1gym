@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefined_size.dart';
+import 'package:thefitness1gym/assets/values/predefined_padding.dart';
 import 'package:thefitness1gym/global/widgets/animated_tap.dart';
 
 class OverviewItem extends StatelessWidget {
@@ -32,7 +32,7 @@ class OverviewItem extends StatelessWidget {
     final children = <Widget>[];
     if (icon != null) {
       children.add(Icon(icon, color: color, size: 20));
-      var spaceWidth = PredefinedSize.padding;
+      var spaceWidth = PredefinedPadding.regular;
       if (padding != null) spaceWidth = padding!.horizontal / 2;
       children.add(SizedBox(width: spaceWidth));
     }

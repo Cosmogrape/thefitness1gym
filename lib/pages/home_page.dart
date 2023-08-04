@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:thefitness1gym/assets/values/predefined_padding.dart';
 import 'package:thefitness1gym/widgets/calendar_reminder.dart';
 import 'package:thefitness1gym/widgets/home_widgets/overview_widget/overview.dart';
 import 'package:thefitness1gym/widgets/home_widgets/upcoming_widget/upcoming.dart';
 
-import '../assets/values/predefined_size.dart';
 import '../widgets/headline_text.dart';
 import '../widgets/user_menu.dart';
 
@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
         automaticallyImplyLeading: false,
       ),
       body: Padding(
-        padding: EdgeInsets.all(PredefinedSize.padding),
+        padding: EdgeInsets.all(PredefinedPadding.regular),
         child: ListView(
           //? not an app bar because this is more flexible
           children: [
@@ -51,12 +51,12 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            SizedBox(height: PredefinedSize.paddingBig),
+            SizedBox(height: PredefinedPadding.big),
             CalendarReminder(
               text: "Aerobatics with Osman in 42m",
               onTap: () {},
             ),
-            SizedBox(height: PredefinedSize.padding),
+            SizedBox(height: PredefinedPadding.regular),
             const Row(children: [Overview(), Upcoming()]),
           ],
         ),

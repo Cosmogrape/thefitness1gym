@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:thefitness1gym/assets/values/predefined_size.dart';
+import 'package:thefitness1gym/assets/values/predefined_padding.dart';
 import 'package:thefitness1gym/widgets/home_widgets/overview_widget/overview_item.dart';
 
 import '../home_card.dart';
@@ -17,11 +17,11 @@ class _OverviewState extends State<Overview> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final borderRadius = BorderRadius.circular(PredefinedSize.radiusMedium);
+    final borderRadius = BorderRadius.circular(PredefinedPadding.medium);
 
-    final itemPadding = EdgeInsets.symmetric(
-      horizontal: PredefinedSize.padding,
-      vertical: PredefinedSize.padding * .7,
+    const itemPadding = EdgeInsets.symmetric(
+      horizontal: PredefinedPadding.regular,
+      vertical: PredefinedPadding.regular * .7,
     );
     const spacer = SizedBox(height: 2);
 
@@ -29,7 +29,7 @@ class _OverviewState extends State<Overview> {
       heroTag: "overview",
       color: theme.colorScheme.primary,
       child: Padding(
-        padding: EdgeInsets.all(PredefinedSize.paddingSmall),
+        padding: const EdgeInsets.all(PredefinedPadding.small),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -87,7 +87,7 @@ class _OverviewState extends State<Overview> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: PredefinedSize.paddingSmall),
+              padding: const EdgeInsets.symmetric(vertical: PredefinedPadding.small),
               child: Text(
                 "More information…",
                 style: theme.textTheme.labelMedium!.copyWith(
