@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
         automaticallyImplyLeading: false,
       ),
       body: Padding(
-        padding: EdgeInsets.all(PredefinedPadding.regular),
+        padding: const EdgeInsets.all(PredefinedPadding.regular),
         child: ListView(
           //? not an app bar because this is more flexible
           children: [
@@ -51,12 +51,12 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            SizedBox(height: PredefinedPadding.big),
+            const SizedBox(height: PredefinedPadding.big),
             CalendarReminder(
               text: "Aerobatics with Osman in 42m",
               onTap: () {},
             ),
-            SizedBox(height: PredefinedPadding.regular),
+            const SizedBox(height: PredefinedPadding.regular),
             const Row(children: [Overview(), Upcoming()]),
           ],
         ),
