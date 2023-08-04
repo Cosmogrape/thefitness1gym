@@ -3,10 +3,18 @@ import 'package:thefitness1gym/assets/values/predefined_size.dart';
 import 'package:thefitness1gym/global/widgets/animated_tap.dart';
 
 class HomeCard extends StatelessWidget {
-  const HomeCard({this.child, this.color, super.key});
+  const HomeCard({
+    this.child,
+    this.color,
+    this.onTap,
+    this.heroTag,
+    super.key,
+  });
 
   final Widget? child;
   final Color? color;
+  final Function()? onTap;
+  final String? heroTag;
 
   @override
   Widget build(BuildContext context) {
@@ -14,19 +22,17 @@ class HomeCard extends StatelessWidget {
 
     final borderRadius = BorderRadius.circular(PredefinedSize.radiusMedium);
 
+    final card = Card(
+      shape: RoundedRectangleBorder(borderRadius: borderRadius),
+      color: color ?? theme.colorScheme.surface,
+      child: child,
+    );
+
     return Expanded(
       child: AnimatedTap(
         tapDownOpacity: .6,
-        onTap: () => Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => const Scaffold(body: Center(child: Text("Overview"))),
-          ),
-        ),
-        child: Card(
-          shape: RoundedRectangleBorder(borderRadius: borderRadius),
-          color: color ?? theme.colorScheme.surface,
-          child: child,
-        ),
+        onTap: onTap,
+        child: heroTag == null ? card : Hero(tag: heroTag!, child: card),
       ),
     );
   }
