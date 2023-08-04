@@ -26,6 +26,7 @@ class _OverviewState extends State<Overview> {
     const spacer = SizedBox(height: 2);
 
     return HomeCard(
+      heroTag: "overview",
       color: theme.colorScheme.primary,
       child: Padding(
         padding: EdgeInsets.all(PredefinedSize.paddingSmall),
