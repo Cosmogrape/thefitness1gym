@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:thefitness1gym/pages/signup_page.dart';
+
+import 'pages/signup_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
+
+  Brightness get defaultBrightness => Brightness.dark;
+
   ColorScheme get defaultColorScheme => ColorScheme(
-        brightness: Brightness.dark,
+        brightness: defaultBrightness,
         //
         primary: Colors.amber,
         primaryContainer: Colors.amber.shade800,
@@ -25,29 +29,29 @@ class App extends StatelessWidget {
         error: Colors.red, // Red color for error
         onError: Colors.white,
       );
-
   ThemeData get defaultTheme => ThemeData(
+        brightness: defaultBrightness,
         colorScheme: defaultColorScheme,
-        textTheme: GoogleFonts.interTextTheme(),
         useMaterial3: true,
       );
 
   @override
   Widget build(BuildContext context) {
+    final themeWithGoogleFonts = defaultTheme.copyWith(
+      textTheme: GoogleFonts.cairoTextTheme(defaultTheme.textTheme),
+    );
+
     return MaterialApp(
-      title: 'The Fitness 1 Gym',
-      theme: defaultTheme,
+      title: "The Fitness 1 Gym",
+      theme: themeWithGoogleFonts,
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [
-        Locale('en'), // English
-        Locale('ar'), // Arabic
-      ],
-      home: const SignupPage(),
+      supportedLocales: const [Locale("en"), Locale("ar")], // English / Arabic
+      home: const SignupPage(), //const HomePage(),
     );
   }
 }
