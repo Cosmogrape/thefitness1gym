@@ -22,11 +22,7 @@ class _UpcomingState extends State<Upcoming> {
     return HomeCard(
       heroTag: "calendar",
       color: const Color(0xFF828DCA),
-      onTap: () => Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const CalendarPage(),
-        ),
-      ),
+      onTap: () => Navigator.of(context).push(CalendarPage.route),
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: PredefinedSize.padding),
         child: Column(
