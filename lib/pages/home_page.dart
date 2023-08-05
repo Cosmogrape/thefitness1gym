@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:thefitness1gym/assets/values/predefined_padding.dart';
-import 'package:thefitness1gym/widgets/calendar_reminder.dart';
+import 'package:thefitness1gym/widgets/home_widgets/calendar_reminder.dart';
 import 'package:thefitness1gym/widgets/home_widgets/overview_widget/overview.dart';
 import 'package:thefitness1gym/widgets/home_widgets/upcoming_widget/upcoming.dart';
 
@@ -26,14 +26,6 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       key: _scaffoldKey,
       endDrawer: const UserMenu(),
-      //? Intentionally empty app bar:
-      //? Gives the screen an opening/closing animation
-      //? Controls status bar color
-      appBar: AppBar(
-        toolbarHeight: 0,
-        backgroundColor: theme.colorScheme.background,
-        automaticallyImplyLeading: false,
-      ),
       body: Padding(
         padding: const EdgeInsets.all(PredefinedPadding.regular),
         child: ListView(
