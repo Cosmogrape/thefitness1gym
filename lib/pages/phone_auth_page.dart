@@ -9,6 +9,7 @@ class PhoneNumberAuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: FocusScope.of(context).unfocus,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.background,
@@ -69,7 +70,6 @@ class PhoneNumberAuthScreen extends StatelessWidget {
           ),
         ),
       ),
-      onTap: () => FocusScope.of(context).unfocus(),
     );
   }
 }
