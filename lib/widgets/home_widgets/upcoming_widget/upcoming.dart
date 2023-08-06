@@ -17,8 +17,8 @@ class _UpcomingState extends State<Upcoming> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    const spacerAround = SizedBox(height: PredefinedPadding.regular);
-    const spacer = SizedBox(height: 1);
+    const spacerAround = SizedBox(height: PredefinedPadding.small);
+    const spacer = SizedBox(height: PredefinedPadding.tiny);
 
     return HomeCard(
       heroTag: "calendar",
@@ -36,7 +36,6 @@ class _UpcomingState extends State<Upcoming> {
               child: Text(
                 "Upcoming",
                 style: theme.textTheme.titleMedium!.copyWith(
-                  fontSize: 18, // because Medium is small and Large is big, need the middle size
                   color: theme.colorScheme.onBackground,
                   fontWeight: FontWeight.bold,
                 ),
