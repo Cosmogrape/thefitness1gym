@@ -55,8 +55,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                       const SizedBox(height: PredefinedPadding.medium),
                       ElevatedButton(
                         onPressed: () {
-                          print(myController.text);
-                          // Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OtpVerificationPage()));
+                          Navigator.of(context).push(OtpVerifyPage.route);
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(Colors.amber),
