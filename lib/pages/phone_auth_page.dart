@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefined_size.dart';
+import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/assets/values/predefined_radius.dart';
 
 class PhoneNumberAuthScreen extends StatelessWidget {
   PhoneNumberAuthScreen({super.key});
@@ -18,19 +19,19 @@ class PhoneNumberAuthScreen extends StatelessWidget {
         ),
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(PredefinedSize.paddingBig),
+            padding: const EdgeInsets.all(PredefinedPadding.big),
             child: Column(
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                  padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.xLarge, vertical: PredefinedPadding.medium),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(PredefinedRadius.regular),
                     color: Colors.white12,
                   ),
                   child: Column(
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(PredefinedRadius.regular),
                         child: TextFormField(
                           controller: myController,
                           decoration: const InputDecoration(
@@ -42,7 +43,7 @@ class PhoneNumberAuthScreen extends StatelessWidget {
                           keyboardType: TextInputType.number,
                         ),
                       ),
-                      const SizedBox(height: 14),
+                      const SizedBox(height: PredefinedPadding.medium),
                       ElevatedButton(
                         onPressed: () {
                           print(myController.text);
@@ -52,7 +53,7 @@ class PhoneNumberAuthScreen extends StatelessWidget {
                           backgroundColor: MaterialStateProperty.all(Colors.amber),
                           shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(PredefinedRadius.regular),
                             ),
                           ),
                           minimumSize: MaterialStateProperty.all(Size.fromHeight(50)),
