@@ -32,26 +32,37 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           //? not an app bar because this is more flexible
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const HeadlineText(),
-                IconButton(
-                  icon: const Icon(FontAwesomeIcons.user),
-                  color: theme.colorScheme.onBackground,
-                  highlightColor: theme.colorScheme.primary,
-                  onPressed: () => _scaffoldKey.currentState?.openEndDrawer(),
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.only(
+                left: PredefinedPadding.regular,
+                right: PredefinedPadding.regular,
+                top: PredefinedPadding.small,
+                bottom: PredefinedPadding.regular,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const HeadlineText(),
+                  IconButton(
+                    icon: const Icon(FontAwesomeIcons.user),
+                    color: theme.colorScheme.onBackground,
+                    highlightColor: theme.colorScheme.primary,
+                    onPressed: () => _scaffoldKey.currentState?.openEndDrawer(),
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: PredefinedPadding.big),
             CalendarReminder(
               text: "Aerobatics with Osman in 42m",
               onTap: () {},
             ),
             const SizedBox(height: PredefinedPadding.regular),
-            const Row(children: [Overview(), Upcoming()]),
+            const SizedBox(
+              height: 230,
+              child: Row(children: [Overview(), Upcoming()]),
+            ),
             const YourMembership(),
+            // const WorkoutPlans(),
           ],
         ),
       ),
