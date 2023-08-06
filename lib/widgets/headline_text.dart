@@ -53,9 +53,7 @@ class _HeadlineTextState extends State<HeadlineText> {
           fontWeight: FontWeight.bold,
           color: theme.colorScheme.onBackground,
         );
-    final usernameStyle = textStyle.copyWith(
-      color: theme.colorScheme.primary,
-    );
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
