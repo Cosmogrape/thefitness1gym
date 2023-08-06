@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "119086915405",
+    "firebase_url": "https://fitness1-test-cosmogrape-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "fitness1-test-cosmogrape",
+    "storage_bucket": "fitness1-test-cosmogrape.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119086915405:android:95cd36c46979180853e104",
+        "android_client_info": {
+          "package_name": "com.cosmogrape.thefitness1gym"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "119086915405-vcg8376ua1eadsbpcdh26u7bssblumni.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5qB5WUSEb8-sRz-YoegClOPITiwRoRzc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "119086915405-vcg8376ua1eadsbpcdh26u7bssblumni.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "119086915405-2ti47ra2du9v5gf76sjm2a8td23kbi3l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cosmogrape.thefitness1gym"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

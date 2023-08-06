@@ -2,6 +2,7 @@ import "package:date_field/date_field.dart";
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/assets/values/predefined_radius.dart';
 import 'package:thefitness1gym/widgets/calendar_widgets/calendar_day/calendar_item.dart';
 import 'package:thefitness1gym/widgets/calendar_widgets/calendar_day/calendar_list.dart';
 import 'package:thefitness1gym/widgets/page_title.dart';
@@ -34,58 +35,101 @@ class _CalendarPageState extends State<CalendarPage> {
       ),
       body: Hero(
         tag: "calendar",
-        child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.big, vertical: PredefinedPadding.regular),
+        child: Stack(
           children: [
-            //Hero(tag: "calendar_reminder", child: const Text("Calendar")),
-            CalendarList(
-              items: [
-                CalendarItem(
-                  text: "Aerobatics with Samir",
-                  date: DateTime(2023, 10, 1, 18, 30),
-                ),
-                CalendarItem(
-                  text: "Aerobatics with Samir",
-                  date: DateTime(2023, 8, 5, 19, 30),
-                ),
-                CalendarItem(
-                  text: "Wall staring competition",
-                  date: DateTime(2022, 8, 4, 16, 45),
-                ),
-                CalendarItem(
-                  text: "Wall staring competition",
-                  date: DateTime(2021, 8, 5, 16, 45),
-                ),
-                CalendarItem(
-                  text: "Wall staring competition",
-                  date: DateTime(2021, 8, 5, 12, 45),
-                ),
-                CalendarItem(
-                  text: "Wall staring competition",
-                  date: DateTime(2022, 8, 5, 4, 45),
-                ),
-                CalendarItem(
-                  text: "Aerobatics with Samir",
-                  date: DateTime(2023, 10, 1, 18, 30),
-                ),
-                CalendarItem(
-                  text: "Wall staring competition",
-                  date: DateTime(2023, 8, 6, 16, 45),
-                ),
-                CalendarItem(
-                  text: "Tea party",
-                  date: DateTime(2023, 10, 2, 15, 15),
-                ),
-                CalendarItem(
-                  text: "Tea party while staring at a wall",
-                  date: DateTime(2023, 11, 3, 5, 15),
-                ),
-                CalendarItem(
-                  text: "Tea party while staring at a wall",
-                  date: DateTime(2023, 12, 7, 2, 19),
+            ListView(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: PredefinedPadding.big, vertical: PredefinedPadding.regular),
+              children: [
+                //Hero(tag: "calendar_reminder", child: const Text("Calendar")),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: PredefinedPadding.huge + 50),
+                  child: CalendarList(
+                    items: [
+                      CalendarItem(
+                        text: "Aerobatics with Samir",
+                        date: DateTime(2023, 10, 1, 18, 30),
+                      ),
+                      CalendarItem(
+                        text: "Aerobatics with Samir",
+                        date: DateTime(2023, 8, 5, 19, 30),
+                      ),
+                      CalendarItem(
+                        text: "Wall staring competition",
+                        date: DateTime(2022, 8, 4, 16, 45),
+                      ),
+                      CalendarItem(
+                        text: "Wall staring competition",
+                        date: DateTime(2021, 8, 5, 16, 45),
+                      ),
+                      CalendarItem(
+                        text: "Wall staring competition",
+                        date: DateTime(2021, 8, 5, 12, 45),
+                      ),
+                      CalendarItem(
+                        text: "Wall staring competition",
+                        date: DateTime(2022, 8, 5, 4, 45),
+                      ),
+                      CalendarItem(
+                        text: "Aerobatics with Samir",
+                        date: DateTime(2023, 10, 1, 18, 30),
+                      ),
+                      CalendarItem(
+                        text: "Wall staring competition",
+                        date: DateTime(2023, 8, 6, 16, 45),
+                      ),
+                      CalendarItem(
+                        text: "Tea party",
+                        date: DateTime(2023, 10, 2, 15, 15),
+                      ),
+                      CalendarItem(
+                        text: "Tea party while staring at a wall",
+                        date: DateTime(2023, 11, 3, 5, 15),
+                      ),
+                      CalendarItem(
+                        text: "Tea party while staring at a wall",
+                        date: DateTime(2023, 12, 7, 2, 19),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.8),
+                      spreadRadius: 5,
+                      blurRadius: 100,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
+                height: 100,
+              ),
+            ),
+            Positioned(
+              bottom: 20,
+              left: 35,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(250, 50),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(PredefinedRadius.small))),
+                child: Text(
+                  "Book now",
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium
+                      ?.copyWith(fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.primary),
+                ),
+              ),
+            )
           ],
         ),
       ),
