@@ -56,7 +56,7 @@ class PhoneNumberAuthScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(PredefinedRadius.regular),
                             ),
                           ),
-                          minimumSize: MaterialStateProperty.all(Size.fromHeight(50)),
+                          minimumSize: MaterialStateProperty.all(const Size.fromHeight(50)),
                         ),
                         child: const Text(
                           'Continue',
