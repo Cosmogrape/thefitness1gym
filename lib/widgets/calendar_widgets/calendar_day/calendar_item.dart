@@ -12,11 +12,6 @@ class CalendarItem extends StatelessWidget {
   final String text;
   final DateTime date;
 
-  /// Used with [DateTimeFormat] to format the date
-  ///
-  /// Example: 1:30 PM
-  static const String dateFormat = "g:i A" + " - F j, Y";
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -26,7 +21,7 @@ class CalendarItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            date.format(dateFormat),
+            date.format("g:i A"),
             style: theme.textTheme.labelMedium!.copyWith(
               color: theme.colorScheme.primary,
               fontWeight: FontWeight.bold,
