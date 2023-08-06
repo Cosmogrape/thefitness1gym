@@ -65,8 +65,7 @@ class _SignupPageState extends State<SignupPage> {
                           // ),
                           ElevatedButton(
                             onPressed: () {
-                              print('Phone number login');
-                              Navigator.of(context).push(MaterialPageRoute(builder: (_) => PhoneNumberAuthScreen()));
+                              Navigator.of(context).push(PhoneAuthPage.route);
                             },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(Colors.amber),
