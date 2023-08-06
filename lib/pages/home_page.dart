@@ -4,6 +4,7 @@ import 'package:thefitness1gym/assets/values/predefined_padding.dart';
 import 'package:thefitness1gym/widgets/home_widgets/calendar_reminder.dart';
 import 'package:thefitness1gym/widgets/home_widgets/overview_widget/overview.dart';
 import 'package:thefitness1gym/widgets/home_widgets/upcoming_widget/upcoming.dart';
+import 'package:thefitness1gym/widgets/home_widgets/your_membership.dart';
 
 import '../widgets/headline_text.dart';
 import '../widgets/user_menu.dart';
@@ -50,6 +51,7 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: PredefinedPadding.regular),
             const Row(children: [Overview(), Upcoming()]),
+            const YourMembership(),
           ],
         ),
       ),
