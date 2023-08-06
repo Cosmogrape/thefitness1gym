@@ -2,9 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:thefitness1gym/assets/values/predefined_padding.dart';
 import 'package:thefitness1gym/assets/values/predefined_radius.dart';
 
-class PhoneNumberAuthScreen extends StatelessWidget {
-  PhoneNumberAuthScreen({super.key});
+import 'otp_verify_page.dart';
 
+class PhoneAuthPage extends StatefulWidget {
+  const PhoneAuthPage({super.key});
+
+  static MaterialPageRoute get route => MaterialPageRoute(builder: (context) => const PhoneAuthPage());
+
+  @override
+  State<PhoneAuthPage> createState() => _PhoneAuthPageState();
+}
+
+class _PhoneAuthPageState extends State<PhoneAuthPage> {
   final myController = TextEditingController();
 
   @override
