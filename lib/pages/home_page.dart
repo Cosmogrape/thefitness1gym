@@ -57,10 +57,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
             ),
             const SizedBox(height: PredefinedPadding.regular),
-            const SizedBox(
-              height: 230,
-              child: Row(children: [Overview(), Upcoming()]),
-            ),
+            const Row(children: [Overview(), Upcoming()]),
             const YourMembership(),
             // const WorkoutPlans(),
           ],
