@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thefitness1gym/assets/values/predefined_size.dart';
 
 class PhoneNumberAuthScreen extends StatelessWidget {
   PhoneNumberAuthScreen({super.key});
@@ -9,23 +10,16 @@ class PhoneNumberAuthScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.background,
+          leading: const BackButton(),
+          title: const Text("Signup"),
+        ),
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(32),
+            padding: EdgeInsets.all(PredefinedSize.paddingBig),
             child: Column(
               children: [
-                Row(
-                  children: [
-                    const BackButton(),
-                    Container(
-                      alignment: Alignment.center,
-                      child: const Text(
-                        'Signup',
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
-                ),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 14),
                   decoration: BoxDecoration(
@@ -44,6 +38,7 @@ class PhoneNumberAuthScreen extends StatelessWidget {
                             filled: true,
                             fillColor: Colors.white10,
                           ),
+                          keyboardType: TextInputType.number,
                         ),
                       ),
                       const SizedBox(height: 14),
