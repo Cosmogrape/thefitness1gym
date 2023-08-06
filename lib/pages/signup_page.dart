@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:thefitness1gym/widgets/signup_box.dart';
 
@@ -6,16 +7,16 @@ import '../widgets/fitness1_title.dart';
 import 'phone_auth_page.dart';
 
 @immutable
-class SignupPageBackup extends StatefulWidget {
-  const SignupPageBackup({super.key});
+class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
 
-  static MaterialPageRoute get route => MaterialPageRoute(builder: (context) => const SignupPageBackup());
+  static MaterialPageRoute get route => MaterialPageRoute(builder: (context) => const SignupPage());
 
   @override
-  State<SignupPageBackup> createState() => _SignupPageBackupState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _SignupPageBackupState extends State<SignupPageBackup> {
+class _SignupPageState extends State<SignupPage> {
   bool nextEnabled = false;
   bool splashEnd = false;
 
