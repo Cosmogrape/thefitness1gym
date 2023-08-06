@@ -32,7 +32,13 @@ class HomeCard extends StatelessWidget {
       child: AnimatedTap(
         tapDownOpacity: .6,
         onTap: onTap,
-        child: heroTag == null ? card : Hero(tag: heroTag!, child: card),
+        child: heroTag == null
+            ? card
+            : Hero(
+                tag: heroTag!,
+                transitionOnUserGestures: true,
+                child: card,
+              ),
       ),
     );
   }
