@@ -34,14 +34,13 @@ dependencies:
     sdk: flutter
   path_provider: ^2.0.15
   intl: any
+  firebase_core: ^2.15.0
   cupertino_icons: ^1.0.2
   font_awesome_flutter: ^10.5.0
   google_fonts: ^5.1.0
   animated_size_and_fade: ^3.0.1
   date_time_format: ^2.0.1
   date_field: ^3.0.5
-  firebase_core: ^2.15.0
-  firebase_auth: ^4.7.2
 
 dev_dependencies:
   flutter_test:
