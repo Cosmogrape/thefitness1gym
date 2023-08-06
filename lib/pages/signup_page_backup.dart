@@ -4,16 +4,16 @@ import 'package:thefitness1gym/widgets/signup_box.dart';
 import '../widgets/fitness1_title.dart';
 
 @immutable
-class SignupPage extends StatefulWidget {
-  const SignupPage({super.key});
+class SignupPageBackup extends StatefulWidget {
+  const SignupPageBackup({super.key});
 
-  static MaterialPageRoute get route => MaterialPageRoute(builder: (context) => const SignupPage());
+  static MaterialPageRoute get route => MaterialPageRoute(builder: (context) => const SignupPageBackup());
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<SignupPageBackup> createState() => _SignupPageBackupState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _SignupPageBackupState extends State<SignupPageBackup> {
   bool nextEnabled = false;
   bool splashEnd = false;
 
