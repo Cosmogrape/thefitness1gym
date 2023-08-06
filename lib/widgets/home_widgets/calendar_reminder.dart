@@ -17,9 +17,11 @@ class CalendarReminder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return HomeCard(
       heroTag: "calendar_reminder",
       onTap: onTap,
+      color: Colors.green.shade900.withOpacity(.2),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.big, vertical: PredefinedPadding.medium),
         child: Row(
@@ -27,6 +29,7 @@ class CalendarReminder extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Icon(FontAwesomeIcons.calendar, color: Colors.green.shade200),
+            //? not using Padding in order to support LTR and RTL languages at the same time
             const SizedBox(width: PredefinedPadding.medium),
             Text(
               text,
