@@ -5,6 +5,8 @@ class OtpVerifyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('Hi');
+    return const Scaffold(
+      body: Text('Hi'),
+    );
   }
 }
