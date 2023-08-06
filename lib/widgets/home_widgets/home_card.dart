@@ -1,8 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:thefitness1gym/assets/values/predefined_radius.dart';
 import 'package:thefitness1gym/global/widgets/animated_tap.dart';
 
-class HomeCard extends StatelessWidget {
+class HomeCard extends StatefulWidget {
   const HomeCard({
     this.child,
     this.color,
@@ -17,6 +19,25 @@ class HomeCard extends StatelessWidget {
   final String? heroTag;
 
   @override
+  State<HomeCard> createState() => _HomeCardState();
+}
+
+class _HomeCardState extends State<HomeCard> {
+  bool show = false;
+  void _resetAnimation() {
+    show = false;
+    Future.delayed(Duration(milliseconds: 200 + Random().nextInt(300)), () {
+      setState(() => show = true);
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _resetAnimation();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
@@ -24,21 +45,25 @@ class HomeCard extends StatelessWidget {
 
     final card = Card(
       shape: RoundedRectangleBorder(borderRadius: borderRadius),
-      color: color ?? theme.colorScheme.surface,
-      child: child,
+      color: widget.color ?? theme.colorScheme.surface,
+      child: widget.child,
     );
 
     return Expanded(
-      child: AnimatedTap(
-        tapDownOpacity: .6,
-        onTap: onTap,
-        child: heroTag == null
-            ? card
-            : Hero(
-                tag: heroTag!,
-                transitionOnUserGestures: true,
-                child: card,
-              ),
+      child: AnimatedOpacity(
+        opacity: show ? 1 : 0,
+        duration: const Duration(seconds: 1),
+        child: AnimatedTap(
+          tapDownOpacity: .6,
+          onTap: widget.onTap,
+          child: widget.heroTag == null
+              ? card
+              : Hero(
+                  tag: widget.heroTag!,
+                  transitionOnUserGestures: true,
+                  child: card,
+                ),
+        ),
       ),
     );
   }
