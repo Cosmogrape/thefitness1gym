@@ -33,15 +33,6 @@ class _OverviewState extends State<Overview> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // Text(
-            //   "Overview",
-            //   style: theme.textTheme.titleMedium!.copyWith(
-            //     fontSize: 18,
-            //     color: theme.colorScheme.onPrimary,
-            //     fontWeight: FontWeight.bold,
-            //   ),
-            // ),
-            // SizedBox(height: PredefinedSize.padding),
             ClipRRect(
               borderRadius: borderRadius,
               child: Column(
