@@ -105,7 +105,7 @@ class _CalendarPageState extends State<CalendarPage> {
                       color: Colors.black.withOpacity(0.8),
                       spreadRadius: 5,
                       blurRadius: 100,
-                      offset: Offset(0, 3),
+                      offset: const Offset(0, 3),
                     ),
                   ],
                 ),
