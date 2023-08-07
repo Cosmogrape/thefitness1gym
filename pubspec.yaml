@@ -44,6 +44,7 @@ dependencies:
   animated_size_and_fade: ^3.0.1
   date_time_format: ^2.0.1
   date_field: ^3.0.5
+  pinput: ^3.0.0
 
 dev_dependencies:
   flutter_test:
