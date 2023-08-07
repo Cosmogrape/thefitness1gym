@@ -1,8 +1,10 @@
 import "package:date_field/date_field.dart";
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:thefitness1gym/assets/values/predefined_padding.dart';
 import 'package:thefitness1gym/assets/values/predefined_radius.dart';
+import 'package:thefitness1gym/assets/values/predefined_size.dart';
 import 'package:thefitness1gym/widgets/calendar_widgets/calendar_day/calendar_item.dart';
 import 'package:thefitness1gym/widgets/calendar_widgets/calendar_day/calendar_list.dart';
 import 'package:thefitness1gym/widgets/page_title.dart';
@@ -18,9 +20,28 @@ class CalendarPage extends StatefulWidget {
 }
 
 class _CalendarPageState extends State<CalendarPage> {
+  late ScrollController _scrollController;
+  bool _scrolledDown = false;
+
+  void _scrollListener() {
+    final direction = _scrollController.position.userScrollDirection;
+    final isForward = direction == ScrollDirection.reverse;
+    setState(() => _scrolledDown = isForward);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController()..addListener(_scrollListener);
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
+    const gradientDuration = Duration(seconds: 1);
+    const duration = Duration(milliseconds: 300);
+    const double scaleOnScroll = .8;
 
     return Scaffold(
       appBar: AppBar(
@@ -28,70 +49,82 @@ class _CalendarPageState extends State<CalendarPage> {
         title: const PageTitle("Upcoming events"),
         backgroundColor: theme.colorScheme.background,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: addEvent,
-        backgroundColor: theme.colorScheme.surface,
-        child: Icon(Icons.add, color: theme.colorScheme.primary),
+      floatingActionButton: AnimatedOpacity(
+        duration: duration,
+        curve: Curves.easeOut,
+        opacity: _scrolledDown ? 0 : 1,
+        child: AnimatedScale(
+          duration: duration,
+          curve: Curves.easeOut,
+          scale: _scrolledDown ? scaleOnScroll : 1,
+          child: FloatingActionButton(
+            onPressed: addEvent,
+            backgroundColor: theme.colorScheme.surface,
+            child: Icon(Icons.add, color: theme.colorScheme.primary),
+          ),
+        ),
       ),
       body: Hero(
         tag: "calendar",
         child: Stack(
           children: [
             ListView(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: PredefinedPadding.big, vertical: PredefinedPadding.regular),
+              controller: _scrollController,
+              padding: const EdgeInsets.only(
+                left: PredefinedPadding.big,
+                right: PredefinedPadding.big,
+                top: PredefinedPadding.regular,
+                bottom: PredefinedPadding.huge,
+              ),
               children: [
                 //Hero(tag: "calendar_reminder", child: const Text("Calendar")),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: PredefinedPadding.huge + 50),
-                  child: CalendarList(
-                    items: [
-                      CalendarItem(
-                        text: "Aerobatics with Samir",
-                        date: DateTime(2023, 10, 1, 18, 30),
-                      ),
-                      CalendarItem(
-                        text: "Aerobatics with Samir",
-                        date: DateTime(2023, 8, 5, 19, 30),
-                      ),
-                      CalendarItem(
-                        text: "Wall staring competition",
-                        date: DateTime(2022, 8, 4, 16, 45),
-                      ),
-                      CalendarItem(
-                        text: "Wall staring competition",
-                        date: DateTime(2021, 8, 5, 16, 45),
-                      ),
-                      CalendarItem(
-                        text: "Wall staring competition",
-                        date: DateTime(2021, 8, 5, 12, 45),
-                      ),
-                      CalendarItem(
-                        text: "Wall staring competition",
-                        date: DateTime(2022, 8, 5, 4, 45),
-                      ),
-                      CalendarItem(
-                        text: "Aerobatics with Samir",
-                        date: DateTime(2023, 10, 1, 18, 30),
-                      ),
-                      CalendarItem(
-                        text: "Wall staring competition",
-                        date: DateTime(2023, 8, 6, 16, 45),
-                      ),
-                      CalendarItem(
-                        text: "Tea party",
-                        date: DateTime(2023, 10, 2, 15, 15),
-                      ),
-                      CalendarItem(
-                        text: "Tea party while staring at a wall",
-                        date: DateTime(2023, 11, 3, 5, 15),
-                      ),
-                      CalendarItem(
-                        text: "Tea party while staring at a wall",
-                        date: DateTime(2023, 12, 7, 2, 19),
-                      ),
-                    ],
-                  ),
+                CalendarList(
+                  items: [
+                    CalendarItem(
+                      text: "Aerobatics with Samir",
+                      date: DateTime(2023, 10, 1, 18, 30),
+                    ),
+                    CalendarItem(
+                      text: "Aerobatics with Samir",
+                      date: DateTime(2023, 8, 5, 19, 30),
+                    ),
+                    CalendarItem(
+                      text: "Wall staring competition",
+                      date: DateTime(2022, 8, 4, 16, 45),
+                    ),
+                    CalendarItem(
+                      text: "Wall staring competition",
+                      date: DateTime(2021, 8, 5, 16, 45),
+                    ),
+                    CalendarItem(
+                      text: "Wall staring competition",
+                      date: DateTime(2021, 8, 5, 12, 45),
+                    ),
+                    CalendarItem(
+                      text: "Wall staring competition",
+                      date: DateTime(2022, 8, 5, 4, 45),
+                    ),
+                    CalendarItem(
+                      text: "Aerobatics with Samir",
+                      date: DateTime(2023, 10, 1, 18, 30),
+                    ),
+                    CalendarItem(
+                      text: "Wall staring competition",
+                      date: DateTime(2023, 8, 6, 16, 45),
+                    ),
+                    CalendarItem(
+                      text: "Tea party",
+                      date: DateTime(2023, 10, 2, 15, 15),
+                    ),
+                    CalendarItem(
+                      text: "Tea party while staring at a wall",
+                      date: DateTime(2023, 11, 3, 5, 15),
+                    ),
+                    CalendarItem(
+                      text: "Tea party while staring at a wall",
+                      date: DateTime(2023, 12, 7, 2, 19),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -99,37 +132,70 @@ class _CalendarPageState extends State<CalendarPage> {
               bottom: 0,
               left: 0,
               right: 0,
-              child: Container(
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.8),
-                      spreadRadius: 5,
-                      blurRadius: 100,
-                      offset: Offset(0, 3),
+              child: AnimatedOpacity(
+                duration: gradientDuration,
+                curve: Curves.easeOut,
+                opacity: _scrolledDown ? 0 : 1,
+                child: Container(
+                  height: PredefinedSize.fab * 2,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        theme.colorScheme.background.withOpacity(0.0),
+                        theme.colorScheme.background.withOpacity(0.5),
+                        theme.colorScheme.background.withOpacity(0.8),
+                        theme.colorScheme.background.withOpacity(1.0),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-                height: 100,
               ),
             ),
             Positioned(
-              bottom: 20,
-              left: 35,
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                    fixedSize: const Size(250, 50),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(PredefinedRadius.small))),
-                child: Text(
-                  "Book now",
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium
-                      ?.copyWith(fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.primary),
+              bottom: PredefinedPadding.medium,
+              left: PredefinedPadding.regular,
+              child: AnimatedOpacity(
+                duration: duration,
+                curve: Curves.easeOut,
+                opacity: _scrolledDown ? 0 : 1,
+                child: AnimatedScale(
+                  duration: duration,
+                  curve: Curves.easeOut,
+                  scale: _scrolledDown ? scaleOnScroll : 1,
+                  child: TextButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: theme.colorScheme.surface,
+                      fixedSize: const Size(PredefinedSize.fab * 5, PredefinedSize.fab),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(PredefinedRadius.regular),
+                      ),
+                    ),
+                    onPressed: () {},
+                    icon: const Icon(FontAwesomeIcons.calendarCheck),
+                    label: const Text("Book now"),
+                  ),
                 ),
               ),
-            )
+
+              // ElevatedButton(
+              //   onPressed: () {},
+              //   style: ElevatedButton.styleFrom(
+              //     fixedSize: const Size(250, 50),
+              //     shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(PredefinedRadius.small),
+              //     ),
+              //   ),
+              //   child: Text(
+              //     "Book now",
+              //     style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              //           fontWeight: FontWeight.bold,
+              //           color: Theme.of(context).colorScheme.primary,
+              //         ),
+              //   ),
+              // ),
+            ),
           ],
         ),
       ),
