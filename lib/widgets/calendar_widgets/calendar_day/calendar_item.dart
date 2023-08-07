@@ -1,6 +1,6 @@
 import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/assets/values/predefined_size.dart';
 
 class CalendarItem extends StatelessWidget {
   const CalendarItem({
@@ -16,7 +16,7 @@ class CalendarItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.only(bottom: PredefinedPadding.regular),
+      padding: const EdgeInsets.only(bottom: PredefinedSize.regular),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

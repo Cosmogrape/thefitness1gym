@@ -1,7 +1,7 @@
 import "package:date_field/date_field.dart";
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/assets/values/predefined_size.dart';
 import 'package:thefitness1gym/assets/values/predefined_radius.dart';
 import 'package:thefitness1gym/widgets/calendar_widgets/calendar_day/calendar_item.dart';
 import 'package:thefitness1gym/widgets/calendar_widgets/calendar_day/calendar_list.dart';
@@ -38,12 +38,11 @@ class _CalendarPageState extends State<CalendarPage> {
         child: Stack(
           children: [
             ListView(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: PredefinedPadding.big, vertical: PredefinedPadding.regular),
+              padding: const EdgeInsets.symmetric(horizontal: PredefinedSize.big, vertical: PredefinedSize.regular),
               children: [
                 //Hero(tag: "calendar_reminder", child: const Text("Calendar")),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: PredefinedPadding.huge + 50),
+                  padding: const EdgeInsets.only(bottom: PredefinedSize.huge + 50),
                   child: CalendarList(
                     items: [
                       CalendarItem(
@@ -166,7 +165,7 @@ class _CalendarPageState extends State<CalendarPage> {
               border: OutlineInputBorder(),
             ),
           ),
-          const SizedBox(height: PredefinedPadding.big),
+          const SizedBox(height: PredefinedSize.big),
           DateTimeField(
             decoration: const InputDecoration(
               labelText: "Date and time",

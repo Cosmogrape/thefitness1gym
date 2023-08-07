@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/assets/values/predefined_size.dart';
 
 class WorkoutPlans extends StatefulWidget {
   const WorkoutPlans({super.key});
@@ -15,9 +15,9 @@ class _WorkoutPlansState extends State<WorkoutPlans> {
 
     return Padding(
       padding: const EdgeInsets.only(
-        top: PredefinedPadding.medium,
-        bottom: PredefinedPadding.medium,
-        left: PredefinedPadding.regular,
+        top: PredefinedSize.medium,
+        bottom: PredefinedSize.medium,
+        left: PredefinedSize.regular,
       ),
       child: Column(
         // mainAxisSize: MainAxisSize.min,
@@ -25,7 +25,7 @@ class _WorkoutPlansState extends State<WorkoutPlans> {
         children: [
           Padding(
             padding: const EdgeInsets.only(
-              bottom: PredefinedPadding.regular,
+              bottom: PredefinedSize.regular,
             ),
             child: Text(
               "Workout Plans",

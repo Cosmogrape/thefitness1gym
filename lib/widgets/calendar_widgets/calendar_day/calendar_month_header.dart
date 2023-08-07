@@ -1,6 +1,6 @@
 import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/assets/values/predefined_size.dart';
 import 'package:thefitness1gym/global/date/date_extension.dart';
 
 class CalendarMonthHeader extends StatelessWidget {
@@ -19,21 +19,21 @@ class CalendarMonthHeader extends StatelessWidget {
     final line = Expanded(
       child: Divider(
         color: colorSecondary,
-        thickness: PredefinedPadding.tiny,
+        thickness: PredefinedSize.tiny,
       ),
     );
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: PredefinedPadding.regular),
+      padding: const EdgeInsets.symmetric(vertical: PredefinedSize.regular),
       child: Row(
         children: [
           line,
           Container(
             padding: const EdgeInsets.symmetric(
-              vertical: PredefinedPadding.tiny,
-              horizontal: PredefinedPadding.regular,
+              vertical: PredefinedSize.tiny,
+              horizontal: PredefinedSize.regular,
             ),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(PredefinedPadding.regular),
+              borderRadius: BorderRadius.circular(PredefinedSize.regular),
               color: colorSecondary,
             ),
             child: Text(

@@ -1,6 +1,6 @@
 import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/assets/values/predefined_size.dart';
 import 'package:thefitness1gym/global/date/date_extension.dart';
 
 class CalendarDayHeader extends StatelessWidget {
@@ -24,7 +24,7 @@ class CalendarDayHeader extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: PredefinedPadding.regular),
+      padding: const EdgeInsets.only(bottom: PredefinedSize.regular),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -35,15 +35,15 @@ class CalendarDayHeader extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(width: PredefinedPadding.regular),
+          const SizedBox(width: PredefinedSize.regular),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: PredefinedPadding.small),
-                  child: Container(height: PredefinedPadding.xTiny, color: colorSecondary),
+                  padding: const EdgeInsets.only(top: PredefinedSize.small),
+                  child: Container(height: PredefinedSize.xTiny, color: colorSecondary),
                 ),
                 Text(
                   day,

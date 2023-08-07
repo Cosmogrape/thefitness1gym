@@ -1,4 +1,4 @@
-class PredefinedPadding {
+class PredefinedSize {
   static const double xTiny = 1;
   static const double tiny = 2;
   static const double xSmall = 3;

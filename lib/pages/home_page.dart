@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/assets/values/predefined_size.dart';
 import 'package:thefitness1gym/widgets/home_widgets/calendar_reminder.dart';
 import 'package:thefitness1gym/widgets/home_widgets/overview_widget/overview.dart';
 import 'package:thefitness1gym/widgets/home_widgets/upcoming_widget/upcoming.dart';
@@ -28,16 +28,16 @@ class _HomePageState extends State<HomePage> {
       key: _scaffoldKey,
       endDrawer: const UserMenu(),
       body: Padding(
-        padding: const EdgeInsets.all(PredefinedPadding.regular),
+        padding: const EdgeInsets.all(PredefinedSize.regular),
         child: ListView(
           //? not an app bar because this is more flexible
           children: [
             Padding(
               padding: const EdgeInsets.only(
-                left: PredefinedPadding.regular,
-                right: PredefinedPadding.regular,
-                top: PredefinedPadding.small,
-                bottom: PredefinedPadding.regular,
+                left: PredefinedSize.regular,
+                right: PredefinedSize.regular,
+                top: PredefinedSize.small,
+                bottom: PredefinedSize.regular,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
               text: "Aerobatics with Osman in 42m",
               onTap: () {},
             ),
-            const SizedBox(height: PredefinedPadding.regular),
+            const SizedBox(height: PredefinedSize.regular),
             const Row(children: [Overview(), Upcoming()]),
             const YourMembership(),
             // const WorkoutPlans(),

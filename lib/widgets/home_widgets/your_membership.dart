@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:animated_size_and_fade/animated_size_and_fade.dart';
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/assets/values/predefined_size.dart';
 import 'package:thefitness1gym/widgets/home_widgets/home_card.dart';
 
 class YourMembership extends StatefulWidget {
@@ -38,16 +38,16 @@ class _YourMembershipState extends State<YourMembership> {
       onTap: _resetAnimation,
       color: theme.colorScheme.onBackground,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(PredefinedPadding.medium),
+        borderRadius: BorderRadius.circular(PredefinedSize.medium),
         child: Stack(
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(
-                vertical: PredefinedPadding.large,
-                horizontal: PredefinedPadding.big,
+                vertical: PredefinedSize.large,
+                horizontal: PredefinedSize.big,
               ),
               child: Flexible(
-                // width: PredefinedPadding.medium,
+                // width: PredefinedSize.medium,
                 child: AnimatedSizeAndFade.showHide(
                   show: showContent,
                   fadeDuration: const Duration(seconds: 1, milliseconds: 500),
@@ -59,7 +59,7 @@ class _YourMembershipState extends State<YourMembership> {
                     "Your Membership",
                     style: theme.textTheme.titleLarge!.copyWith(
                       color: theme.colorScheme.background,
-                      // fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),

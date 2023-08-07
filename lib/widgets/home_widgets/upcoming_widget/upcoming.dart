@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/assets/values/predefined_size.dart';
 import 'package:thefitness1gym/pages/calendar_page.dart';
 import 'package:thefitness1gym/widgets/home_widgets/home_card.dart';
 
@@ -17,22 +17,22 @@ class _UpcomingState extends State<Upcoming> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    const spacerAround = SizedBox(height: PredefinedPadding.small);
-    const spacer = SizedBox(height: PredefinedPadding.tiny);
+    const spacerAround = SizedBox(height: PredefinedSize.small);
+    const spacer = SizedBox(height: PredefinedSize.tiny);
 
     return HomeCard(
       heroTag: "calendar",
       color: const Color(0xFF828DCA),
       onTap: () => Navigator.of(context).push(CalendarPage.route),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: PredefinedPadding.regular),
+        padding: const EdgeInsets.symmetric(vertical: PredefinedSize.regular),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.medium),
+              padding: const EdgeInsets.symmetric(horizontal: PredefinedSize.medium),
               child: Text(
                 "Upcoming",
                 style: theme.textTheme.titleMedium!.copyWith(

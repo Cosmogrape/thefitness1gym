@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/assets/values/predefined_size.dart';
 import 'package:thefitness1gym/assets/values/predefined_radius.dart';
 
 import 'otp_verify_page.dart';
@@ -28,11 +28,12 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
         ),
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(PredefinedPadding.big),
+            padding: const EdgeInsets.all(PredefinedSize.big),
             child: Column(
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.xLarge, vertical: PredefinedPadding.medium),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: PredefinedSize.xLarge, vertical: PredefinedSize.medium),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(PredefinedRadius.regular),
                     color: Colors.white12,
@@ -52,7 +53,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                           keyboardType: TextInputType.number,
                         ),
                       ),
-                      const SizedBox(height: PredefinedPadding.medium),
+                      const SizedBox(height: PredefinedSize.medium),
                       ElevatedButton(
                         onPressed: () {
                           Navigator.of(context).push(OtpVerifyPage.route);
