@@ -59,7 +59,7 @@ class _YourMembershipState extends State<YourMembership> {
                     "Your Membership",
                     style: theme.textTheme.titleLarge!.copyWith(
                       color: theme.colorScheme.background,
-                      // fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
