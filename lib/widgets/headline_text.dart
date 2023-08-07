@@ -15,13 +15,13 @@ class HeadlineText extends StatefulWidget {
 class _HeadlineTextState extends State<HeadlineText> {
   Timer? _timer;
   int index = -1;
-  int indexMax = 2;
+  int indexMax = 4;
 
   _reset() {
     setState(() {
       index = -1;
       if (_timer?.isActive == true) _timer!.cancel();
-      _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+      _timer = Timer.periodic(const Duration(seconds: 1, milliseconds: 500), (timer) {
         if (index >= indexMax) return;
         setState(() {
           index++;
@@ -58,15 +58,15 @@ class _HeadlineTextState extends State<HeadlineText> {
       mainAxisSize: MainAxisSize.min,
       children: [
         _animated(
-          show: index == 0,
+          show: index == 0 || index == 1,
           child: const HelloUsername(),
         ),
         _animated(
-          show: index == 1,
+          show: index == 2 || index == 3,
           child: Text("Keep up the good work!", style: textStyle),
         ),
         _animated(
-          show: index == 2,
+          show: index == 4,
           child: GestureDetector(
             onTap: _reset,
             child: const Fitness1Title(),
