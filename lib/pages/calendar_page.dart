@@ -77,7 +77,6 @@ class _CalendarPageState extends State<CalendarPage> {
                 bottom: PredefinedPadding.huge,
               ),
               children: [
-                //Hero(tag: "calendar_reminder", child: const Text("Calendar")),
                 CalendarList(
                   items: [
                     CalendarItem(
