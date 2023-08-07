@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import "package:animated_size_and_fade/animated_size_and_fade.dart";
+import 'package:animated_size_and_fade/animated_size_and_fade.dart';
 import 'package:flutter/material.dart';
 import 'package:thefitness1gym/widgets/fitness1_title.dart';
 import 'package:thefitness1gym/widgets/hello_username.dart';
@@ -14,12 +14,12 @@ class HeadlineText extends StatefulWidget {
 
 class _HeadlineTextState extends State<HeadlineText> {
   Timer? _timer;
-  int index = 0;
+  int index = -1;
   int indexMax = 2;
 
   _reset() {
     setState(() {
-      index = 0;
+      index = -1;
       if (_timer?.isActive == true) _timer!.cancel();
       _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
         if (index >= indexMax) return;
@@ -46,8 +46,6 @@ class _HeadlineTextState extends State<HeadlineText> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    const sizeDuration = Duration(milliseconds: 650);
-    const fadeDuration = Duration(seconds: 2);
 
     final textStyle = Theme.of(context).textTheme.headlineSmall!.copyWith(
           fontWeight: FontWeight.bold,
@@ -59,32 +57,36 @@ class _HeadlineTextState extends State<HeadlineText> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        AnimatedOpacity(
-          opacity: index < 0 ? 0 : 1,
-          duration: fadeDuration,
-          child: AnimatedSizeAndFade(
-            sizeDuration: sizeDuration,
-            fadeDuration: fadeDuration,
-            child: index == 0
-                ? const HelloUsername()
-                : AnimatedSizeAndFade(
-                    sizeDuration: sizeDuration,
-                    fadeDuration: fadeDuration,
-                    child: index > 0 && index < indexMax ? Text("Keep up the good work!", style: textStyle) : const SizedBox(),
-                  ),
+        _animated(
+          show: index == 0,
+          child: const HelloUsername(),
+        ),
+        _animated(
+          show: index == 1,
+          child: Text("Keep up the good work!", style: textStyle),
+        ),
+        _animated(
+          show: index == 2,
+          child: GestureDetector(
+            onTap: _reset,
+            child: const Fitness1Title(),
           ),
         ),
-        AnimatedSizeAndFade(
-          sizeDuration: sizeDuration,
-          fadeDuration: fadeDuration,
-          child: index >= indexMax
-              ? GestureDetector(
-                  onTap: _reset,
-                  child: const Fitness1Title(),
-                )
-              : const SizedBox(),
-        ),
       ],
+    );
+  }
+
+  /// Just a shortcut
+  _animated({required Widget child, required bool show}) {
+    return Flexible(
+      child: AnimatedSizeAndFade(
+        fadeDuration: const Duration(seconds: 2),
+        sizeDuration: const Duration(milliseconds: 300),
+        fadeOutCurve: Curves.easeOut,
+        fadeInCurve: Curves.easeOut,
+        sizeCurve: Curves.easeOut,
+        child: show ? child : const SizedBox.shrink(),
+      ),
     );
   }
 }
