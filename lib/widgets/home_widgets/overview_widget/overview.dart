@@ -45,7 +45,6 @@ class _OverviewState extends State<Overview> {
                     color: theme.colorScheme.primary,
                     backgroundColor: theme.colorScheme.background.withOpacity(.7),
                     padding: itemPadding,
-                    onTap: () {},
                   ),
                   spacer,
                   OverviewItem(
@@ -54,7 +53,6 @@ class _OverviewState extends State<Overview> {
                     icon: FontAwesomeIcons.handFist,
                     color: Colors.red.shade400,
                     padding: itemPadding,
-                    onTap: () {},
                   ),
                   spacer,
                   OverviewItem(
@@ -63,7 +61,6 @@ class _OverviewState extends State<Overview> {
                     icon: FontAwesomeIcons.moon,
                     color: Colors.blueGrey.shade200,
                     padding: itemPadding,
-                    onTap: () {},
                   ),
                   spacer,
                   OverviewItem(
@@ -72,7 +69,6 @@ class _OverviewState extends State<Overview> {
                     icon: FontAwesomeIcons.calendarCheck,
                     color: Colors.green.shade200,
                     padding: itemPadding,
-                    onTap: () {},
                   ),
                 ],
               ),

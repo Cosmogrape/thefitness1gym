@@ -11,7 +11,6 @@ class OverviewItem extends StatelessWidget {
     this.backgroundColor,
     this.icon,
     this.padding,
-    this.onTap,
   });
 
   final String? textBig;
@@ -20,7 +19,6 @@ class OverviewItem extends StatelessWidget {
   final Color? backgroundColor;
   final IconData? icon;
   final EdgeInsets? padding;
-  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
