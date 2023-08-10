@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/global/color_extension.dart';
 import 'package:thefitness1gym/global/widgets/expandable_panel.dart';
 import 'package:thefitness1gym/widgets/page_title.dart';
 
@@ -18,12 +19,9 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final borderRadius = BorderRadius.circular(PredefinedPadding.medium);
+    const borderRadius = PredefinedPadding.medium;
 
-    const headerPadding = EdgeInsets.symmetric(
-      vertical: PredefinedPadding.small,
-      horizontal: PredefinedPadding.medium,
-    );
+    const headerPadding = EdgeInsets.all(PredefinedPadding.medium);
     const bodyPadding = EdgeInsets.only(
       top: PredefinedPadding.regular,
       bottom: PredefinedPadding.medium,
@@ -37,6 +35,9 @@ class _ProfilePageState extends State<ProfilePage> {
       color: theme.colorScheme.primary,
     );
 
+    final headerBackgroundColor = theme.colorScheme.surface;
+    final bodyBackgroundColor = theme.colorScheme.surface.multiply(.5);
+
     return Scaffold(
       appBar: AppBar(
         leading: const BackButton(),
@@ -45,8 +46,10 @@ class _ProfilePageState extends State<ProfilePage> {
         backgroundColor: theme.colorScheme.background,
       ),
       body: ListView(
+        padding: const EdgeInsets.all(PredefinedPadding.regular),
         children: [
           ExpandablePanel(
+            useInkWell: true,
             borderRadius: borderRadius,
             color: theme.colorScheme.primary,
             icon: FontAwesomeIcons.user,
@@ -55,6 +58,8 @@ class _ProfilePageState extends State<ProfilePage> {
             body: Text("Locations"),
             headerPadding: headerPadding,
             bodyPadding: bodyPadding,
+            headerBackgroundColor: headerBackgroundColor,
+            bodyBackgroundColor: bodyBackgroundColor,
           ),
         ],
       ),
