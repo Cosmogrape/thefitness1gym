@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thefitness1gym/assets/values/predefined_padding.dart';
 import 'package:thefitness1gym/widgets/page_title.dart';
+import 'package:thefitness1gym/widgets/profile_widgets/membership.dart';
 import 'package:thefitness1gym/widgets/profile_widgets/your_information.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -63,6 +64,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
           const YourInformation(),
+          const Membership(),
         ],
       ),
     );
