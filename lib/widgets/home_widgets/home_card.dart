@@ -6,11 +6,11 @@ import 'package:thefitness1gym/global/widgets/animated_tap.dart';
 
 class HomeCard extends StatefulWidget {
   const HomeCard({
+    super.key,
     this.child,
     this.color,
     this.onTap,
     this.heroTag,
-    super.key,
   });
 
   final Widget? child;
@@ -49,24 +49,22 @@ class _HomeCardState extends State<HomeCard> {
       child: widget.child,
     );
 
-    return Expanded(
-      child: AnimatedOpacity(
-        opacity: show ? 1 : 0,
-        duration: const Duration(seconds: 1),
-        child: AnimatedTap(
-          useInkWell: true,
-          inkWellColor: widget.color,
-          inkWellBorderRadius: borderRadius,
-          tapDownOpacity: .6,
-          onTap: widget.onTap,
-          child: widget.heroTag == null
-              ? card
-              : Hero(
-                  tag: widget.heroTag!,
-                  transitionOnUserGestures: true,
-                  child: card,
-                ),
-        ),
+    return AnimatedOpacity(
+      opacity: show ? 1 : 0,
+      duration: const Duration(seconds: 1),
+      child: AnimatedTap(
+        useInkWell: true,
+        inkWellColor: widget.color,
+        inkWellBorderRadius: borderRadius,
+        tapDownOpacity: .6,
+        onTap: widget.onTap,
+        child: widget.heroTag == null
+            ? card
+            : Hero(
+                tag: widget.heroTag!,
+                transitionOnUserGestures: true,
+                child: card,
+              ),
       ),
     );
   }
