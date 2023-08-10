@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/global/widgets/animated_tap.dart';
 
 @immutable
 class ExpandablePanel extends StatefulWidget {
@@ -12,8 +14,10 @@ class ExpandablePanel extends StatefulWidget {
     this.initiallyExpanded = false,
     this.showArrow = true,
     this.customArrow,
+    this.useInkWell = false,
     this.color,
-    this.backgroundColor,
+    this.headerBackgroundColor,
+    this.bodyBackgroundColor,
     this.headerPadding,
     this.bodyPadding,
     this.borderRadius,
@@ -28,10 +32,11 @@ class ExpandablePanel extends StatefulWidget {
   final Widget? customArrow;
   final bool useInkWell;
   final Color? color;
-  final Color? backgroundColor;
+  final Color? headerBackgroundColor;
+  final Color? bodyBackgroundColor;
   final EdgeInsetsGeometry? headerPadding;
   final EdgeInsetsGeometry? bodyPadding;
-  final BorderRadiusGeometry? borderRadius;
+  final double? borderRadius;
 
   @override
   State<ExpandablePanel> createState() => _ExpandablePanelState();
@@ -54,63 +59,97 @@ class _ExpandablePanelState extends State<ExpandablePanel> {
   Widget build(BuildContext context) {
     // final theme = Theme.of(context);
 
-    final border = widget.borderRadius == null ? null : RoundedRectangleBorder(borderRadius: widget.borderRadius!);
+    final borderRadius = BorderRadius.circular(widget.borderRadius ?? 0);
+    final border = widget.borderRadius == null ? null : RoundedRectangleBorder(borderRadius: borderRadius);
 
-    final duration = const Duration(milliseconds: 200);
+    const duration = Duration(milliseconds: 200);
+    final iconPadding = widget.headerPadding == null ? const SizedBox.shrink() : SizedBox(width: widget.headerPadding!.horizontal / 4);
 
-    return Card(
-      shape: border,
-      color: widget.backgroundColor,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            padding: widget.headerPadding,
-            decoration: BoxDecoration(
-              borderRadius: widget.borderRadius,
-              color: widget.backgroundColor,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    if (widget.icon != null) Icon(widget.icon, color: widget.color, size: widget.iconSize),
-                    if (widget.icon != null && widget.headerPadding != null)
-                      SizedBox(
-                        width: widget.headerPadding!.horizontal / 2,
-                      ),
-                    widget.header,
-                  ],
+    List<Widget> leading = [const SizedBox.shrink()];
+    List<Widget> trailing = [const SizedBox.shrink()];
+    if (widget.icon != null) {
+      leading = [
+        iconPadding,
+        Icon(
+          widget.icon,
+          size: widget.iconSize,
+          color: widget.color,
+        ),
+        iconPadding,
+        iconPadding,
+      ];
+    }
+
+    if (widget.showArrow) {
+      if (widget.customArrow != null) {
+        trailing = [widget.customArrow!];
+      } else {
+        final icon = Icon(FontAwesomeIcons.chevronDown, color: widget.color);
+        final iconContainer = AnimatedScale(
+          scale: _isExpanded ? -1 : 1,
+          duration: duration,
+          curve: Curves.easeOut,
+          child: widget.useInkWell
+              ? Padding(
+                  padding: const EdgeInsets.all(PredefinedPadding.regular),
+                  child: icon,
+                )
+              : IconButton(
+                  icon: icon,
+                  onPressed: _toggle,
+                  color: widget.color,
                 ),
-                if (widget.showArrow)
-                  widget.customArrow ??
-                      IconButton(
-                        icon: AnimatedScale(
-                          scale: _isExpanded ? -1 : 1,
-                          duration: duration,
-                          child: const Icon(FontAwesomeIcons.chevronDown),
-                        ),
-                        color: widget.color,
-                        onPressed: _toggle,
-                      ),
-              ],
+        );
+        trailing = [
+          iconPadding,
+          iconPadding,
+          iconContainer,
+          iconPadding,
+        ];
+      }
+    }
+
+    return AnimatedTap(
+      useInkWell: widget.useInkWell,
+      inkWellColor: widget.color,
+      inkWellBorderRadius: borderRadius,
+      tapDownOpacity: .5,
+      onTap: _toggle,
+      child: Card(
+        shape: border,
+        color: widget.bodyBackgroundColor,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              padding: widget.headerPadding,
+              decoration: BoxDecoration(
+                borderRadius: borderRadius,
+                color: widget.headerBackgroundColor,
+              ),
+              child: Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ...leading,
+                  Expanded(child: widget.header),
+                  ...trailing,
+                ],
+              ),
             ),
-          ),
-          AnimatedCrossFade(
-            duration: duration,
-            firstCurve: Curves.easeOut,
-            secondCurve: Curves.easeOut,
-            crossFadeState: _isExpanded ? CrossFadeState.showSecond : CrossFadeState.showFirst,
-            firstChild: Container(),
-            secondChild: Container(
-              padding: widget.bodyPadding,
-              child: widget.body,
+            AnimatedCrossFade(
+              duration: duration,
+              firstCurve: Curves.easeOut,
+              secondCurve: Curves.easeOut,
+              crossFadeState: _isExpanded ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+              firstChild: Container(),
+              secondChild: Container(
+                padding: widget.bodyPadding,
+                child: widget.body,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
