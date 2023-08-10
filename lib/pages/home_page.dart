@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/global/widgets/mono_eased_gradient.dart';
 import 'package:thefitness1gym/widgets/home_widgets/calendar_reminder.dart';
 import 'package:thefitness1gym/widgets/home_widgets/home_card.dart';
 import 'package:thefitness1gym/widgets/home_widgets/overview_widget/overview.dart';
@@ -21,13 +22,26 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey(); // Create a key
+  static const padding = PredefinedPadding.medium;
+
+  /// this exists so horizontal lists go to the edge of the screen
+  Padding _padded(Widget child) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: padding),
+        child: child,
+      );
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
+    const padV = SizedBox(height: padding);
+    const padH = SizedBox(width: padding);
+
+    const double scrollerHeight = 230;
+
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 100,
         automaticallyImplyLeading: false,
         backgroundColor: theme.colorScheme.background,
         systemOverlayStyle: SystemUiOverlayStyle(
@@ -53,28 +67,63 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          const SizedBox(width: PredefinedPadding.medium),
+          padH,
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(PredefinedPadding.regular),
-        child: ListView(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           //? not an app bar because this is more flexible
           children: [
-            CalendarReminder(
+            _padded(CalendarReminder(
               text: "Aerobatics with Osman in 42m",
               onTap: () {},
-            ),
-            const YourMembership(),
-            HomeCard(
+            )),
+            _padded(const YourMembership()),
+            _padded(HomeCard(
               onTap: () => Navigator.of(context).push(LocationsPage.route),
               child: Container(
                 height: 50,
                 child: Text("Gym Locations"),
               ),
+            )),
+            padV,
+
+            SizedBox(
+              height: scrollerHeight,
+              child: Stack(
+                children: [
+                  ListView(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    children: const [padH, Overview(), Upcoming(), padH],
+                  ),
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    child: MonoEasedGradient(
+                      width: padding * 2,
+                      height: scrollerHeight,
+                      color: theme.colorScheme.background,
+                      begin: Alignment.centerRight,
+                      end: Alignment.centerLeft,
+                    ),
+                  ),
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    child: MonoEasedGradient(
+                      width: padding * 2,
+                      height: scrollerHeight,
+                      color: theme.colorScheme.background,
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: PredefinedPadding.regular),
-            const Row(children: [Overview(), Upcoming()]),
 
             // const WorkoutPlans(),
           ],
