@@ -78,15 +78,13 @@ class _HeadlineTextState extends State<HeadlineText> {
 
   /// Just a shortcut
   _animated({required Widget child, required bool show}) {
-    return Flexible(
-      child: AnimatedSizeAndFade(
-        fadeDuration: const Duration(seconds: 2),
-        sizeDuration: const Duration(milliseconds: 300),
-        fadeOutCurve: Curves.easeOut,
-        fadeInCurve: Curves.easeOut,
-        sizeCurve: Curves.easeOut,
-        child: show ? child : const SizedBox.shrink(),
-      ),
+    return AnimatedSizeAndFade(
+      fadeDuration: const Duration(seconds: 2),
+      sizeDuration: const Duration(milliseconds: 300),
+      fadeOutCurve: Curves.easeOut,
+      fadeInCurve: Curves.easeOut,
+      sizeCurve: Curves.easeOut,
+      child: show ? child : const SizedBox.shrink(),
     );
   }
 }
