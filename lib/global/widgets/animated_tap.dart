@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 class AnimatedTap extends StatefulWidget {
   const AnimatedTap({
     this.child,
+    this.useInkWell = true,
+    this.inkWellBorderRadius,
+    this.inkWellColor,
     this.tapDownScale = .95,
     this.tapDownOpacity = .9,
     this.opacityDuration = const Duration(milliseconds: 200),
@@ -15,6 +18,9 @@ class AnimatedTap extends StatefulWidget {
   });
 
   final Widget? child;
+  final bool useInkWell;
+  final BorderRadius? inkWellBorderRadius;
+  final Color? inkWellColor;
   final double tapDownScale;
   final double tapDownOpacity;
   final Duration opacityDuration;
@@ -32,28 +38,56 @@ class _AnimatedTapCardState extends State<AnimatedTap> {
   bool tapping = false;
   void _setTap(bool value) => setState(() => tapping = value);
 
+  void _onTapDown(TapDownDetails tapDownDetails) {
+    _setTap(true);
+    widget.onTapDown?.call(tapDownDetails);
+  }
+
+  void _onTapUp(TapUpDetails tapUpDetails) {
+    _setTap(false);
+    widget.onTapUp?.call(tapUpDetails);
+  }
+
+  void _onTapCancel() {
+    _setTap(false);
+    widget.onTapCancel?.call();
+  }
+
+  void _onTap() {
+    //? Need this to reset if the tapUp event was skipped (ex: in case of pop up)
+    Future.delayed(widget.scaleDuration, () => _setTap(false));
+    widget.onTap?.call();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTapDown: (tapDownDetails) => {_setTap(true), widget.onTapDown?.call(tapDownDetails)},
-      onTapUp: (tapUpDetails) => {_setTap(false), widget.onTapUp?.call(tapUpDetails)},
-      onTapCancel: () => {_setTap(false), widget.onTapCancel?.call()},
-      behavior: HitTestBehavior.translucent,
-      onTap: () {
-        //? Need this to reset if the tapUp event was skipped (ex: in case of pop up)
-        Future.delayed(widget.scaleDuration, () => _setTap(false));
-        widget.onTap?.call();
-      },
-      child: AnimatedOpacity(
-        opacity: tapping ? widget.tapDownOpacity : 1,
-        duration: widget.opacityDuration,
+    return AnimatedOpacity(
+      opacity: tapping ? widget.tapDownOpacity : 1,
+      duration: widget.opacityDuration,
+      curve: Curves.decelerate,
+      child: AnimatedScale(
+        scale: tapping ? widget.tapDownScale : 1,
+        duration: widget.scaleDuration,
         curve: Curves.decelerate,
-        child: AnimatedScale(
-          scale: tapping ? widget.tapDownScale : 1,
-          duration: widget.scaleDuration,
-          curve: Curves.decelerate,
-          child: widget.child,
-        ),
+        child: widget.useInkWell
+            ? InkWell(
+                onTapDown: _onTapDown,
+                onTapUp: _onTapUp,
+                onTapCancel: _onTapCancel,
+                onTap: _onTap,
+                splashColor: widget.inkWellColor,
+                highlightColor: widget.inkWellColor?.withOpacity(.25),
+                borderRadius: widget.inkWellBorderRadius,
+                child: widget.child,
+              )
+            : GestureDetector(
+                onTapDown: _onTapDown,
+                onTapUp: _onTapUp,
+                onTapCancel: _onTapCancel,
+                onTap: _onTap,
+                behavior: HitTestBehavior.translucent,
+                child: widget.child,
+              ),
       ),
     );
   }
