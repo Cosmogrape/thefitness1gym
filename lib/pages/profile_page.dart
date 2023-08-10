@@ -25,8 +25,43 @@ class _ProfilePageState extends State<ProfilePage> {
         backgroundColor: theme.colorScheme.background,
       ),
       body: ListView(
-        padding: const EdgeInsets.all(PredefinedPadding.regular),
+        padding: const EdgeInsets.all(PredefinedPadding.medium),
         children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              left: PredefinedPadding.medium,
+              right: PredefinedPadding.medium,
+              bottom: PredefinedPadding.large,
+            ),
+            child: Row(
+              children: [
+                const Hero(
+                  tag: "pfp",
+                  child: CircleAvatar(
+                    radius: 48,
+                    backgroundImage: AssetImage("lib/assets/images/pfp.png"),
+                  ),
+                ),
+                const SizedBox(width: PredefinedPadding.medium),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "John Cena",
+                      style: theme.textTheme.titleLarge?.copyWith(
+                        color: theme.colorScheme.primary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      "Strong member since 2014",
+                      style: theme.textTheme.titleMedium,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
           const YourInformation(),
         ],
       ),
