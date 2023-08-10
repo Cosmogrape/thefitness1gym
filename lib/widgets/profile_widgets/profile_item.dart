@@ -25,12 +25,7 @@ class ProfileItem extends StatelessWidget {
 
     const borderRadius = PredefinedPadding.medium;
     const headerPadding = EdgeInsets.all(PredefinedPadding.medium);
-    const bodyPadding = EdgeInsets.only(
-      top: PredefinedPadding.regular,
-      bottom: PredefinedPadding.medium,
-      left: PredefinedPadding.medium,
-      right: PredefinedPadding.medium,
-    );
+    const bodyPadding = EdgeInsets.symmetric(vertical: PredefinedPadding.regular, horizontal: PredefinedPadding.medium);
     const double iconSize = 24;
     final headerBackgroundColor = theme.colorScheme.surface;
     final bodyBackgroundColor = theme.colorScheme.surface.multiply(.5);
