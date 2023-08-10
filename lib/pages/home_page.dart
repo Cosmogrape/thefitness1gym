@@ -59,6 +59,13 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: PredefinedPadding.regular),
             const Row(children: [Overview(), Upcoming()]),
             const YourMembership(),
+            HomeCard(
+              onTap: () => Navigator.of(context).push(LocationsPage.route),
+              child: Container(
+                height: 100,
+                child: Text("Gym Locations"),
+              ),
+            ),
             // const WorkoutPlans(),
           ],
         ),
