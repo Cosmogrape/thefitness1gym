@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/pages/profile_page.dart';
 import 'package:thefitness1gym/widgets/home_widgets/calendar_reminder.dart';
+import 'package:thefitness1gym/widgets/home_widgets/home_card.dart';
 import 'package:thefitness1gym/widgets/home_widgets/overview_widget/overview.dart';
 import 'package:thefitness1gym/widgets/home_widgets/upcoming_widget/upcoming.dart';
 import 'package:thefitness1gym/widgets/home_widgets/your_membership.dart';
 
 import '../widgets/headline_text.dart';
-import '../widgets/user_menu.dart';
+import 'locations_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,14 +21,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey(); // Create a key
+  // final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey(); // Create a key
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      key: _scaffoldKey,
-      endDrawer: const UserMenu(),
+      // key: _scaffoldKey,
+      // endDrawer: const UserMenu(),
       body: Padding(
         padding: const EdgeInsets.all(PredefinedPadding.regular),
         child: ListView(
@@ -47,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                     icon: const Icon(FontAwesomeIcons.user),
                     color: theme.colorScheme.onBackground,
                     highlightColor: theme.colorScheme.primary,
-                    onPressed: () => _scaffoldKey.currentState?.openEndDrawer(),
+                    onPressed: () => Navigator.of(context).push(ProfilePage.route),
                   ),
                 ],
               ),
