@@ -54,6 +54,9 @@ class _HomeCardState extends State<HomeCard> {
         opacity: show ? 1 : 0,
         duration: const Duration(seconds: 1),
         child: AnimatedTap(
+          useInkWell: true,
+          inkWellColor: widget.color,
+          inkWellBorderRadius: borderRadius,
           tapDownOpacity: .6,
           onTap: widget.onTap,
           child: widget.heroTag == null
