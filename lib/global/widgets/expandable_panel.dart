@@ -26,6 +26,7 @@ class ExpandablePanel extends StatefulWidget {
   final bool initiallyExpanded;
   final bool showArrow;
   final Widget? customArrow;
+  final bool useInkWell;
   final Color? color;
   final Color? backgroundColor;
   final EdgeInsetsGeometry? headerPadding;
