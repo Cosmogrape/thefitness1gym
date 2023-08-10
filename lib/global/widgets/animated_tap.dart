@@ -8,8 +8,8 @@ class AnimatedTap extends StatefulWidget {
     this.inkWellColor,
     this.tapDownScale = .95,
     this.tapDownOpacity = .9,
-    this.opacityDuration = const Duration(milliseconds: 200),
-    this.scaleDuration = const Duration(milliseconds: 50),
+    this.opacityDuration = const Duration(milliseconds: 300),
+    this.scaleDuration = const Duration(milliseconds: 150),
     this.onTap,
     this.onTapDown,
     this.onTapUp,
@@ -36,15 +36,30 @@ class AnimatedTap extends StatefulWidget {
 
 class _AnimatedTapCardState extends State<AnimatedTap> {
   bool tapping = false;
+  bool animating = false;
+  bool isDown = false;
   void _setTap(bool value) => setState(() => tapping = value);
 
   void _onTapDown(TapDownDetails tapDownDetails) {
     _setTap(true);
     widget.onTapDown?.call(tapDownDetails);
+    animating = true;
+    isDown = true;
+
+    Future.delayed(
+      widget.scaleDuration.compareTo(widget.opacityDuration) > 0 ? widget.scaleDuration : widget.opacityDuration,
+      () {
+        if (animating && !isDown) {
+          _setTap(false);
+          animating = false;
+        }
+      },
+    );
   }
 
   void _onTapUp(TapUpDetails tapUpDetails) {
-    _setTap(false);
+    if (!animating) _setTap(false);
+    isDown = false;
     widget.onTapUp?.call(tapUpDetails);
   }
 
@@ -55,8 +70,10 @@ class _AnimatedTapCardState extends State<AnimatedTap> {
 
   void _onTap() {
     //? Need this to reset if the tapUp event was skipped (ex: in case of pop up)
-    Future.delayed(widget.scaleDuration, () => _setTap(false));
-    widget.onTap?.call();
+    Future.delayed(widget.scaleDuration, () {
+      _setTap(false);
+      widget.onTap?.call();
+    });
   }
 
   @override
