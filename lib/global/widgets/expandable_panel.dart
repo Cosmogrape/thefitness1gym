@@ -139,6 +139,7 @@ class _ExpandablePanelState extends State<ExpandablePanel> {
             ),
             AnimatedCrossFade(
               duration: duration,
+              sizeCurve: Curves.easeInOut,
               firstCurve: Curves.easeOut,
               secondCurve: Curves.easeOut,
               crossFadeState: _isExpanded ? CrossFadeState.showSecond : CrossFadeState.showFirst,
