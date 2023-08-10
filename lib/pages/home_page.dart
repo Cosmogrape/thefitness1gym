@@ -58,16 +58,17 @@ class _HomePageState extends State<HomePage> {
               text: "Aerobatics with Osman in 42m",
               onTap: () {},
             ),
-            const SizedBox(height: PredefinedPadding.regular),
-            const Row(children: [Overview(), Upcoming()]),
             const YourMembership(),
             HomeCard(
               onTap: () => Navigator.of(context).push(LocationsPage.route),
               child: Container(
-                height: 100,
+                height: 50,
                 child: Text("Gym Locations"),
               ),
             ),
+            const SizedBox(height: PredefinedPadding.regular),
+            const Row(children: [Overview(), Upcoming()]),
+
             // const WorkoutPlans(),
           ],
         ),
