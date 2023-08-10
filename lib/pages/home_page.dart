@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter/services.dart';
 import 'package:thefitness1gym/assets/values/predefined_padding.dart';
-import 'package:thefitness1gym/pages/profile_page.dart';
 import 'package:thefitness1gym/widgets/home_widgets/calendar_reminder.dart';
 import 'package:thefitness1gym/widgets/home_widgets/home_card.dart';
 import 'package:thefitness1gym/widgets/home_widgets/overview_widget/overview.dart';
@@ -10,6 +9,7 @@ import 'package:thefitness1gym/widgets/home_widgets/your_membership.dart';
 
 import '../widgets/headline_text.dart';
 import 'locations_page.dart';
+import 'profile_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,33 +27,40 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      // key: _scaffoldKey,
-      // endDrawer: const UserMenu(),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: theme.colorScheme.background,
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: theme.colorScheme.background,
+          systemNavigationBarColor: theme.colorScheme.background,
+        ),
+        // centerTitle: true,
+        title: const HeadlineText(),
+        actions: [
+          InkWell(
+            splashColor: theme.colorScheme.primary,
+            highlightColor: theme.colorScheme.primary,
+            borderRadius: BorderRadius.circular(50),
+            onTap: () => Navigator.of(context).push(ProfilePage.route),
+            child: const Padding(
+              padding: EdgeInsets.all(PredefinedPadding.tiny),
+              child: Hero(
+                tag: "pfp",
+                child: CircleAvatar(
+                  radius: 24,
+                  backgroundImage: AssetImage("lib/assets/images/pfp.png"),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(width: PredefinedPadding.medium),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(PredefinedPadding.regular),
         child: ListView(
           //? not an app bar because this is more flexible
           children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                left: PredefinedPadding.regular,
-                right: PredefinedPadding.regular,
-                top: PredefinedPadding.small,
-                bottom: PredefinedPadding.regular,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const HeadlineText(),
-                  IconButton(
-                    icon: const Icon(FontAwesomeIcons.user),
-                    color: theme.colorScheme.onBackground,
-                    highlightColor: theme.colorScheme.primary,
-                    onPressed: () => Navigator.of(context).push(ProfilePage.route),
-                  ),
-                ],
-              ),
-            ),
             CalendarReminder(
               text: "Aerobatics with Osman in 42m",
               onTap: () {},
