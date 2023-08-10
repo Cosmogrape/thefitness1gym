@@ -25,65 +25,68 @@ class _OverviewState extends State<Overview> {
     );
     const spacer = SizedBox(height: 2);
 
-    return HomeCard(
-      heroTag: "overview",
-      color: theme.colorScheme.primary,
-      child: Padding(
-        padding: const EdgeInsets.all(PredefinedPadding.small),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ClipRRect(
-              borderRadius: borderRadius,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  OverviewItem(
-                    textBig: "6",
-                    text: 'days streak',
-                    icon: FontAwesomeIcons.fire,
-                    color: theme.colorScheme.primary,
-                    backgroundColor: theme.colorScheme.background.withOpacity(.7),
-                    padding: itemPadding,
-                  ),
-                  spacer,
-                  OverviewItem(
-                    textBig: "18",
-                    text: "days workout",
-                    icon: FontAwesomeIcons.handFist,
-                    color: Colors.red.shade400,
-                    padding: itemPadding,
-                  ),
-                  spacer,
-                  OverviewItem(
-                    textBig: "5",
-                    text: "days rest",
-                    icon: FontAwesomeIcons.moon,
-                    color: Colors.blueGrey.shade200,
-                    padding: itemPadding,
-                  ),
-                  spacer,
-                  OverviewItem(
-                    textBig: "4",
-                    text: "events soon",
-                    icon: FontAwesomeIcons.calendarCheck,
-                    color: Colors.green.shade200,
-                    padding: itemPadding,
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: PredefinedPadding.small),
-              child: Text(
-                "More information…",
-                style: theme.textTheme.labelMedium!.copyWith(
-                  color: theme.colorScheme.onPrimary,
-                  fontWeight: FontWeight.bold,
+    return SizedBox(
+      width: 220,
+      child: HomeCard(
+        heroTag: "overview",
+        color: theme.colorScheme.primary,
+        child: Padding(
+          padding: const EdgeInsets.all(PredefinedPadding.small),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ClipRRect(
+                borderRadius: borderRadius,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    OverviewItem(
+                      textBig: "6",
+                      text: 'days streak',
+                      icon: FontAwesomeIcons.fire,
+                      color: theme.colorScheme.primary,
+                      backgroundColor: theme.colorScheme.background.withOpacity(.7),
+                      padding: itemPadding,
+                    ),
+                    spacer,
+                    OverviewItem(
+                      textBig: "18",
+                      text: "days workout",
+                      icon: FontAwesomeIcons.handFist,
+                      color: Colors.red.shade400,
+                      padding: itemPadding,
+                    ),
+                    spacer,
+                    OverviewItem(
+                      textBig: "5",
+                      text: "days rest",
+                      icon: FontAwesomeIcons.moon,
+                      color: Colors.blueGrey.shade200,
+                      padding: itemPadding,
+                    ),
+                    spacer,
+                    OverviewItem(
+                      textBig: "4",
+                      text: "events soon",
+                      icon: FontAwesomeIcons.calendarCheck,
+                      color: Colors.green.shade200,
+                      padding: itemPadding,
+                    ),
+                  ],
                 ),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: PredefinedPadding.small),
+                child: Text(
+                  "More information…",
+                  style: theme.textTheme.labelMedium!.copyWith(
+                    color: theme.colorScheme.onPrimary,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

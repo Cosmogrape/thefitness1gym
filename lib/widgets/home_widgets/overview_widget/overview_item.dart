@@ -34,28 +34,26 @@ class OverviewItem extends StatelessWidget {
       children.add(SizedBox(width: spaceWidth));
     }
     children.add(
-      Expanded(
-        child: RichText(
-          text: TextSpan(
-            children: [
-              TextSpan(
-                text: '$textBig ',
-                style: theme.textTheme.titleMedium!.copyWith(
-                  fontSize: 20,
-                  color: color,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: -.5,
-                ),
+      RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: '$textBig ',
+              style: theme.textTheme.titleMedium!.copyWith(
+                fontSize: 20,
+                color: color,
+                fontWeight: FontWeight.bold,
+                letterSpacing: -.5,
               ),
-              TextSpan(
-                text: text,
-                style: theme.textTheme.bodyMedium!.copyWith(
-                  color: color,
-                  fontWeight: FontWeight.bold,
-                ),
+            ),
+            TextSpan(
+              text: text,
+              style: theme.textTheme.bodyMedium!.copyWith(
+                color: color,
+                fontWeight: FontWeight.bold,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -63,9 +61,10 @@ class OverviewItem extends StatelessWidget {
     return Container(
       padding: padding,
       color: backgroundColor,
+      // width: 200,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: children,
       ),
     );
