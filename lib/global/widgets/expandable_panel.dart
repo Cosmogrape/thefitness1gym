@@ -87,8 +87,8 @@ class _ExpandablePanelState extends State<ExpandablePanel> {
                 if (widget.showArrow)
                   widget.customArrow ??
                       IconButton(
-                        icon: AnimatedRotation(
-                          turns: _isExpanded ? .5 : 0,
+                        icon: AnimatedScale(
+                          scale: _isExpanded ? -1 : 1,
                           duration: duration,
                           child: const Icon(FontAwesomeIcons.chevronDown),
                         ),
