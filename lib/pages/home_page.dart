@@ -52,7 +52,6 @@ class _HomePageState extends State<HomePage> {
         title: const HeadlineText(),
         actions: [
           InkWell(
-            splashColor: theme.colorScheme.primary,
             highlightColor: theme.colorScheme.primary,
             borderRadius: BorderRadius.circular(50),
             onTap: () => Navigator.of(context).push(ProfilePage.route),
