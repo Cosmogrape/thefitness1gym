@@ -30,7 +30,7 @@ class _SignupPageState extends State<SignupPage> {
 
   final myController = TextEditingController();
 
-  SignInChildren() {
+  signInChildren() {
     return [
       ElevatedButton(
         onPressed: () {
@@ -73,7 +73,7 @@ class _SignupPageState extends State<SignupPage> {
     ];
   }
 
-  PhoneAuthChildren() {
+  phoneAuthChildren() {
     return [
       ClipRRect(
         borderRadius: BorderRadius.circular(PredefinedRadius.regular),
@@ -112,7 +112,7 @@ class _SignupPageState extends State<SignupPage> {
     ];
   }
 
-  Heading(BuildContext context) {
+  heading(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
       child: Column(
@@ -130,7 +130,7 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 
-  ContentTitle() {
+  contentTitle() {
     return Row(children: [
       Container(
           child: onPhoneNumber
@@ -151,11 +151,11 @@ class _SignupPageState extends State<SignupPage> {
     ]);
   }
 
-  Content() {
+  content() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ContentTitle(),
+        contentTitle(),
         const SizedBox(height: 10),
         AnimatedSize(
           duration: const Duration(milliseconds: 200),
@@ -168,7 +168,7 @@ class _SignupPageState extends State<SignupPage> {
             ),
             width: double.infinity,
             child: Column(
-              children: onPhoneNumber ? PhoneAuthChildren() : SignInChildren(),
+              children: onPhoneNumber ? phoneAuthChildren() : signInChildren(),
             ),
           ),
         )
@@ -193,7 +193,7 @@ class _SignupPageState extends State<SignupPage> {
               padding: const EdgeInsets.all(32),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Heading(context), Content()],
+                children: [heading(context), content()],
               ),
             ),
           )),
