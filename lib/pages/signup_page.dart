@@ -123,25 +123,45 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 
-  contentTitle() {
-    return Row(children: [
-      Container(
-          child: onPhoneNumber
-              ? BackButton(onPressed: () {
-                  setState(() {
-                    onPhoneNumber = false;
-                  });
-                  myController.text = '';
-                })
-              : null),
-      Text(
-        onPhoneNumber ? 'Verify phone' : 'Sign in',
-        style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-      )
-    ]);
+  Widget contentTitle(ThemeData theme) {
+    final titleStyle = theme.textTheme.headlineSmall!.copyWith(
+      fontWeight: FontWeight.bold,
+      color: theme.colorScheme.secondary,
+    );
+
+    const duration = Duration(milliseconds: 200);
+
+    final backButton = BackButton(
+      onPressed: () {
+        setState(() => onPhoneNumber = false);
+        textEditingController.text = '';
+      },
+    );
+
+    return SizedBox(
+      height: PredefinedSize.toolbarHeight,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          AnimatedCrossFade(
+            crossFadeState: onPhoneNumber ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+            duration: duration,
+            firstCurve: Curves.easeOut,
+            secondCurve: Curves.easeOut,
+            firstChild: const SizedBox(width: PredefinedPadding.medium),
+            secondChild: backButton,
+          ),
+          AnimatedCrossFade(
+            crossFadeState: onPhoneNumber ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+            duration: duration,
+            firstCurve: Curves.easeOut,
+            secondCurve: Curves.easeOut,
+            firstChild: Text("Sign in", style: titleStyle),
+            secondChild: Text("Verify phone", style: titleStyle),
+          ),
+        ],
+      ),
+    );
   }
 
   Widget content(ThemeData theme) {
