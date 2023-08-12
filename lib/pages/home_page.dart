@@ -44,11 +44,6 @@ class _HomePageState extends State<HomePage> {
         toolbarHeight: 100,
         automaticallyImplyLeading: false,
         backgroundColor: theme.colorScheme.background,
-        systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: theme.colorScheme.background,
-          systemNavigationBarColor: theme.colorScheme.background,
-        ),
-        // centerTitle: true,
         title: const HeadlineText(),
         actions: [
           InkWell(
