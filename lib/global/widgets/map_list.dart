@@ -14,19 +14,19 @@ class MapList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: map.length,
-      itemBuilder: (context, index) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: List<RichText>.generate(map.length, (i) {
         return RichText(
           text: TextSpan(
             children: [
-              TextSpan(text: '${map.keys.elementAt(index)}: ', style: keyStyle),
-              TextSpan(text: map.values.elementAt(index), style: valueStyle),
+              TextSpan(text: '${map.keys.elementAt(i)}: ', style: keyStyle),
+              TextSpan(text: map.values.elementAt(i), style: valueStyle),
             ],
           ),
         );
-      },
+      }),
     );
   }
 }
