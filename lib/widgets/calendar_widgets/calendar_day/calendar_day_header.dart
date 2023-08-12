@@ -43,7 +43,7 @@ class CalendarDayHeader extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: PredefinedPadding.small),
-                  child: Container(height: PredefinedPadding.xTiny, color: colorSecondary),
+                  child: Container(height: PredefinedPadding.tinyX, color: colorSecondary),
                 ),
                 Text(
                   day,

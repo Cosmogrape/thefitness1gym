@@ -32,7 +32,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
             child: Column(
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.xLarge, vertical: PredefinedPadding.medium),
+                  padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.largeX, vertical: PredefinedPadding.medium),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(PredefinedRadius.regular),
                     color: Colors.white12,
