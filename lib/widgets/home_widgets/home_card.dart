@@ -1,20 +1,22 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/values/predefined_radius.dart';
 import 'package:thefitness1gym/global/widgets/animated_tap.dart';
+import 'package:thefitness1gym/values/predefined_radius.dart';
 
 class HomeCard extends StatefulWidget {
   const HomeCard({
     super.key,
     this.child,
     this.color,
+    this.backgroundColor,
     this.onTap,
     this.heroTag,
   });
 
   final Widget? child;
   final Color? color;
+  final Color? backgroundColor;
   final Function()? onTap;
   final String? heroTag;
 
@@ -45,7 +47,7 @@ class _HomeCardState extends State<HomeCard> {
 
     final card = Card(
       shape: RoundedRectangleBorder(borderRadius: borderRadius),
-      color: widget.color ?? theme.colorScheme.surface,
+      color: widget.backgroundColor ?? widget.color ?? theme.colorScheme.surface,
       child: widget.child,
     );
 
