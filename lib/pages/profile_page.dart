@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:thefitness1gym/values/predefined_padding.dart';
 import 'package:thefitness1gym/widgets/page_title.dart';
+import 'package:thefitness1gym/widgets/profile_widgets/help_and_faq.dart';
+import 'package:thefitness1gym/widgets/profile_widgets/logout.dart';
 import 'package:thefitness1gym/widgets/profile_widgets/membership.dart';
+import 'package:thefitness1gym/widgets/profile_widgets/settings.dart';
 import 'package:thefitness1gym/widgets/profile_widgets/your_information.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -17,6 +20,8 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
+    const bigSpace = SizedBox(height: PredefinedPadding.yomama);
 
     return Scaffold(
       appBar: AppBar(
@@ -65,6 +70,11 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           const YourInformation(),
           const Membership(),
+          bigSpace,
+          const Settings(),
+          const HelpAndFaq(),
+          const Logout(),
+          bigSpace,
         ],
       ),
     );
