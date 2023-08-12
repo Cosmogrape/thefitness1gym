@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:thefitness1gym/assets/values/predefined_misc.dart';
 
 import 'pages/signup_page.dart';
 
@@ -39,6 +41,10 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeWithGoogleFonts = defaultTheme.copyWith(
       textTheme: GoogleFonts.cairoTextTheme(defaultTheme.textTheme),
+    );
+
+    SystemChrome.setSystemUIOverlayStyle(
+      PredefinedMisc.systemUiOverlayStyle(themeWithGoogleFonts),
     );
 
     return MaterialApp(
