@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefined_radius.dart';
+import 'package:thefitness1gym/values/predefined_radius.dart';
 import 'package:thefitness1gym/global/widgets/animated_tap.dart';
 
 class HomeCard extends StatefulWidget {

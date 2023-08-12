@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/values/predefined_padding.dart';
 import 'package:thefitness1gym/global/widgets/map_list.dart';
 import 'package:thefitness1gym/widgets/profile_widgets/profile_item.dart';
 

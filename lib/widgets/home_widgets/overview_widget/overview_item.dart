@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/values/predefined_padding.dart';
 
 class OverviewItem extends StatelessWidget {
   const OverviewItem({

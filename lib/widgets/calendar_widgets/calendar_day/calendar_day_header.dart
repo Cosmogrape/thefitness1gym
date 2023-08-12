@@ -1,6 +1,6 @@
 import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/values/predefined_padding.dart';
 import 'package:thefitness1gym/global/date/date_extension.dart';
 
 class CalendarDayHeader extends StatelessWidget {

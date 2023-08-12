@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:thefitness1gym/assets/values/predefined_text_style.dart";
+import "package:thefitness1gym/values/predefined_text_style.dart";
 
 @immutable
 class PageTitle extends StatelessWidget {
