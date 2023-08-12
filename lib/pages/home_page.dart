@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:thefitness1gym/assets/values/predefined_padding.dart';
 import 'package:thefitness1gym/global/widgets/mono_eased_gradient.dart';
 import 'package:thefitness1gym/widgets/home_widgets/calendar_reminder.dart';
@@ -70,11 +69,11 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           //? not an app bar because this is more flexible
           children: [
+            _padded(const YourMembership()),
             _padded(CalendarReminder(
               text: "Aerobatics with Osman in 42m",
               onTap: () {},
             )),
-            _padded(const YourMembership()),
             _padded(HomeCard(
               onTap: () => Navigator.of(context).push(LocationsPage.route),
               child: Container(
