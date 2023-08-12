@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Fitness1Title extends StatelessWidget {
   const Fitness1Title({this.customTextStyle, super.key});
@@ -13,19 +14,24 @@ class Fitness1Title extends StatelessWidget {
       return const Text("FITNESS1");
     }
     final colorTheme = Theme.of(context).colorScheme;
+
     final titleStyle = style.copyWith(
+      letterSpacing: 1.5,
+      fontFamily: GoogleFonts.playfairDisplay().fontFamily,
       color: colorTheme.onBackground,
       fontWeight: FontWeight.bold,
     );
-    final oneStyle = titleStyle.copyWith(
+    final oneStyle = style.copyWith(
+      letterSpacing: -1.5,
+      fontFamily: GoogleFonts.robotoSlab().fontFamily,
+      fontWeight: FontWeight.bold,
       color: colorTheme.primary,
     );
     return RichText(
       text: TextSpan(
-        style: style,
         children: [
           TextSpan(text: "FITNESS", style: titleStyle),
-          TextSpan(text: "1", style: oneStyle),
+          TextSpan(text: " 1", style: oneStyle),
         ],
       ),
     );
