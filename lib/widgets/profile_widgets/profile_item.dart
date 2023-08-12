@@ -26,6 +26,11 @@ class ProfileItem extends StatelessWidget {
   static TextStyle defaultHeaderStyle(ThemeData theme) {
     return theme.textTheme.titleLarge!.copyWith(
       fontWeight: FontWeight.bold,
+    );
+  }
+
+  static TextStyle defaultHeaderStylePrimary(ThemeData theme) {
+    return defaultHeaderStyle(theme).copyWith(
       color: theme.colorScheme.primary,
     );
   }
@@ -42,7 +47,7 @@ class ProfileItem extends StatelessWidget {
       initiallyExpanded: initiallyExpanded,
       useInkWell: true,
       borderRadius: borderRadius,
-      color: color ?? theme.colorScheme.primary,
+      color: color ?? theme.colorScheme.onSurface,
       iconSize: iconSize,
       headerPadding: headerPadding,
       bodyPadding: bodyPadding,
