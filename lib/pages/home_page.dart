@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/values/predefined_padding.dart';
 import 'package:thefitness1gym/global/widgets/mono_eased_gradient.dart';
+import 'package:thefitness1gym/values/predefined_padding.dart';
 import 'package:thefitness1gym/widgets/home_widgets/calendar_reminder.dart';
-import 'package:thefitness1gym/widgets/home_widgets/home_card.dart';
 import 'package:thefitness1gym/widgets/home_widgets/overview_widget/overview.dart';
 import 'package:thefitness1gym/widgets/home_widgets/upcoming_widget/upcoming.dart';
 import 'package:thefitness1gym/widgets/home_widgets/your_membership.dart';
 
 import '../widgets/headline_text.dart';
-import 'locations_page.dart';
 import 'profile_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -73,13 +71,6 @@ class _HomePageState extends State<HomePage> {
             _padded(CalendarReminder(
               text: "Aerobatics with Osman in 42m",
               onTap: () {},
-            )),
-            _padded(HomeCard(
-              onTap: () => Navigator.of(context).push(LocationsPage.route),
-              child: Container(
-                height: 50,
-                child: Text("Gym Locations"),
-              ),
             )),
             padV,
 
