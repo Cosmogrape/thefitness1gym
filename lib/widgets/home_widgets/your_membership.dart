@@ -22,31 +22,57 @@ class _YourMembershipState extends State<YourMembership> {
       color: theme.colorScheme.onBackground,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(PredefinedPadding.medium),
-        child: Stack(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: PredefinedPadding.large, horizontal: PredefinedPadding.big),
-              child: Text(
-                "Your Membership",
-                style: theme.textTheme.titleLarge!.copyWith(
-                  color: theme.colorScheme.background,
-                  fontWeight: FontWeight.bold,
-                ),
+        child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+            final double width = min(constraints.maxWidth, 1000); //! so max (infinity) doesnt work while 1000 works without overflow? wtf
+            final double height = min(constraints.maxHeight, 72);
+            return SizedBox(
+              width: width,
+              height: height,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.big),
+                      child: Text(
+                        "Your Membership",
+                        style: theme.textTheme.titleLarge!.copyWith(
+                          color: theme.colorScheme.background,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: -150,
+                    top: -60,
+                    child: Transform(
+                      transform: Matrix4.rotationZ(-pi / 6), //? -30° rotation
+                      child: Image.asset(
+                        "lib/assets/images/dumbbell_man.png",
+                        alignment: Alignment.topCenter,
+                        fit: BoxFit.cover,
+                        width: 150,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    right: -10,
+                    child: Transform(
+                      transform: Matrix4.rotationZ(-pi / 6), //? -30° rotation
+                      child: Image.asset(
+                        "lib/assets/images/dumbbell_man.png",
+                        alignment: Alignment.topCenter,
+                        fit: BoxFit.cover,
+                        width: 120,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-            Positioned(
-              right: 40,
-              child: Transform(
-                transform: Matrix4.rotationZ(-pi / 6), //? -30° rotation
-                child: Image.asset(
-                  "lib/assets/images/dumbbell_man.png",
-                  alignment: Alignment.topCenter,
-                  fit: BoxFit.cover,
-                  width: 150,
-                ),
-              ),
-            ),
-          ],
+            );
+          },
         ),
       ),
     );
