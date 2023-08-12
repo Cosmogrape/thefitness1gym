@@ -19,6 +19,7 @@ class App extends StatelessWidget {
         onPrimary: Colors.black,
         secondary: Colors.white,
         onSecondary: Colors.black,
+        outline: Colors.amber.withOpacity(.5),
         //
         background: Colors.black,
         onBackground: Colors.white,
