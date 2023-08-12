@@ -64,7 +64,7 @@ class OverviewItem extends StatelessWidget {
       // width: 200,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: children,
       ),
     );
