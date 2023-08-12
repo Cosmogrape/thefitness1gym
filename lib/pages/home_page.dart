@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                 tag: "pfp",
                 child: CircleAvatar(
                   radius: 24,
-                  backgroundImage: AssetImage("lib/assets/images/pfp.png"),
+                  backgroundImage: AssetImage("assets/images/pfp.png"),
                 ),
               ),
             ),

@@ -41,7 +41,7 @@ class _WorkoutPlansState extends State<WorkoutPlans> {
           //   children: [
           //     // WorkoutPlanItem(
           //     //   title: "Beginner",
-          //     //   imagePath: "lib/assets/images/dumbbell_man.png",
+          //     //   imagePath: "assets/images/dumbbell_man.png",
           //     // ),
           //   ],
           // ),

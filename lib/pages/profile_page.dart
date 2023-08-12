@@ -40,7 +40,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   tag: "pfp",
                   child: CircleAvatar(
                     radius: 48,
-                    backgroundImage: AssetImage("lib/assets/images/pfp.png"),
+                    backgroundImage: AssetImage("assets/images/pfp.png"),
                   ),
                 ),
                 const SizedBox(width: PredefinedPadding.medium),

@@ -66,7 +66,7 @@ class LocationCard extends StatelessWidget {
                       return const Center(child: CircularProgressIndicator());
                     },
                     errorBuilder: (context, error, stackTrace) {
-                      return Image.asset("lib/assets/images/fitness1_cover.jpg");
+                      return Image.asset("assets/images/fitness1_cover.jpg");
                     },
                   ),
                 ),

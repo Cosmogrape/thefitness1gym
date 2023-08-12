@@ -203,7 +203,7 @@ class _SignupPageState extends State<SignupPage> {
         image: DecorationImage(
           fit: BoxFit.fill,
           opacity: 0.6,
-          image: AssetImage('lib/assets/images/hot_man.png'),
+          image: AssetImage('assets/images/hot_man.png'),
         ),
       ),
       child: Scaffold(

@@ -50,7 +50,7 @@ class _YourMembershipState extends State<YourMembership> {
                     child: Transform(
                       transform: Matrix4.rotationZ(-pi / 6), //? -30° rotation
                       child: Image.asset(
-                        "lib/assets/images/dumbbell_man.png",
+                        "assets/images/dumbbell_man.png",
                         alignment: Alignment.topCenter,
                         fit: BoxFit.cover,
                         width: 150,
@@ -62,7 +62,7 @@ class _YourMembershipState extends State<YourMembership> {
                     child: Transform(
                       transform: Matrix4.rotationZ(-pi / 6), //? -30° rotation
                       child: Image.asset(
-                        "lib/assets/images/dumbbell_man.png",
+                        "assets/images/dumbbell_man.png",
                         alignment: Alignment.topCenter,
                         fit: BoxFit.cover,
                         width: 120,
