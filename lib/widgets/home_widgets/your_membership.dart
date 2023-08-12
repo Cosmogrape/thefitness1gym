@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/values/predefined_padding.dart';
 import 'package:thefitness1gym/widgets/home_widgets/home_card.dart';
 
 class YourMembership extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/values/predefined_padding.dart';
 import 'package:thefitness1gym/global/widgets/mono_eased_gradient.dart';
 import 'package:thefitness1gym/widgets/home_widgets/calendar_reminder.dart';
 import 'package:thefitness1gym/widgets/home_widgets/home_card.dart';

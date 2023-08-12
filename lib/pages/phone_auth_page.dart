@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/assets/values/predefined_padding.dart';
-import 'package:thefitness1gym/assets/values/predefined_radius.dart';
+import 'package:thefitness1gym/values/predefined_padding.dart';
+import 'package:thefitness1gym/values/predefined_radius.dart';
 
 import 'otp_verify_page.dart';
 

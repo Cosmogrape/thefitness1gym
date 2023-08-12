@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phone_number/phone_number.dart';
-import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/values/predefined_padding.dart';
 import 'package:thefitness1gym/global/map_coordinates.dart';
 import 'package:thefitness1gym/widgets/locations_widgets/location_card.dart';
 import 'package:thefitness1gym/widgets/page_title.dart';

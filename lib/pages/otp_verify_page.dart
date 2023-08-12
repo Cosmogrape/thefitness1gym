@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
-import 'package:thefitness1gym/assets/values/predefined_padding.dart';
+import 'package:thefitness1gym/values/predefined_padding.dart';
 
 import 'home_page.dart';
 
