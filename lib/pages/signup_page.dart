@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:thefitness1gym/assets/values/predefined_padding.dart';
 import 'package:thefitness1gym/assets/values/predefined_radius.dart';
+import 'package:thefitness1gym/assets/values/predefined_size.dart';
+import 'package:thefitness1gym/global/color_extension.dart';
 
 import '../widgets/fitness1_title.dart';
 import 'otp_verify_page.dart';
@@ -17,102 +19,93 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   bool nextEnabled = false;
-  bool splashEnd = false;
   bool onPhoneNumber = false;
 
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(seconds: 1, milliseconds: 200), () {
-      setState(() => splashEnd = true);
-    });
+  final textEditingController = TextEditingController();
+
+  Widget signIn(ThemeData theme) {
+    return Column(
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            setState(() => onPhoneNumber = true);
+          },
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(theme.colorScheme.primary),
+            shape: MaterialStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(PredefinedRadius.regular),
+              ),
+            ),
+            minimumSize: MaterialStateProperty.all(const Size.fromHeight(PredefinedSize.buttonHeight)),
+          ),
+          child: const Text(
+            'Phone number',
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          ),
+        ),
+        const SizedBox(height: PredefinedPadding.big),
+        ElevatedButton(
+          onPressed: () {},
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(theme.colorScheme.surface),
+            shape: MaterialStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(PredefinedRadius.regular),
+              ),
+            ),
+            minimumSize: MaterialStateProperty.all(const Size.fromHeight(PredefinedSize.buttonHeight)),
+          ),
+          child: const Text(
+            'Fingerprint ID',
+            style: TextStyle(color: Colors.white38),
+          ),
+        ),
+      ],
+    );
   }
 
-  final myController = TextEditingController();
-
-  signInChildren() {
-    return [
-      ElevatedButton(
-        onPressed: () {
-          // Navigator.of(context).push(PhoneAuthPage.route);
-          setState(() {
-            onPhoneNumber = true;
-          });
-        },
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.amber),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+  Widget phoneAuth(ThemeData theme) {
+    return Column(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(PredefinedRadius.regular),
+          child: TextFormField(
+            controller: textEditingController,
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              labelText: 'Enter your phone number',
+              filled: true,
+              fillColor: theme.colorScheme.secondary.withBrightness(.1),
+              contentPadding: const EdgeInsets.symmetric(vertical: PredefinedPadding.small, horizontal: PredefinedPadding.medium),
             ),
+            keyboardType: TextInputType.number,
           ),
-          minimumSize: MaterialStateProperty.all(const Size.fromHeight(50)),
         ),
-        child: const Text(
-          'Phone number',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        ),
-      ),
-      const SizedBox(height: PredefinedPadding.small),
-      ElevatedButton(
-        onPressed: () {},
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.white12),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+        const SizedBox(height: PredefinedPadding.medium),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).push(OtpVerifyPage.route);
+          },
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.amber),
+            shape: MaterialStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(PredefinedRadius.regular),
+              ),
             ),
+            minimumSize: MaterialStateProperty.all(const Size.fromHeight(PredefinedSize.buttonHeight)),
           ),
-          minimumSize: MaterialStateProperty.all(const Size.fromHeight(50)),
-        ),
-        child: const Text(
-          'Fingerprint ID',
-          style: TextStyle(color: Colors.white38),
-        ),
-      ),
-    ];
+          child: Text(
+            'Send OTP',
+            style: TextStyle(color: theme.colorScheme.background, fontWeight: FontWeight.bold),
+          ),
+        )
+      ],
+    );
   }
 
-  phoneAuthChildren() {
-    return [
-      ClipRRect(
-        borderRadius: BorderRadius.circular(PredefinedRadius.regular),
-        child: TextFormField(
-          controller: myController,
-          decoration: const InputDecoration(
-            border: InputBorder.none,
-            labelText: 'Enter your phone number',
-            filled: true,
-            fillColor: Colors.white10,
-            contentPadding:
-                EdgeInsets.symmetric(vertical: PredefinedPadding.small, horizontal: PredefinedPadding.medium),
-          ),
-          keyboardType: TextInputType.number,
-        ),
-      ),
-      const SizedBox(height: PredefinedPadding.medium),
-      ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).push(OtpVerifyPage.route);
-        },
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.amber),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(PredefinedRadius.regular),
-            ),
-          ),
-          minimumSize: MaterialStateProperty.all(const Size.fromHeight(50)),
-        ),
-        child: const Text(
-          'Send OTP',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        ),
-      )
-    ];
-  }
-
-  heading(BuildContext context) {
+  Widget heading(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
       child: Column(
@@ -151,24 +144,29 @@ class _SignupPageState extends State<SignupPage> {
     ]);
   }
 
-  content() {
+  Widget content(ThemeData theme) {
+    const duration = Duration(milliseconds: 200);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        contentTitle(),
-        const SizedBox(height: 10),
+        contentTitle(theme),
+        const SizedBox(height: PredefinedPadding.regular),
         AnimatedSize(
-          duration: const Duration(milliseconds: 200),
+          duration: duration,
           curve: Curves.ease,
           child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 30),
+            padding: const EdgeInsets.symmetric(vertical: PredefinedPadding.regular, horizontal: PredefinedPadding.medium),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.black54,
+              borderRadius: BorderRadius.circular(PredefinedRadius.medium),
+              color: theme.colorScheme.surface.withOpacity(.75),
             ),
             width: double.infinity,
-            child: Column(
-              children: onPhoneNumber ? phoneAuthChildren() : signInChildren(),
+            child: AnimatedCrossFade(
+              duration: duration,
+              firstChild: signIn(theme),
+              secondChild: phoneAuth(theme),
+              crossFadeState: onPhoneNumber ? CrossFadeState.showSecond : CrossFadeState.showFirst,
             ),
           ),
         )
@@ -178,6 +176,8 @@ class _SignupPageState extends State<SignupPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -187,16 +187,17 @@ class _SignupPageState extends State<SignupPage> {
         ),
       ),
       child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(32),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [heading(context), content()],
-              ),
+        backgroundColor: Colors.transparent,
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(32),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [heading(context), content(theme)],
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
