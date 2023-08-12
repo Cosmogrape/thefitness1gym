@@ -10,13 +10,10 @@ class Settings extends StatelessWidget {
     final theme = Theme.of(context);
 
     return ProfileItem(
-      color: theme.colorScheme.surface,
-      headerBackgroundColor: theme.colorScheme.inverseSurface,
+      color: theme.colorScheme.onSurface,
+      // headerBackgroundColor: theme.colorScheme.sur,
       icon: FontAwesomeIcons.gear,
-      header: Text("Settings",
-          style: ProfileItem.defaultHeaderStyle(theme).copyWith(
-            color: theme.colorScheme.surface,
-          )),
+      header: Text("Settings", style: ProfileItem.defaultHeaderStyle(theme)),
       body: Column(),
     );
   }

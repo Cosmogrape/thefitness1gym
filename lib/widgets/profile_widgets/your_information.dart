@@ -11,15 +11,10 @@ class YourInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final headerStyle = theme.textTheme.titleLarge!.copyWith(
-      fontWeight: FontWeight.bold,
-      color: theme.colorScheme.primary,
-    );
-
     return ProfileItem(
-      // initiallyExpanded: true,
+      color: theme.colorScheme.primary,
       icon: FontAwesomeIcons.solidUser,
-      header: Text("Your information", style: headerStyle),
+      header: Text("Your information", style: ProfileItem.defaultHeaderStylePrimary(theme)),
       body: MapList(
         map: {
           "Name": "John Cena",

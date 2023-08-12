@@ -10,13 +10,8 @@ class HelpAndFaq extends StatelessWidget {
     final theme = Theme.of(context);
 
     return ProfileItem(
-      color: theme.colorScheme.surface,
-      headerBackgroundColor: theme.colorScheme.inverseSurface,
-      icon: FontAwesomeIcons.question,
-      header: Text("Help & FAQ",
-          style: ProfileItem.defaultHeaderStyle(theme).copyWith(
-            color: theme.colorScheme.surface,
-          )),
+      icon: FontAwesomeIcons.solidCircleQuestion,
+      header: Text("Help & FAQ", style: ProfileItem.defaultHeaderStyle(theme)),
       body: Column(),
     );
   }
