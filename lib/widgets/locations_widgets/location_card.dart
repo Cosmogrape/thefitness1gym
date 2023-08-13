@@ -15,6 +15,7 @@ class LocationCard extends StatelessWidget {
     required this.description,
     required this.location,
     this.isOpen = false,
+    this.hasLadiesSection = false,
     required this.coordinates,
     required this.phone,
     this.image,
@@ -25,6 +26,7 @@ class LocationCard extends StatelessWidget {
   final String description;
   final String location;
   final bool isOpen;
+  final bool hasLadiesSection;
   final MapCoordinates coordinates;
   final PhoneNumber phone;
   final Uri? image;
@@ -36,6 +38,22 @@ class LocationCard extends StatelessWidget {
     final theme = Theme.of(context);
 
     const borderRadius = BorderRadius.all(Radius.circular(PredefinedRadius.medium));
+    const topBorderRadius = BorderRadius.only(
+        topLeft: Radius.circular(PredefinedRadius.medium), topRight: Radius.circular(PredefinedRadius.medium));
+
+    outlinedButtonStyle<Widget>() {
+      return ButtonStyle(
+        side: MaterialStatePropertyAll(
+          BorderSide(color: theme.colorScheme.onSurface),
+        ),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(PredefinedRadius.regular),
+          ),
+        ),
+        foregroundColor: MaterialStatePropertyAll(theme.colorScheme.onSurface),
+      );
+    }
 
     return Card(
       shape: const RoundedRectangleBorder(borderRadius: borderRadius),
@@ -57,7 +75,7 @@ class LocationCard extends StatelessWidget {
                   ],
                 ),
                 child: ClipRRect(
-                  borderRadius: borderRadius,
+                  borderRadius: topBorderRadius,
                   child: Image.network(
                     image.toString(),
                     fit: BoxFit.cover,
@@ -76,8 +94,12 @@ class LocationCard extends StatelessWidget {
                 child: BlurryContainer(
                   borderRadius: borderRadius,
                   blur: 2,
-                  padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.medium, vertical: PredefinedPadding.small),
-                  color: (isOpen ? theme.colorScheme.primary : theme.colorScheme.error).withOpacity(.68).withSaturation(.5).withBrightness(.15),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: PredefinedPadding.medium, vertical: PredefinedPadding.small),
+                  color: (isOpen ? theme.colorScheme.primary : theme.colorScheme.error)
+                      .withOpacity(.68)
+                      .withSaturation(.5)
+                      .withBrightness(.15),
                   child: Text(
                     isOpen ? "OPEN" : "CLOSED",
                     style: theme.textTheme.bodyMedium!.copyWith(
@@ -90,47 +112,95 @@ class LocationCard extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.medium, vertical: PredefinedPadding.regular),
+            padding:
+                const EdgeInsets.symmetric(horizontal: PredefinedPadding.medium, vertical: PredefinedPadding.regular),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                RichText(
-                  text: TextSpan(
-                    // text: title,
-                    style: theme.textTheme.titleLarge!.copyWith(
-                      color: theme.colorScheme.primary,
-                    ),
-                    children: [
-                      TextSpan(text: title),
-                      TextSpan(
-                        text: " — $location",
-                        style: theme.textTheme.titleMedium!.copyWith(
-                          color: theme.colorScheme.secondary,
-                        ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    RichText(
+                      text: TextSpan(
+                        // text: title,
+                        style: theme.textTheme.titleMedium!
+                            .copyWith(color: theme.colorScheme.secondary, fontWeight: FontWeight.w600),
+                        children: [
+                          TextSpan(text: title),
+                          TextSpan(
+                            text: " — $location",
+                            style: theme.textTheme.titleSmall!.copyWith(
+                              color: theme.colorScheme.onSurface,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    if (hasLadiesSection)
+                      Text(
+                        'Ladies section',
+                        style: TextStyle(color: Colors.pink.shade200, fontWeight: FontWeight.w700),
+                      )
+                  ],
                 ),
                 const SizedBox(height: PredefinedPadding.medium),
                 Text(description),
                 const SizedBox(height: PredefinedPadding.medium),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    TextButton.icon(
+                    Expanded(
+                        child: OutlinedButton.icon(
                       onPressed: () async {
                         if (await canLaunchUrl(_tel)) await launchUrl(_tel);
                       },
-                      icon: const Icon(FontAwesomeIcons.phone),
-                      label: const Text("Contact"),
-                    ),
-                    TextButton.icon(
-                      onPressed: () => MapsLauncher.launchCoordinates(coordinates.latitude, coordinates.longitude),
-                      icon: const Icon(FontAwesomeIcons.mapLocation),
-                      label: const Text("View on map"),
+                      icon: const Icon(FontAwesomeIcons.phone, size: 14),
+                      label: const Text("Contact", style: TextStyle(fontWeight: FontWeight.w600)),
+                      style: outlinedButtonStyle(),
+                    )),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: OutlinedButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(FontAwesomeIcons.clock, size: 14),
+                        label: const Text("Working hours", style: TextStyle(fontWeight: FontWeight.w600)),
+                        style: outlinedButtonStyle(),
+                      ),
                     ),
                   ],
                 ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextButton(
+                        onPressed: () => MapsLauncher.launchCoordinates(coordinates.latitude, coordinates.longitude),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(PredefinedRadius.small),
+                          child: Container(
+                            width: double.infinity,
+                            color: theme.colorScheme.primary,
+                            alignment: Alignment.center,
+                            padding: const EdgeInsets.all(PredefinedPadding.regular),
+                            // alignment: Alignment.center,
+                            child: Text(
+                              'View location',
+                              style: TextStyle(color: theme.colorScheme.onPrimary, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text('See the branch Coaches', style: TextStyle(fontWeight: FontWeight.w700)),
+                    ),
+                  ],
+                )
               ],
             ),
           ),
