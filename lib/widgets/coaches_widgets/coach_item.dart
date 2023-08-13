@@ -54,7 +54,7 @@ class _CoachItemState extends State<CoachItem> {
             child: Stack(
               children: [
                 Opacity(
-                  opacity: .5,
+                  opacity: 1,
                   child: Flow(
                     delegate: ParallaxFlowDelegate(
                       scrollable: Scrollable.of(context),
@@ -75,45 +75,54 @@ class _CoachItemState extends State<CoachItem> {
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                   color: Theme.of(context).colorScheme.surface,
+                  curve: Curves.easeOut,
                 ),
                 Positioned(
                   bottom: 0,
+                  left: 0,
+                  right: 0,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: PredefinedPadding.medium,
                       vertical: PredefinedPadding.medium,
                     ),
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            widget.name,
-                            style: Theme.of(context).textTheme.headlineLarge,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.name,
+                          style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                                color: theme.colorScheme.secondary,
+                              ),
+                        ),
+                        pad,
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Text(widget.description),
+                        ),
+                        pad,
+                        Text(
+                          "Expertise:",
+                          style: theme.textTheme.bodyLarge!.copyWith(
+                            color: theme.colorScheme.secondary,
                           ),
-                          pad,
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: Text(widget.description),
-                          ),
-                          pad,
-                          pad,
-                          Wrap(
-                            spacing: PredefinedPadding.small,
-                            children: [
-                              for (final skill in widget.skills)
-                                Chip(
-                                  label: Text(skill.name),
-                                  shape: RoundedRectangleBorder(borderRadius: borderRadius),
-                                  backgroundColor: theme.colorScheme.primary.multiply(.5).withOpacity(.5),
-                                ),
-                            ],
-                          ),
-                        ],
-                      ),
+                        ),
+                        Wrap(
+                          spacing: PredefinedPadding.small,
+                          children: [
+                            for (final skill in widget.skills)
+                              Chip(
+                                padding: const EdgeInsets.all(PredefinedPadding.smallX),
+                                backgroundColor: theme.colorScheme.primary.multiply(.5).withOpacity(.5),
+                                shape: RoundedRectangleBorder(borderRadius: borderRadius),
+                                labelStyle: theme.textTheme.bodySmall,
+                                label: Text(skill.name),
+                              ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),
