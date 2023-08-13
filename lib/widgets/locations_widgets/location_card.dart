@@ -175,28 +175,22 @@ class LocationCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextButton(
-                        onPressed: () => MapsLauncher.launchCoordinates(coordinates.latitude, coordinates.longitude),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(PredefinedRadius.small),
-                          child: Container(
-                            width: double.infinity,
-                            color: theme.colorScheme.primary,
-                            alignment: Alignment.center,
-                            padding: const EdgeInsets.all(PredefinedPadding.regular),
-                            // alignment: Alignment.center,
-                            child: Text(
-                              'View location',
-                              style: TextStyle(color: theme.colorScheme.onPrimary, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
+                TextButton(
+                  onPressed: () => MapsLauncher.launchCoordinates(coordinates.latitude, coordinates.longitude),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(PredefinedRadius.small),
+                    child: Container(
+                      padding: const EdgeInsets.all(PredefinedPadding.regular),
+                      alignment: Alignment.center,
+                      width: MediaQuery.of(context).size.width,
+                      color: theme.colorScheme.primary,
+                      // alignment: Alignment.center,
+                      child: Text(
+                        "View location",
+                        style: TextStyle(color: theme.colorScheme.onPrimary, fontWeight: FontWeight.bold),
                       ),
-                    )
-                  ],
+                    ),
+                  ),
                 ),
                 Center(
                   child: TextButton(
