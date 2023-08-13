@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:phone_number/phone_number.dart';
-import 'package:thefitness1gym/values/predefined_padding.dart';
-import 'package:thefitness1gym/values/predefined_radius.dart';
 import 'package:thefitness1gym/global/color_extension.dart';
 import 'package:thefitness1gym/global/map_coordinates.dart';
+import 'package:thefitness1gym/pages/coaches_page.dart';
+import 'package:thefitness1gym/values/predefined_padding.dart';
+import 'package:thefitness1gym/values/predefined_radius.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LocationCard extends StatelessWidget {
@@ -39,7 +40,9 @@ class LocationCard extends StatelessWidget {
 
     const borderRadius = BorderRadius.all(Radius.circular(PredefinedRadius.medium));
     const topBorderRadius = BorderRadius.only(
-        topLeft: Radius.circular(PredefinedRadius.medium), topRight: Radius.circular(PredefinedRadius.medium));
+      topLeft: Radius.circular(PredefinedRadius.medium),
+      topRight: Radius.circular(PredefinedRadius.medium),
+    );
 
     outlinedButtonStyle<Widget>() {
       return ButtonStyle(
@@ -68,7 +71,7 @@ class LocationCard extends StatelessWidget {
                   borderRadius: borderRadius,
                   boxShadow: [
                     BoxShadow(
-                      color: theme.colorScheme.background.withOpacity(0.5),
+                      color: theme.colorScheme.background.withOpacity(.5),
                       blurRadius: 50,
                       offset: const Offset(0, 10),
                     ),
@@ -94,12 +97,8 @@ class LocationCard extends StatelessWidget {
                 child: BlurryContainer(
                   borderRadius: borderRadius,
                   blur: 2,
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: PredefinedPadding.medium, vertical: PredefinedPadding.small),
-                  color: (isOpen ? theme.colorScheme.primary : theme.colorScheme.error)
-                      .withOpacity(.68)
-                      .withSaturation(.5)
-                      .withBrightness(.15),
+                  padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.medium, vertical: PredefinedPadding.small),
+                  color: (isOpen ? theme.colorScheme.primary : theme.colorScheme.error).withOpacity(.68).withSaturation(.5).withBrightness(.15),
                   child: Text(
                     isOpen ? "OPEN" : "CLOSED",
                     style: theme.textTheme.bodyMedium?.copyWith(
@@ -112,8 +111,10 @@ class LocationCard extends StatelessWidget {
             ],
           ),
           Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: PredefinedPadding.medium, vertical: PredefinedPadding.regular),
+            padding: const EdgeInsets.symmetric(
+              horizontal: PredefinedPadding.medium,
+              vertical: PredefinedPadding.regular,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -154,15 +155,16 @@ class LocationCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Expanded(
-                        child: OutlinedButton.icon(
-                      onPressed: () async {
-                        if (await canLaunchUrl(_tel)) await launchUrl(_tel);
-                      },
-                      icon: const Icon(FontAwesomeIcons.phone, size: 14),
-                      label: const Text("Contact", style: TextStyle(fontWeight: FontWeight.w600)),
-                      style: outlinedButtonStyle(),
-                    )),
-                    const SizedBox(width: 10),
+                      child: OutlinedButton.icon(
+                        onPressed: () async {
+                          if (await canLaunchUrl(_tel)) await launchUrl(_tel);
+                        },
+                        icon: const Icon(FontAwesomeIcons.phone, size: 14),
+                        label: const Text("Contact", style: TextStyle(fontWeight: FontWeight.w600)),
+                        style: outlinedButtonStyle(),
+                      ),
+                    ),
+                    const SizedBox(width: PredefinedPadding.regular),
                     Expanded(
                       child: OutlinedButton.icon(
                         onPressed: () {},
