@@ -29,15 +29,16 @@ class ParallaxFlowDelegate extends FlowDelegate {
     // Determine the percent position of this list item within the
     // scrollable area.
     final viewportDimension = scrollable.position.viewportDimension;
-    final scrollFraction = (listItemOffset.dy / viewportDimension).clamp(0.0, 1.0);
+    final scrollFraction = (listItemOffset.dy / viewportDimension).clamp(0, 1);
 
     // Calculate the vertical alignment of the background
     // based on the scroll percent.
-    final verticalAlignment = Alignment(0.0, scrollFraction * 2 - 1);
+    final verticalAlignment = Alignment(0, scrollFraction * 2 - 1);
 
     // Convert the background alignment into a pixel offset for
     // painting purposes.
-    final backgroundSize = (backgroundImageKey.currentContext!.findRenderObject() as RenderBox).size;
+    final renderObject = backgroundImageKey.currentContext!.findRenderObject() as RenderBox;
+    final backgroundSize = renderObject.size;
     final listItemSize = context.size;
     final childRect = verticalAlignment.inscribe(
       backgroundSize,
@@ -48,7 +49,7 @@ class ParallaxFlowDelegate extends FlowDelegate {
     context.paintChild(
       0,
       transform: Transform.translate(
-        offset: Offset(0.0, childRect.top),
+        offset: Offset(0, childRect.top),
       ).transform,
     );
   }
