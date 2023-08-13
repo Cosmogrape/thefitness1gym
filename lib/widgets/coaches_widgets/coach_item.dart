@@ -38,24 +38,26 @@ class _CoachItemState extends State<CoachItem> {
 
     final borderRadius = BorderRadius.circular(PredefinedRadius.medium);
     const pad = SizedBox(height: PredefinedPadding.regular);
-    const aspectRatio = 3 / 4;
 
     return AspectRatio(
-      aspectRatio: aspectRatio,
-      child: AnimatedTap(
-        useInkWell: true,
-        inkWellBorderRadius: borderRadius,
-        onTap: () {},
-        tapDownOpacity: .6,
-        child: Card(
-          shape: RoundedRectangleBorder(borderRadius: borderRadius),
-          child: ClipRRect(
-            borderRadius: borderRadius,
-            child: Stack(
-              children: [
-                Opacity(
-                  opacity: 1,
-                  child: Flow(
+      aspectRatio: 3 / 4,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: borderRadius,
+          color: theme.colorScheme.primary.multiply(.5),
+        ),
+        child: AnimatedTap(
+          useInkWell: true,
+          inkWellBorderRadius: borderRadius,
+          onTap: () {},
+          tapDownOpacity: .6,
+          child: Card(
+            shape: RoundedRectangleBorder(borderRadius: borderRadius),
+            child: ClipRRect(
+              borderRadius: borderRadius,
+              child: Stack(
+                children: [
+                  Flow(
                     delegate: ParallaxFlowDelegate(
                       scrollable: Scrollable.of(context),
                       listItemContext: context,
@@ -70,62 +72,68 @@ class _CoachItemState extends State<CoachItem> {
                       ),
                     ],
                   ),
-                ),
-                MonoEasedGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  color: Theme.of(context).colorScheme.surface,
-                  curve: Curves.easeOut,
-                ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: PredefinedPadding.medium,
-                      vertical: PredefinedPadding.medium,
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.name,
-                          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                                color: theme.colorScheme.secondary,
-                              ),
-                        ),
-                        pad,
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: Text(widget.description),
-                        ),
-                        pad,
-                        Text(
-                          "Expertise:",
-                          style: theme.textTheme.bodyLarge?.copyWith(
-                            color: theme.colorScheme.secondary,
+                  MonoEasedGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    color: Theme.of(context).colorScheme.surface,
+                    curve: Curves.easeOut,
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: PredefinedPadding.medium,
+                        vertical: PredefinedPadding.medium,
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.name,
+                            style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                              color: theme.colorScheme.secondary,
+                              shadows: [
+                                Shadow(
+                                  color: theme.colorScheme.primary,
+                                  blurRadius: 10,
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        Wrap(
-                          spacing: PredefinedPadding.small,
-                          children: List<Widget>.generate(widget.skills.length, (i) {
-                            return Chip(
-                              padding: const EdgeInsets.all(PredefinedPadding.smallX),
-                              backgroundColor: theme.colorScheme.primary.multiply(.5).withOpacity(.5),
-                              shape: RoundedRectangleBorder(borderRadius: borderRadius),
-                              labelStyle: theme.textTheme.bodySmall,
-                              label: Text(widget.skills[i].name),
-                            );
-                          }),
-                        ),
-                      ],
+                          pad,
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(widget.description),
+                          ),
+                          pad,
+                          Text(
+                            "Expertise:",
+                            style: theme.textTheme.bodyLarge?.copyWith(
+                              color: theme.colorScheme.secondary,
+                            ),
+                          ),
+                          Wrap(
+                            spacing: PredefinedPadding.small,
+                            children: List<Widget>.generate(widget.skills.length, (i) {
+                              return Chip(
+                                padding: const EdgeInsets.all(PredefinedPadding.smallX),
+                                backgroundColor: theme.colorScheme.primary.multiply(.5).withOpacity(.5),
+                                shape: RoundedRectangleBorder(borderRadius: borderRadius),
+                                labelStyle: theme.textTheme.bodySmall,
+                                label: Text(widget.skills[i].name),
+                              );
+                            }),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
