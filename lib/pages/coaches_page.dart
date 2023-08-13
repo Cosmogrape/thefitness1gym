@@ -64,7 +64,7 @@ class _CoachesPageState extends State<CoachesPage> {
                   ),
                   pad,
                   CoachItem(
-                    name: "Syed Osman",
+                    name: "Gordon Ramsay",
                     description: "fitness trainer and bodybuilder from earth. Inspiring dedication to health and fitness.",
                     skills: [CoachSkill.bodybuilding, CoachSkill.zombaTraining, CoachSkill.fitnessTraining, CoachSkill.healthCoaching],
                     image: "chris.png",
