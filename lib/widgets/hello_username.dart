@@ -6,7 +6,7 @@ class HelloUsername extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final textStyle = Theme.of(context).textTheme.headlineSmall!.copyWith(
+    final textStyle = Theme.of(context).textTheme.headlineSmall?.copyWith(
           fontWeight: FontWeight.bold,
           color: theme.colorScheme.onBackground,
         );
@@ -17,7 +17,7 @@ class HelloUsername extends StatelessWidget {
       children: [
         TextSpan(
           text: "John Cena", //TODO: get actual username
-          style: textStyle.copyWith(
+          style: textStyle?.copyWith(
             color: theme.colorScheme.primary,
           ),
         ),

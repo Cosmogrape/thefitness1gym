@@ -114,7 +114,7 @@ class _SignupPageState extends State<SignupPage> {
           const Fitness1Title(),
           Text(
             'Unleash Your Greatness Today!',
-            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
           ),
@@ -124,7 +124,7 @@ class _SignupPageState extends State<SignupPage> {
   }
 
   Widget contentTitle(ThemeData theme) {
-    final titleStyle = theme.textTheme.headlineSmall!.copyWith(
+    final titleStyle = theme.textTheme.headlineSmall?.copyWith(
       fontWeight: FontWeight.bold,
       color: theme.colorScheme.secondary,
     );

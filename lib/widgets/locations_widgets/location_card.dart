@@ -102,7 +102,7 @@ class LocationCard extends StatelessWidget {
                       .withBrightness(.15),
                   child: Text(
                     isOpen ? "OPEN" : "CLOSED",
-                    style: theme.textTheme.bodyMedium!.copyWith(
+                    style: theme.textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: (isOpen ? theme.colorScheme.primary : theme.colorScheme.error).withBrightness(.8),
                     ),
@@ -129,7 +129,7 @@ class LocationCard extends StatelessWidget {
                           TextSpan(text: title),
                           TextSpan(
                             text: " — $location",
-                            style: theme.textTheme.titleSmall!.copyWith(
+                            style: theme.textTheme.titleSmall?.copyWith(
                               color: theme.colorScheme.onSurface,
                             ),
                           ),

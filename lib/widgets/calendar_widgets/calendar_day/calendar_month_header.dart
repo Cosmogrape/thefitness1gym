@@ -38,7 +38,7 @@ class CalendarMonthHeader extends StatelessWidget {
             ),
             child: Text(
               date.format(date.isThisYear ? "F" : "F, Y"),
-              style: theme.textTheme.bodyLarge!.copyWith(
+              style: theme.textTheme.bodyLarge?.copyWith(
                 color: color,
                 fontWeight: FontWeight.bold,
               ),

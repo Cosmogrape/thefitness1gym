@@ -47,7 +47,7 @@ class _HeadlineTextState extends State<HeadlineText> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final textStyle = Theme.of(context).textTheme.headlineSmall!.copyWith(
+    final textStyle = Theme.of(context).textTheme.headlineSmall?.copyWith(
           fontWeight: FontWeight.bold,
           color: theme.colorScheme.onBackground,
         );

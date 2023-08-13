@@ -33,7 +33,7 @@ class CalendarReminderCard extends StatelessWidget {
             const SizedBox(width: PredefinedPadding.medium),
             Text(
               text,
-              style: theme.textTheme.bodyLarge!.copyWith(
+              style: theme.textTheme.bodyLarge?.copyWith(
                 color: Colors.green.shade200,
                 fontWeight: FontWeight.bold,
               ),

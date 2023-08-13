@@ -29,7 +29,7 @@ class _WorkoutPlansState extends State<WorkoutPlans> {
             ),
             child: Text(
               "Workout Plans",
-              style: theme.textTheme.displaySmall!.copyWith(
+              style: theme.textTheme.displaySmall?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),

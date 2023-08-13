@@ -37,7 +37,7 @@ class _UpcomingCardState extends State<UpcomingCard> {
                 padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.medium),
                 child: Text(
                   "Upcoming",
-                  style: theme.textTheme.titleMedium!.copyWith(
+                  style: theme.textTheme.titleMedium?.copyWith(
                     color: theme.colorScheme.onBackground,
                     fontWeight: FontWeight.bold,
                   ),
@@ -62,7 +62,7 @@ class _UpcomingCardState extends State<UpcomingCard> {
               Center(
                 child: Text(
                   "View all…",
-                  style: theme.textTheme.labelMedium!.copyWith(
+                  style: theme.textTheme.labelMedium?.copyWith(
                     color: theme.colorScheme.onBackground,
                     fontWeight: FontWeight.bold,
                   ),

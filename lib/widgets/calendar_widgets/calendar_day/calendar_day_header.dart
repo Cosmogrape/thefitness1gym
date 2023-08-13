@@ -30,7 +30,7 @@ class CalendarDayHeader extends StatelessWidget {
         children: [
           Text(
             date.format("d"), // 09
-            style: theme.textTheme.headlineLarge!.copyWith(
+            style: theme.textTheme.headlineLarge?.copyWith(
               color: color,
               fontWeight: FontWeight.bold,
             ),
@@ -47,7 +47,7 @@ class CalendarDayHeader extends StatelessWidget {
                 ),
                 Text(
                   day,
-                  style: theme.textTheme.labelLarge!.copyWith(
+                  style: theme.textTheme.labelLarge?.copyWith(
                     color: colorSecondary,
                   ),
                 ),

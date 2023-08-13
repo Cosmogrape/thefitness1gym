@@ -24,7 +24,7 @@ class YourInformation extends StatelessWidget {
           "Gender": "Male",
           "Phone": "+999 123123456",
         },
-        keyStyle: theme.textTheme.bodyLarge!.copyWith(
+        keyStyle: theme.textTheme.bodyLarge?.copyWith(
           color: theme.colorScheme.onBackground,
           fontWeight: FontWeight.bold,
         ),

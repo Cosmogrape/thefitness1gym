@@ -93,7 +93,7 @@ class _CoachItemState extends State<CoachItem> {
                       children: [
                         Text(
                           widget.name,
-                          style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                                 color: theme.colorScheme.secondary,
                               ),
                         ),
@@ -105,7 +105,7 @@ class _CoachItemState extends State<CoachItem> {
                         pad,
                         Text(
                           "Expertise:",
-                          style: theme.textTheme.bodyLarge!.copyWith(
+                          style: theme.textTheme.bodyLarge?.copyWith(
                             color: theme.colorScheme.secondary,
                           ),
                         ),

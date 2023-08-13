@@ -39,7 +39,7 @@ class OverviewItem extends StatelessWidget {
           children: [
             TextSpan(
               text: '$textBig ',
-              style: theme.textTheme.titleMedium!.copyWith(
+              style: theme.textTheme.titleMedium?.copyWith(
                 fontSize: 20,
                 color: color,
                 fontWeight: FontWeight.bold,
@@ -48,7 +48,7 @@ class OverviewItem extends StatelessWidget {
             ),
             TextSpan(
               text: text,
-              style: theme.textTheme.bodyMedium!.copyWith(
+              style: theme.textTheme.bodyMedium?.copyWith(
                 color: color,
                 fontWeight: FontWeight.bold,
               ),

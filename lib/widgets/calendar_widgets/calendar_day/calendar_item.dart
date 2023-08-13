@@ -22,14 +22,14 @@ class CalendarItem extends StatelessWidget {
         children: [
           Text(
             date.format("g:i A"),
-            style: theme.textTheme.labelMedium!.copyWith(
+            style: theme.textTheme.labelMedium?.copyWith(
               color: theme.colorScheme.primary,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
             text, //? 1:30 PM
-            style: theme.textTheme.bodyLarge!.copyWith(
+            style: theme.textTheme.bodyLarge?.copyWith(
               color: theme.colorScheme.onBackground,
             ),
           ),

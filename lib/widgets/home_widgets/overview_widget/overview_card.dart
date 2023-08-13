@@ -79,7 +79,7 @@ class _OverviewCardState extends State<OverviewCard> {
                 padding: const EdgeInsets.symmetric(vertical: PredefinedPadding.small),
                 child: Text(
                   "More information…",
-                  style: theme.textTheme.labelMedium!.copyWith(
+                  style: theme.textTheme.labelMedium?.copyWith(
                     color: theme.colorScheme.onPrimary,
                     fontWeight: FontWeight.bold,
                   ),

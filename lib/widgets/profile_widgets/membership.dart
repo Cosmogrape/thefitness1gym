@@ -13,11 +13,11 @@ class Membership extends StatelessWidget {
 
     const pad = SizedBox(height: PredefinedPadding.medium);
 
-    final headerStyle = theme.textTheme.titleLarge!.copyWith(
+    final headerStyle = theme.textTheme.titleLarge?.copyWith(
       fontWeight: FontWeight.bold,
       color: theme.colorScheme.primary,
     );
-    final titleStyle = theme.textTheme.titleLarge!.copyWith(
+    final titleStyle = theme.textTheme.titleLarge?.copyWith(
       fontWeight: FontWeight.bold,
       color: theme.colorScheme.secondary,
     );
@@ -34,7 +34,7 @@ class Membership extends StatelessWidget {
               "Serial No": "123456789",
               "Membership Type": "Saphire",
             },
-            keyStyle: theme.textTheme.bodyLarge!.copyWith(
+            keyStyle: theme.textTheme.bodyLarge?.copyWith(
               color: theme.colorScheme.onBackground,
               fontWeight: FontWeight.bold,
             ),

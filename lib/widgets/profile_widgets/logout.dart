@@ -27,7 +27,7 @@ class Logout extends StatelessWidget {
               ),
               child: Text(
                 "Are you sure?",
-                style: theme.textTheme.bodyLarge!.copyWith(
+                style: theme.textTheme.bodyLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -38,7 +38,7 @@ class Logout extends StatelessWidget {
             style: TextButton.styleFrom(
               foregroundColor: theme.colorScheme.onError,
               backgroundColor: theme.colorScheme.error,
-              textStyle: theme.textTheme.bodyMedium!.copyWith(
+              textStyle: theme.textTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
               shape: RoundedRectangleBorder(

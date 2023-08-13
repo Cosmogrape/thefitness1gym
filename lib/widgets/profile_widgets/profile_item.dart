@@ -23,14 +23,14 @@ class ProfileItem extends StatelessWidget {
   final IconData? icon;
   final bool initiallyExpanded;
 
-  static TextStyle defaultHeaderStyle(ThemeData theme) {
-    return theme.textTheme.titleLarge!.copyWith(
+  static TextStyle? defaultHeaderStyle(ThemeData theme) {
+    return theme.textTheme.titleLarge?.copyWith(
       fontWeight: FontWeight.bold,
     );
   }
 
-  static TextStyle defaultHeaderStylePrimary(ThemeData theme) {
-    return defaultHeaderStyle(theme).copyWith(
+  static TextStyle? defaultHeaderStylePrimary(ThemeData theme) {
+    return defaultHeaderStyle(theme)?.copyWith(
       color: theme.colorScheme.primary,
     );
   }

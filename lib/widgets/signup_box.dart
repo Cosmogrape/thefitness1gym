@@ -43,7 +43,7 @@ class _SignupBoxState extends State<SignupBox> {
           children: [
             Text(
               "Become a member",
-              style: theme.textTheme.headlineSmall!.copyWith(
+              style: theme.textTheme.headlineSmall?.copyWith(
                 color: theme.colorScheme.primary,
                 fontWeight: FontWeight.bold,
               ),

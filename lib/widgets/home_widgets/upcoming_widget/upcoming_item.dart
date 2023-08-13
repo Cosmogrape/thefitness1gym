@@ -27,14 +27,14 @@ class UpcomingItem extends StatelessWidget {
         children: [
           Text(
             date.format("d/m/y - h:m"),
-            style: theme.textTheme.labelSmall!.copyWith(
+            style: theme.textTheme.labelSmall?.copyWith(
               color: theme.colorScheme.onSurface,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
             text,
-            style: theme.textTheme.labelMedium!.copyWith(
+            style: theme.textTheme.labelMedium?.copyWith(
               color: theme.colorScheme.onBackground,
               fontWeight: FontWeight.bold,
             ),

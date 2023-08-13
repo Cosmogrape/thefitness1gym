@@ -19,7 +19,7 @@ class _YourMembershipCardState extends State<YourMembershipCard> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final textStyle = theme.textTheme.displayMedium!.copyWith(
+    final textStyle = theme.textTheme.displayMedium?.copyWith(
       shadows: [
         Shadow(
           offset: const Offset(0, 5),
@@ -30,7 +30,7 @@ class _YourMembershipCardState extends State<YourMembershipCard> {
       fontWeight: FontWeight.w900,
       color: theme.colorScheme.onBackground,
     );
-    final textStylePrimary = textStyle.copyWith(
+    final textStylePrimary = textStyle?.copyWith(
       color: theme.colorScheme.primary,
     );
 
@@ -108,7 +108,7 @@ class _YourMembershipCardState extends State<YourMembershipCard> {
                                     const SizedBox(width: PredefinedPadding.regular),
                                     Text(
                                       "JOIN US NOW",
-                                      style: theme.textTheme.titleMedium!.copyWith(
+                                      style: theme.textTheme.titleMedium?.copyWith(
                                         color: theme.colorScheme.onPrimary,
                                         fontWeight: FontWeight.w900,
                                       ),

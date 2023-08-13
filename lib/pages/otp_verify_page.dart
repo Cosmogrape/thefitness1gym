@@ -32,7 +32,7 @@ class _OtpVerifyPageState extends State<OtpVerifyPage> {
         backgroundColor: Colors.transparent,
         title: Text(
           'Verify your phone',
-          style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                 color: Colors.white,
               ),
         ),
@@ -49,7 +49,7 @@ class _OtpVerifyPageState extends State<OtpVerifyPage> {
               children: [
                 Text(
                   'Verify your\n Phone number',
-                  style: Theme.of(context).textTheme.headlineMedium!.copyWith(color: Colors.white),
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 10),
@@ -80,7 +80,7 @@ class _OtpVerifyPageState extends State<OtpVerifyPage> {
             const SizedBox(height: PredefinedPadding.small),
             Text(
               "RESEND A NEW CODE",
-              style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),
             )
           ],
         ),
