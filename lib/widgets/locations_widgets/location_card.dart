@@ -198,15 +198,12 @@ class LocationCard extends StatelessWidget {
                     )
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text('See the branch Coaches', style: TextStyle(fontWeight: FontWeight.w700)),
-                    ),
-                  ],
-                )
+                Center(
+                  child: TextButton(
+                    onPressed: () => Navigator.of(context).push(CoachesPage.route(title)),
+                    child: const Text("Coaches in this branch", style: TextStyle(fontWeight: FontWeight.w700)),
+                  ),
+                ),
               ],
             ),
           ),
