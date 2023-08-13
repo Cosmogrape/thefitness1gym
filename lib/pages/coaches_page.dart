@@ -5,7 +5,11 @@ import 'package:thefitness1gym/widgets/coaches_widgets/coach_item.dart';
 import 'package:thefitness1gym/widgets/page_title.dart';
 
 class CoachesPage extends StatefulWidget {
-  const CoachesPage({super.key});
+  const CoachesPage(this.title, {super.key});
+
+  final String title;
+
+  static MaterialPageRoute route(String branch) => MaterialPageRoute(builder: (context) => CoachesPage(branch));
 
   @override
   State<CoachesPage> createState() => _CoachesPageState();
@@ -42,12 +46,19 @@ class _CoachesPageState extends State<CoachesPage> {
       body: SafeArea(
         child: SizedBox(
           height: size.height,
-          child: const SingleChildScrollView(
+          child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.all(PredefinedPadding.medium),
+              padding: const EdgeInsets.all(PredefinedPadding.medium),
               child: Column(
                 children: [
-                  CoachItem(
+                  Hero(
+                    tag: "branchTitle_${widget.title}",
+                    child: Text(widget.title, style: theme.textTheme.titleLarge),
+                  ),
+                  Divider(color: theme.colorScheme.surface),
+                  pad,
+                  pad,
+                  const CoachItem(
                     name: "Nizam Nazim",
                     description:
                         "Certified fitness trainer and bodybuilder from India, Bahrain, UAE, and Azerbaijan. Inspiring dedication to health and fitness.",
@@ -55,21 +66,21 @@ class _CoachesPageState extends State<CoachesPage> {
                     image: "nizam.jpg",
                   ),
                   pad,
-                  CoachItem(
+                  const CoachItem(
+                    name: "Gordon Ramsay",
+                    description: "fitness trainer and bodybuilder from earth. Inspiring dedication to health and fitness.",
+                    skills: [CoachSkill.bodybuilding, CoachSkill.zombaTraining, CoachSkill.fitnessTraining, CoachSkill.healthCoaching],
+                    image: "chris.png",
+                  ),
+                  pad,
+                  const CoachItem(
                     name: "Syed Osman",
                     description:
                         "Certified fitness trainer and bodybuilder from India, Bahrain, UAE, and Azerbaijan. Inspiring dedication to health and fitness.",
                     skills: [CoachSkill.bodybuilding, CoachSkill.fitnessTraining, CoachSkill.healthCoaching],
                     image: "osman.jpg",
                   ),
-                  pad,
-                  CoachItem(
-                    name: "Gordon Ramsay",
-                    description: "fitness trainer and bodybuilder from earth. Inspiring dedication to health and fitness.",
-                    skills: [CoachSkill.bodybuilding, CoachSkill.zombaTraining, CoachSkill.fitnessTraining, CoachSkill.healthCoaching],
-                    image: "chris.png",
-                  ),
-                  SizedBox(height: PredefinedPadding.yomamaZZZ),
+                  const SizedBox(height: PredefinedPadding.yomamaZ),
                 ],
               ),
             ),

@@ -120,21 +120,25 @@ class LocationCard extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    RichText(
-                      text: TextSpan(
-                        // text: title,
-                        style: theme.textTheme.titleMedium!
-                            .copyWith(color: theme.colorScheme.secondary, fontWeight: FontWeight.w600),
-                        children: [
-                          TextSpan(text: title),
-                          TextSpan(
-                            text: " — $location",
-                            style: theme.textTheme.titleSmall?.copyWith(
-                              color: theme.colorScheme.onSurface,
+                    Row(
+                      children: [
+                        Hero(
+                          tag: "branchTitle_$title",
+                          child: Text(
+                            title,
+                            style: theme.textTheme.titleMedium!.copyWith(
+                              color: theme.colorScheme.secondary,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                        Text(
+                          " — $location",
+                          style: theme.textTheme.titleSmall?.copyWith(
+                            color: theme.colorScheme.onSurface,
+                          ),
+                        ),
+                      ],
                     ),
                     if (hasLadiesSection)
                       Text(
