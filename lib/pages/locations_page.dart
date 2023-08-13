@@ -32,10 +32,10 @@ class _LocationsPageState extends State<LocationsPage> {
         padding: const EdgeInsets.all(PredefinedPadding.regular),
         children: const [
           LocationCard(
-            title: "Fitness 1 Gym",
+            title: "Main Branch",
             description:
                 "Fitness 1 Gym is a gym located in the heart of the city. We offer a wide range of services and equipment to help you achieve your fitness goals.",
-            location: "1234 Street 1, City 54, Mars",
+            location: "Garden City",
             isOpen: true,
             coordinates: MapCoordinates(latitude: 0, longitude: 0),
             phone: PhoneNumber(
@@ -50,11 +50,12 @@ class _LocationsPageState extends State<LocationsPage> {
           ),
           spacer,
           LocationCard(
-            title: "Fitness 1 Gym",
+            title: "Branch 1",
             description:
                 "Fitness 1 Gym is a gym located in the heart of the city. We offer a wide range of services and equipment to help you achieve your fitness goals.",
-            location: "1234 Street 1, City 54, Mars",
+            location: "Hamadiya",
             isOpen: false,
+            hasLadiesSection: true,
             coordinates: MapCoordinates(latitude: 0, longitude: 0),
             phone: PhoneNumber(
               e164: "+14175555470",
@@ -68,10 +69,10 @@ class _LocationsPageState extends State<LocationsPage> {
           ),
           spacer,
           LocationCard(
-            title: "Fitness 1 Gym",
+            title: "Branch 2",
             description:
                 "Fitness 1 Gym is a gym located in the heart of the city. We offer a wide range of services and equipment to help you achieve your fitness goals.",
-            location: "1234 Street 1, City 54, Mars",
+            location: "Rashidya",
             isOpen: true,
             coordinates: MapCoordinates(latitude: 0, longitude: 0),
             phone: PhoneNumber(
