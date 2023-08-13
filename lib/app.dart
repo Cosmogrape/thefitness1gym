@@ -38,19 +38,19 @@ class App extends StatelessWidget {
         useMaterial3: true,
       );
 
+  ThemeData get defaultThemeWithGoogleFont => defaultTheme.copyWith(
+        textTheme: GoogleFonts.cairoTextTheme(defaultTheme.textTheme),
+      );
+
   @override
   Widget build(BuildContext context) {
-    final themeWithGoogleFonts = defaultTheme.copyWith(
-      textTheme: GoogleFonts.cairoTextTheme(defaultTheme.textTheme),
-    );
-
     SystemChrome.setSystemUIOverlayStyle(
-      PredefinedMisc.systemUiOverlayStyle(themeWithGoogleFonts),
+      PredefinedMisc.systemUiOverlayStyle(defaultThemeWithGoogleFont),
     );
 
     return MaterialApp(
       title: "The Fitness 1 Gym",
-      theme: themeWithGoogleFonts,
+      theme: defaultThemeWithGoogleFont,
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
