@@ -111,16 +111,15 @@ class _CoachItemState extends State<CoachItem> {
                         ),
                         Wrap(
                           spacing: PredefinedPadding.small,
-                          children: [
-                            for (final skill in widget.skills)
-                              Chip(
-                                padding: const EdgeInsets.all(PredefinedPadding.smallX),
-                                backgroundColor: theme.colorScheme.primary.multiply(.5).withOpacity(.5),
-                                shape: RoundedRectangleBorder(borderRadius: borderRadius),
-                                labelStyle: theme.textTheme.bodySmall,
-                                label: Text(skill.name),
-                              ),
-                          ],
+                          children: List<Widget>.generate(widget.skills.length, (i) {
+                            return Chip(
+                              padding: const EdgeInsets.all(PredefinedPadding.smallX),
+                              backgroundColor: theme.colorScheme.primary.multiply(.5).withOpacity(.5),
+                              shape: RoundedRectangleBorder(borderRadius: borderRadius),
+                              labelStyle: theme.textTheme.bodySmall,
+                              label: Text(widget.skills[i].name),
+                            );
+                          }),
                         ),
                       ],
                     ),
