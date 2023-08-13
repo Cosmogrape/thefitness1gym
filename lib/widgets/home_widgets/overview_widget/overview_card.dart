@@ -5,14 +5,14 @@ import 'package:thefitness1gym/widgets/home_widgets/overview_widget/overview_ite
 
 import '../home_card.dart';
 
-class Overview extends StatefulWidget {
-  const Overview({super.key});
+class OverviewCard extends StatefulWidget {
+  const OverviewCard({super.key});
 
   @override
-  State<Overview> createState() => _OverviewState();
+  State<OverviewCard> createState() => _OverviewCardState();
 }
 
-class _OverviewState extends State<Overview> {
+class _OverviewCardState extends State<OverviewCard> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

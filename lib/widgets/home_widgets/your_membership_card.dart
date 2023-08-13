@@ -7,14 +7,14 @@ import 'package:thefitness1gym/pages/locations_page.dart';
 import 'package:thefitness1gym/values/predefined_padding.dart';
 import 'package:thefitness1gym/widgets/home_widgets/home_card.dart';
 
-class YourMembership extends StatefulWidget {
-  const YourMembership({super.key});
+class YourMembershipCard extends StatefulWidget {
+  const YourMembershipCard({super.key});
 
   @override
-  State<YourMembership> createState() => _YourMembershipState();
+  State<YourMembershipCard> createState() => _YourMembershipCardState();
 }
 
-class _YourMembershipState extends State<YourMembership> {
+class _YourMembershipCardState extends State<YourMembershipCard> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

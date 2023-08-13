@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:thefitness1gym/values/predefined_padding.dart';
 import 'package:thefitness1gym/pages/calendar_page.dart';
+import 'package:thefitness1gym/values/predefined_padding.dart';
 import 'package:thefitness1gym/widgets/home_widgets/home_card.dart';
 
 import 'upcoming_item.dart';
 
-class Upcoming extends StatefulWidget {
-  const Upcoming({super.key});
+class UpcomingCard extends StatefulWidget {
+  const UpcomingCard({super.key});
 
   @override
-  State<Upcoming> createState() => _UpcomingState();
+  State<UpcomingCard> createState() => _UpcomingCardState();
 }
 
-class _UpcomingState extends State<Upcoming> {
+class _UpcomingCardState extends State<UpcomingCard> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

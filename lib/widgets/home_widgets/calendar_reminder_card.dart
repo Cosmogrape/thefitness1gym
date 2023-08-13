@@ -4,8 +4,8 @@ import 'package:thefitness1gym/values/predefined_padding.dart';
 
 import 'home_card.dart';
 
-class CalendarReminder extends StatelessWidget {
-  const CalendarReminder({
+class CalendarReminderCard extends StatelessWidget {
+  const CalendarReminderCard({
     super.key,
     required this.text,
     this.onTap,

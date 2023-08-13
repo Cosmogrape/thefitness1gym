@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:thefitness1gym/global/widgets/mono_eased_gradient.dart';
 import 'package:thefitness1gym/values/predefined_padding.dart';
-import 'package:thefitness1gym/widgets/home_widgets/calendar_reminder.dart';
-import 'package:thefitness1gym/widgets/home_widgets/overview_widget/overview.dart';
-import 'package:thefitness1gym/widgets/home_widgets/upcoming_widget/upcoming.dart';
-import 'package:thefitness1gym/widgets/home_widgets/your_membership.dart';
+import 'package:thefitness1gym/widgets/home_widgets/calendar_reminder_card.dart';
+import 'package:thefitness1gym/widgets/home_widgets/overview_widget/overview_card.dart';
+import 'package:thefitness1gym/widgets/home_widgets/upcoming_widget/upcoming_card.dart';
+import 'package:thefitness1gym/widgets/home_widgets/your_membership_card.dart';
 
 import '../widgets/headline_text.dart';
 import 'profile_page.dart';
@@ -67,8 +67,8 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           //? not an app bar because this is more flexible
           children: [
-            _padded(const YourMembership()),
-            _padded(CalendarReminder(
+            _padded(const YourMembershipCard()),
+            _padded(CalendarReminderCard(
               text: "Aerobatics with Osman in 42m",
               onTap: () {},
             )),
@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                   ListView(
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
-                    children: const [padH, Overview(), Upcoming(), padH],
+                    children: const [padH, OverviewCard(), UpcomingCard(), padH],
                   ),
                   Positioned(
                     top: 0,
