@@ -7,7 +7,7 @@ class AnimatedTap extends StatefulWidget {
     this.inkWellBorderRadius,
     this.inkWellColor,
     this.tapDownScale = .95,
-    this.tapDownOpacity = .9,
+    this.tapDownOpacity = .6,
     this.opacityDuration = const Duration(milliseconds: 300),
     this.scaleDuration = const Duration(milliseconds: 150),
     this.onTap,
