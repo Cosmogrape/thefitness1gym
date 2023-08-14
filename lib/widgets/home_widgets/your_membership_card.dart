@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:thefitness1gym/global/widgets/mono_eased_gradient.dart';
 import 'package:thefitness1gym/pages/locations_page.dart';
+import 'package:thefitness1gym/pages/packages_page.dart';
 import 'package:thefitness1gym/values/predefined_padding.dart';
 import 'package:thefitness1gym/widgets/home_widgets/home_card.dart';
 
@@ -36,6 +37,7 @@ class _YourMembershipCardState extends State<YourMembershipCard> {
 
     //? Not using HomeCard because of the masked image on the right
     return HomeCard(
+      onTap: () => Navigator.of(context).push(PackagesPage.route),
       heroTag: "membership",
       color: theme.colorScheme.primary,
       backgroundColor: theme.colorScheme.surface,
