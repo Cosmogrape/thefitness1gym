@@ -8,7 +8,6 @@ class MonoEasedGradient extends StatelessWidget {
     this.height,
     required this.begin,
     required this.end,
-    this.curve = Curves.easeOut,
   });
 
   final Color color;
@@ -16,7 +15,6 @@ class MonoEasedGradient extends StatelessWidget {
   final double? height;
   final AlignmentGeometry begin;
   final AlignmentGeometry end;
-  final Cubic curve;
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +24,21 @@ class MonoEasedGradient extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            color.withOpacity(curve.d),
-            color.withOpacity(curve.c),
-            color.withOpacity(curve.b),
-            color.withOpacity(curve.a),
+            color,
+            color.withOpacity(.823974609375),
+            color.withOpacity(.669921875),
+            color.withOpacity(.536376953125),
+            color.withOpacity(.324951171875),
+            color.withOpacity(.177978515625),
+            color.withOpacity(.125),
+            color.withOpacity(.083740234375),
+            color.withOpacity(.052734375),
+            color.withOpacity(.030517578125),
+            color.withOpacity(.015625),
+            color.withOpacity(.006591796875),
+            color.withOpacity(.001953125),
+            color.withOpacity(.000244140625),
+            color.withOpacity(0),
           ],
           begin: begin,
           end: end,
