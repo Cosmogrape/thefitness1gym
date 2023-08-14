@@ -118,13 +118,14 @@ class _PackagesPageState extends State<PackagesPage> {
       );
 
   SizedBox packagesView({required List<PackageItem> items, int initialPage = 0}) {
+    const viewportFraction = .75;
     return SizedBox(
       height: 300,
       width: 500,
       child: Stack(
         children: [
           PageView(
-            controller: PageController(viewportFraction: .75, initialPage: initialPage),
+            controller: PageController(viewportFraction: viewportFraction, initialPage: initialPage),
             children: items,
           ),
           Positioned(
@@ -133,7 +134,7 @@ class _PackagesPageState extends State<PackagesPage> {
             bottom: 0,
             child: MonoEasedGradient(
               color: Theme.of(context).colorScheme.background,
-              width: horizontalPaddingSize * 4,
+              width: MediaQuery.of(context).size.width * (1 - viewportFraction),
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),
