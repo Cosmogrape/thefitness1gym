@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:thefitness1gym/global/color_extension.dart';
 import 'package:thefitness1gym/values/predefined_padding.dart';
 import 'package:thefitness1gym/values/predefined_radius.dart';
 import 'package:thefitness1gym/values/predefined_size.dart';
-import 'package:thefitness1gym/global/color_extension.dart';
 
 import '../widgets/fitness1_title.dart';
 import 'otp_verify_page.dart';
@@ -129,7 +129,7 @@ class _SignupPageState extends State<SignupPage> {
       color: theme.colorScheme.secondary,
     );
 
-    const duration = Duration(milliseconds: 200);
+    const duration = Duration(milliseconds: 350);
 
     final backButton = BackButton(
       onPressed: () {
