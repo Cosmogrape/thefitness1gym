@@ -127,12 +127,16 @@ class PackageItem extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
+                          pad,
+                          if (package.perks == null) Text("None"),
                           if (package.perks != null)
                             for (final perk in package.perks!)
                               Text(
                                 "• $perk •",
                                 style: theme.textTheme.bodyMedium?.copyWith(color: fg),
                               ),
+                          pad,
+                          pad,
                         ],
                       ),
                     ),
