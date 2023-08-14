@@ -42,12 +42,13 @@ class _PackagesPageState extends State<PackagesPage> {
       body: Scaffold(
         appBar: AppBar(
           backgroundColor: theme.colorScheme.background,
-          toolbarHeight: 100,
           centerTitle: true,
           title: const PageTitle("Select a package"),
         ),
         body: ListView(
           children: [
+            pad,
+            pad,
             padded(Text("Membership:", style: titleStyle)),
             pad,
             packagesView(
@@ -153,6 +154,8 @@ class _PackagesPageState extends State<PackagesPage> {
                 ),
               ],
             ),
+            pad,
+            pad,
           ],
         ),
       ),
@@ -164,8 +167,32 @@ class _PackagesPageState extends State<PackagesPage> {
         child: child,
       );
 
+  Widget gradient({
+    required double width,
+    required AlignmentGeometry begin,
+    required AlignmentGeometry end,
+    double? left,
+    double? right,
+  }) {
+    return Positioned(
+      left: left,
+      right: right,
+      top: 0,
+      bottom: 0,
+      child: IgnorePointer(
+        child: MonoEasedGradient(
+          width: width,
+          color: Theme.of(context).colorScheme.background,
+          begin: begin,
+          end: end,
+        ),
+      ),
+    );
+  }
+
   SizedBox packagesView({required List<PackageItem> items, int initialPage = 0}) {
     const viewportFraction = .75;
+    final gradientWidth = MediaQuery.of(context).size.width * (1 - viewportFraction);
     return SizedBox(
       height: 500,
       width: 500,
@@ -175,27 +202,17 @@ class _PackagesPageState extends State<PackagesPage> {
             controller: PageController(viewportFraction: viewportFraction, initialPage: initialPage),
             children: items,
           ),
-          Positioned(
+          gradient(
             left: 0,
-            top: 0,
-            bottom: 0,
-            child: MonoEasedGradient(
-              color: Theme.of(context).colorScheme.background,
-              width: MediaQuery.of(context).size.width * (1 - viewportFraction),
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-            ),
+            width: gradientWidth,
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
           ),
-          Positioned(
+          gradient(
             right: 0,
-            top: 0,
-            bottom: 0,
-            child: MonoEasedGradient(
-              color: Theme.of(context).colorScheme.background,
-              width: horizontalPaddingSize * 4,
-              begin: Alignment.centerRight,
-              end: Alignment.centerLeft,
-            ),
+            width: gradientWidth,
+            begin: Alignment.centerRight,
+            end: Alignment.centerLeft,
           ),
         ],
       ),
