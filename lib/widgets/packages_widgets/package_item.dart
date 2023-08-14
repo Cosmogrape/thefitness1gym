@@ -91,38 +91,39 @@ class PackageItem extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            package.duration.format(),
-                            style: theme.textTheme.headlineMedium?.copyWith(
-                              color: fg,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
                           RichText(
                             text: TextSpan(
                               children: [
                                 TextSpan(
                                   text: format(package.price),
-                                  style: theme.textTheme.displayMedium?.copyWith(
-                                    color: fgFocus,
+                                  style: theme.textTheme.headlineLarge?.copyWith(
+                                    color: fg,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 TextSpan(
                                   text: " ${package.currency}",
-                                  style: theme.textTheme.displaySmall?.copyWith(
-                                    color: fgFocus,
+                                  style: theme.textTheme.titleLarge?.copyWith(
+                                    color: fg,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ],
                             ),
                           ),
+                          Text(
+                            package.duration.format(),
+                            style: theme.textTheme.displayMedium?.copyWith(
+                              color: fgFocus,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          pad,
                           pad,
                           Text(
-                            "Perks:",
+                            "Special perks:",
                             style: theme.textTheme.bodyLarge?.copyWith(
-                              color: fg,
+                              color: fgFocus,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
