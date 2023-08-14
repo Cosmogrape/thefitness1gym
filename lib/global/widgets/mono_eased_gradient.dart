@@ -8,6 +8,7 @@ class MonoEasedGradient extends StatelessWidget {
     this.height,
     required this.begin,
     required this.end,
+    this.backgroundBlendMode,
   });
 
   final Color color;
@@ -15,6 +16,7 @@ class MonoEasedGradient extends StatelessWidget {
   final double? height;
   final AlignmentGeometry begin;
   final AlignmentGeometry end;
+  final BlendMode? backgroundBlendMode;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class MonoEasedGradient extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
+        backgroundBlendMode: backgroundBlendMode,
         gradient: LinearGradient(
           colors: [
             color,
