@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:phone_number/phone_number.dart';
 import 'package:thefitness1gym/global/color_extension.dart';
-import 'package:thefitness1gym/global/map_coordinates.dart';
+import 'package:thefitness1gym/global/models/map_coordinates.dart';
 import 'package:thefitness1gym/pages/coaches_page.dart';
 import 'package:thefitness1gym/values/predefined_padding.dart';
 import 'package:thefitness1gym/values/predefined_radius.dart';
