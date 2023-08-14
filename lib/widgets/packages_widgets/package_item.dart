@@ -2,9 +2,12 @@ import 'dart:math';
 
 import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:thefitness1gym/global/color_extension.dart';
+import 'package:thefitness1gym/global/duration_extension.dart';
 import 'package:thefitness1gym/global/widgets/animated_tap.dart';
+import 'package:thefitness1gym/models/subscription_package.dart';
 import 'package:thefitness1gym/values/predefined_padding.dart';
 import 'package:thefitness1gym/values/predefined_radius.dart';
 
@@ -12,25 +15,17 @@ class PackageItem extends StatelessWidget {
   const PackageItem({
     super.key,
     this.highlight = false,
-    required this.title,
-    required this.price,
-    required this.currency,
-    this.discount,
-    this.discountEnd,
+    required this.package,
   });
 
   final bool highlight;
-  final String title;
-  final double price;
-  final String currency;
-  final double? discount;
-  final DateTime? discountEnd;
+  final SubscriptionPackage package;
 
   String format(double value) {
     return NumberFormat.currency(
       customPattern: "#,###.##",
       locale: "en_US",
-      symbol: currency,
+      symbol: package.currency,
       decimalDigits: value % 1 == 0 ? 0 : 2,
     ).format(value);
   }
@@ -62,7 +57,7 @@ class PackageItem extends StatelessWidget {
           borderRadius: borderRadius,
           child: Stack(
             children: [
-              if (discount != null)
+              if (package.discount != null)
                 Positioned(
                   left: -PredefinedPadding.yomama,
                   top: -PredefinedPadding.largeXX / 2,
@@ -77,7 +72,7 @@ class PackageItem extends StatelessWidget {
                         right: PredefinedPadding.yomama,
                       ),
                       child: Text(
-                        "-${format(discount!)}%",
+                        "-${format(package.discount!.value)}%",
                         style: theme.textTheme.titleLarge?.copyWith(
                           color: fgDiscount,
                           fontWeight: FontWeight.bold,
@@ -97,8 +92,8 @@ class PackageItem extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            title,
-                            style: theme.textTheme.titleLarge?.copyWith(
+                            package.duration.format(),
+                            style: theme.textTheme.headlineMedium?.copyWith(
                               color: fg,
                               fontWeight: FontWeight.bold,
                             ),
@@ -107,14 +102,14 @@ class PackageItem extends StatelessWidget {
                             text: TextSpan(
                               children: [
                                 TextSpan(
-                                  text: format(price),
+                                  text: format(package.price),
                                   style: theme.textTheme.displayMedium?.copyWith(
                                     color: fgFocus,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 TextSpan(
-                                  text: " $currency",
+                                  text: " ${package.currency}",
                                   style: theme.textTheme.displaySmall?.copyWith(
                                     color: fgFocus,
                                     fontWeight: FontWeight.bold,
@@ -123,6 +118,20 @@ class PackageItem extends StatelessWidget {
                               ],
                             ),
                           ),
+                          pad,
+                          Text(
+                            "Perks:",
+                            style: theme.textTheme.bodyLarge?.copyWith(
+                              color: fg,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          if (package.perks != null)
+                            for (final perk in package.perks!)
+                              Text(
+                                "• $perk •",
+                                style: theme.textTheme.bodyMedium?.copyWith(color: fg),
+                              ),
                         ],
                       ),
                     ),
@@ -130,19 +139,26 @@ class PackageItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        if (discount != 0 && discountEnd != null)
-                          Text(
-                            "Discount ends in ${DateTimeFormat.relative(
-                              discountEnd!,
-                              levelOfPrecision: 3,
-                              abbr: true,
-                              appendIfAfter: "ago",
-                            )}",
-                            style: theme.textTheme.bodyLarge?.copyWith(
-                              color: fg,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.center,
+                        if (package.discount != null)
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(FontAwesomeIcons.clock, color: fg, size: 18),
+                              const SizedBox(width: PredefinedPadding.regular),
+                              Text(
+                                "Discount ends in ${DateTimeFormat.relative(
+                                  package.discount!.end,
+                                  levelOfPrecision: 1,
+                                  abbr: true,
+                                  appendIfAfter: "ago",
+                                )}",
+                                style: theme.textTheme.bodyLarge?.copyWith(
+                                  color: fg,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                         pad,
                         Container(

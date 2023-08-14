@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:thefitness1gym/global/widgets/mono_eased_gradient.dart';
+import 'package:thefitness1gym/models/discount_info.dart';
+import 'package:thefitness1gym/models/subscription_package.dart';
 import 'package:thefitness1gym/values/predefined_padding.dart';
+import 'package:thefitness1gym/values/predefined_radius.dart';
 import 'package:thefitness1gym/widgets/packages_widgets/package_item.dart';
 import 'package:thefitness1gym/widgets/page_title.dart';
 
@@ -24,90 +28,133 @@ class _PackagesPageState extends State<PackagesPage> {
 
     const pad = SizedBox(height: PredefinedPadding.regular);
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: theme.colorScheme.background,
-        toolbarHeight: 100,
-        centerTitle: true,
-        title: const PageTitle("Select a package"),
+    return SlidingUpPanel(
+      minHeight: 0,
+      parallaxEnabled: true,
+      panel: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(PredefinedRadius.medium),
+        ),
+        child: const Center(
+          child: Text("Select a package"),
+        ),
       ),
-      body: ListView(
-        children: [
-          padded(Text("Membership:", style: titleStyle)),
-          pad,
-          packagesView(
-            initialPage: 1,
-            items: [
-              PackageItem(
-                title: "1 month",
-                price: 200,
-                currency: "AED",
-                discount: 10,
-                discountEnd: DateTime.now().add(const Duration(days: 50)),
-              ),
-              PackageItem(
-                title: "3 months",
-                price: 450,
-                currency: "AED",
-                discount: 20,
-                highlight: true,
-                discountEnd: DateTime.now().add(const Duration(days: 10)),
-              ),
-              PackageItem(
-                title: "5 months",
-                price: 450,
-                currency: "AED",
-                discount: 5,
-                discountEnd: DateTime.now().add(const Duration(days: 50)),
-              ),
-              PackageItem(
-                title: "6 months",
-                price: 900,
-                currency: "AED",
-                discount: 10,
-                discountEnd: DateTime.now().add(const Duration(days: 50)),
-              ),
-            ],
-          ),
-          pad,
-          pad,
-          pad,
-          padded(Text("Personal Training:", style: titleStyle)),
-          pad,
-          packagesView(
-            items: [
-              PackageItem(
-                title: "1 month",
-                price: 200,
-                currency: "AED",
-                discount: 10,
-                highlight: true,
-                discountEnd: DateTime.now().add(const Duration(days: 50)),
-              ),
-              PackageItem(
-                title: "3 months",
-                price: 450,
-                currency: "AED",
-                discount: 20,
-                discountEnd: DateTime.now().add(const Duration(days: 10)),
-              ),
-              PackageItem(
-                title: "5 months",
-                price: 450,
-                currency: "AED",
-                discount: 5,
-                discountEnd: DateTime.now().add(const Duration(days: 50)),
-              ),
-              PackageItem(
-                title: "6 months",
-                price: 900,
-                currency: "AED",
-                discount: 10,
-                discountEnd: DateTime.now().add(const Duration(days: 50)),
-              ),
-            ],
-          ),
-        ],
+      body: Scaffold(
+        appBar: AppBar(
+          backgroundColor: theme.colorScheme.background,
+          toolbarHeight: 100,
+          centerTitle: true,
+          title: const PageTitle("Select a package"),
+        ),
+        body: ListView(
+          children: [
+            padded(Text("Membership:", style: titleStyle)),
+            pad,
+            packagesView(
+              initialPage: 1,
+              items: [
+                PackageItem(
+                  package: SubscriptionPackage(
+                    duration: const Duration(days: 30),
+                    price: 200,
+                    currency: "AED",
+                    perks: [
+                      "Free daily cookie",
+                      "Meet me in person",
+                      "Existential crisis",
+                    ],
+                  ),
+                ),
+                PackageItem(
+                  highlight: true,
+                  package: SubscriptionPackage(
+                    duration: const Duration(days: 30),
+                    price: 200,
+                    currency: "AED",
+                    discount: DiscountInfo(
+                      value: 10,
+                      end: DateTime.now().add(const Duration(days: 50)),
+                    ),
+                    perks: [
+                      "Free daily cookie",
+                      "Meet me in person",
+                      "Existential crisis",
+                    ],
+                  ),
+                ),
+                PackageItem(
+                  package: SubscriptionPackage(
+                    duration: const Duration(days: 30),
+                    price: 200,
+                    currency: "AED",
+                    discount: DiscountInfo(
+                      value: 10,
+                      end: DateTime.now().add(const Duration(days: 50)),
+                    ),
+                  ),
+                ),
+                PackageItem(
+                  package: SubscriptionPackage(
+                    duration: const Duration(days: 30),
+                    price: 200,
+                    currency: "AED",
+                  ),
+                ),
+              ],
+            ),
+            pad,
+            pad,
+            pad,
+            padded(Text("Personal Training:", style: titleStyle)),
+            pad,
+            packagesView(
+              items: [
+                PackageItem(
+                  highlight: true,
+                  package: SubscriptionPackage(
+                    duration: const Duration(days: 6),
+                    price: 200,
+                    currency: "AED",
+                    discount: DiscountInfo(
+                      value: 10,
+                      end: DateTime.now().add(const Duration(days: 50)),
+                    ),
+                    perks: [
+                      "Free daily cookie",
+                      "Meet me in person",
+                      "Existential crisis",
+                    ],
+                  ),
+                ),
+                PackageItem(
+                  package: SubscriptionPackage(
+                    duration: const Duration(days: 30),
+                    price: 200,
+                    currency: "AED",
+                  ),
+                ),
+                PackageItem(
+                  package: SubscriptionPackage(
+                    duration: const Duration(days: 30),
+                    price: 200,
+                    currency: "AED",
+                    discount: DiscountInfo(
+                      value: 10,
+                      end: DateTime.now().add(const Duration(days: 1)),
+                    ),
+                  ),
+                ),
+                PackageItem(
+                  package: SubscriptionPackage(
+                    duration: const Duration(days: 30),
+                    price: 200,
+                    currency: "AED",
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -120,7 +167,7 @@ class _PackagesPageState extends State<PackagesPage> {
   SizedBox packagesView({required List<PackageItem> items, int initialPage = 0}) {
     const viewportFraction = .75;
     return SizedBox(
-      height: 300,
+      height: 500,
       width: 500,
       child: Stack(
         children: [
