@@ -76,7 +76,6 @@ class _CoachItemState extends State<CoachItem> {
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
                     color: Theme.of(context).colorScheme.surface,
-                    curve: Curves.easeOut,
                   ),
                   Positioned(
                     bottom: 0,
