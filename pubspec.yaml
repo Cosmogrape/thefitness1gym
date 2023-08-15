@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
   path_provider: ^2.0.15
   intl: any
   redux: ^5.0.0
@@ -51,6 +52,7 @@ dependencies:
   phone_number: ^2.0.1
   sliding_up_panel: ^2.0.0+1
   intl_phone_number_input: ^0.7.3+1
+
 
 
 dev_dependencies:
@@ -94,3 +96,9 @@ flutter:
           weight: 800
         - asset: assets/fonts/Inter/Inter-Black.ttf
           weight: 900
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo.png"
+  min_sdk_android: 29 # android min sdk min:16, default 21
