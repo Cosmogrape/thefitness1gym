@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:sliding_up_panel2/sliding_up_panel2.dart';
 import 'package:thefitness1gym/global/color_extension.dart';
 import 'package:thefitness1gym/global/duration_extension.dart';
 import 'package:thefitness1gym/models/subscription_package.dart';
@@ -17,19 +17,27 @@ class PackageCheckoutPage extends StatefulWidget {
     this.panelController,
     this.highlight = false,
     this.packageItemSize,
+    this.borderRadius,
   });
 
   final SubscriptionPackage package;
   final PanelController? panelController;
   final bool highlight;
   final Size? packageItemSize;
+  final BorderRadius? borderRadius;
 
-  static MaterialPageRoute route(SubscriptionPackage package, {PanelController? panelController, bool highlight = false}) {
+  static MaterialPageRoute route(
+    SubscriptionPackage package, {
+    PanelController? panelController,
+    bool highlight = false,
+    BorderRadius? borderRadius,
+  }) {
     return MaterialPageRoute(builder: (context) {
       return PackageCheckoutPage(
         panelController: panelController,
         package: package,
         highlight: highlight,
+        borderRadius: borderRadius,
       );
     });
   }
@@ -57,61 +65,90 @@ class _PackageCheckoutPageState extends State<PackageCheckoutPage> {
       fontWeight: FontWeight.bold,
     );
 
-    return Scaffold(
-      appBar: AppBar(
-        leading: widget.panelController == null
-            ? null
-            : IconButton(
-                onPressed: widget.panelController!.close,
-                icon: const Icon(FontAwesomeIcons.xmark),
-              ),
-        backgroundColor: theme.colorScheme.background,
-        centerTitle: true,
-        title: const PageTitle("Checkout"),
-      ),
-      body: SingleChildScrollView(
-        child: padded(
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    return ClipRRect(
+      borderRadius: widget.borderRadius,
+      child: Scaffold(
+        // appBar: AppBar(
+        //   leading: widget.panelController == null
+        //       ? null
+        //       : IconButton(
+        //           onPressed: widget.panelController!.close,
+        //           icon: const Icon(Icons.keyboard_arrow_down_rounded),
+        //         ),
+        //   centerTitle: true,
+        //   title: const PageTitle("Checkout"),
+        // ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              // alignment: Alignment.center,
+              color: theme.colorScheme.surface,
+              padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.medium, vertical: PredefinedPadding.medium),
+              height: 80,
+              child: Stack(
                 children: [
-                  pad,
-                  pad,
-                  Text('Selected package', style: titleStyle),
-                  pad,
-                  pad,
-                  paymentInfo(theme),
-                  pad,
-                  pad,
-                  Text("Payment method", style: titleStyle),
-                  pad,
-                  pad,
-                  paymentMethodSection(theme),
-                  pad,
-                  pad,
+                  const Center(child: PageTitle("Checkout")),
+                  Positioned(
+                    left: PredefinedPadding.medium,
+                    top: 0,
+                    bottom: 0,
+                    child: IconButton(
+                      style: IconButton.styleFrom(fixedSize: const Size(48, 48)),
+                      iconSize: 32,
+                      icon: const Icon(Icons.keyboard_arrow_down_rounded),
+                      onPressed: widget.panelController?.close,
+                    ),
+                  ),
                 ],
               ),
-              ElevatedButton(
-                onPressed: selectedPayment ? () {} : null,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: theme.colorScheme.primary,
-                  padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.large, vertical: PredefinedPadding.medium),
-                ),
-                child: Text(
-                  "Continue".toUpperCase(),
-                  style: theme.textTheme.bodyLarge!.copyWith(
-                    color: selectedPayment ? theme.colorScheme.background : theme.colorScheme.secondary.withLightness(.3),
-                    fontWeight: FontWeight.bold,
-                  ),
+            ),
+            SingleChildScrollView(
+              child: padded(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        pad,
+                        pad,
+                        Text('Selected package', style: titleStyle),
+                        pad,
+                        pad,
+                        paymentInfo(theme),
+                        pad,
+                        pad,
+                        Text("Payment method", style: titleStyle),
+                        pad,
+                        pad,
+                        paymentMethodSection(theme),
+                        pad,
+                        pad,
+                      ],
+                    ),
+                    ElevatedButton(
+                      onPressed: selectedPayment ? () {} : null,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: theme.colorScheme.primary,
+                        padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.large, vertical: PredefinedPadding.medium),
+                      ),
+                      child: Text(
+                        "Continue".toUpperCase(),
+                        style: theme.textTheme.bodyLarge!.copyWith(
+                          color: selectedPayment ? theme.colorScheme.background : theme.colorScheme.secondary.withLightness(.3),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    pad,
+                    pad,
+                  ],
                 ),
               ),
-              pad,
-              pad,
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
