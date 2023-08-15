@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:sliding_up_panel2/sliding_up_panel2.dart';
 import 'package:thefitness1gym/global/widgets/mono_eased_gradient.dart';
 import 'package:thefitness1gym/models/discount_info.dart';
 import 'package:thefitness1gym/models/subscription_package.dart';
@@ -40,20 +40,26 @@ class _PackagesPageState extends State<PackagesPage> {
 
     final viewportHeight = MediaQuery.of(context).size.height;
 
+    final borderRadius = BorderRadius.circular(PredefinedRadius.big);
+
     return SlidingUpPanel(
       backdropColor: theme.colorScheme.surface,
       controller: panelController,
       minHeight: 0,
-      maxHeight: viewportHeight,
-      borderRadius: BorderRadius.circular(PredefinedRadius.large),
+      maxHeight: viewportHeight * .85,
+      snapPoint: .8,
+      color: theme.colorScheme.surface,
+      borderRadius: borderRadius,
       parallaxEnabled: true,
-      panel: selectedPackage == null
-          ? Container()
-          : PackageCheckoutPage(
-              panelController: panelController,
-              package: selectedPackage!,
-              packageItemSize: packageItemSize,
-            ),
+      panelBuilder: () {
+        if (selectedPackage == null) return null;
+        return PackageCheckoutPage(
+          panelController: panelController,
+          package: selectedPackage!,
+          packageItemSize: packageItemSize,
+          borderRadius: borderRadius,
+        );
+      },
       body: Scaffold(
         appBar: AppBar(
           backgroundColor: theme.colorScheme.background,
