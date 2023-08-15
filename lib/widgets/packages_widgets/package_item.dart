@@ -94,7 +94,7 @@ class PackageItem extends StatelessWidget {
                                   style: theme.textTheme.headlineSmall?.copyWith(
                                     color: fg,
                                     decoration: package.discount == null ? null : TextDecoration.lineThrough,
-                                    decorationColor: fgFocus,
+                                    decorationColor: bgDiscount,
                                     decorationThickness: 2,
                                     decorationStyle: TextDecorationStyle.wavy,
                                     fontWeight: FontWeight.bold,
