@@ -8,6 +8,7 @@ import 'package:thefitness1gym/global/color_extension.dart';
 import 'package:thefitness1gym/global/duration_extension.dart';
 import 'package:thefitness1gym/global/widgets/animated_tap.dart';
 import 'package:thefitness1gym/models/subscription_package.dart';
+import 'package:thefitness1gym/pages/checkout_page.dart';
 import 'package:thefitness1gym/values/predefined_padding.dart';
 import 'package:thefitness1gym/values/predefined_radius.dart';
 
@@ -166,18 +167,22 @@ class PackageItem extends StatelessWidget {
                             ],
                           ),
                         pad,
-                        Container(
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            borderRadius: borderRadius,
-                            color: bgDiscount,
-                          ),
-                          padding: const EdgeInsets.symmetric(horizontal: PredefinedPadding.large, vertical: PredefinedPadding.medium),
-                          child: Text(
-                            "JOIN NOW",
-                            style: theme.textTheme.titleMedium?.copyWith(
-                              color: fgDiscount,
-                              fontWeight: FontWeight.bold,
+                        GestureDetector(
+                          onTap: () => Navigator.of(context).push(CheckoutPage.route),
+                          child: Container(
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              borderRadius: borderRadius,
+                              color: bgDiscount,
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: PredefinedPadding.large, vertical: PredefinedPadding.medium),
+                            child: Text(
+                              "JOIN NOW",
+                              style: theme.textTheme.titleMedium?.copyWith(
+                                color: fgDiscount,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
