@@ -50,7 +50,7 @@ dependencies:
   url_launcher: ^6.1.12
   maps_launcher: ^2.2.0
   phone_number: ^2.0.1
-  sliding_up_panel: ^2.0.0+1
+  sliding_up_panel2: ^3.3.0+1
   intl_phone_number_input: ^0.7.3+1
 
 
