@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:sliding_up_panel2/sliding_up_panel2.dart';
 import 'package:thefitness1gym/global/color_extension.dart';
 import 'package:thefitness1gym/global/duration_extension.dart';
 import 'package:thefitness1gym/global/widgets/animated_tap.dart';
