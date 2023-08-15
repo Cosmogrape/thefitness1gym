@@ -62,9 +62,6 @@ class _OtpVerifyPageState extends State<OtpVerifyPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const SizedBox(
-                  height: PredefinedPadding.big + 100,
-                ),
                 Column(
                   children: [
                     Text(
@@ -93,10 +90,7 @@ class _OtpVerifyPageState extends State<OtpVerifyPage> {
                   defaultPinTheme: defaultPinTheme,
                 ),
                 const SizedBox(height: PredefinedPadding.large),
-                Text(
-                  "Didn't receive any code?",
-                  style: theme.textTheme.bodyMedium,
-                ),
+                Text("Didn't receive any code?", style: theme.textTheme.bodyMedium),
                 const SizedBox(height: PredefinedPadding.small),
                 TextButton(
                   onPressed: !canResend
@@ -113,6 +107,7 @@ class _OtpVerifyPageState extends State<OtpVerifyPage> {
                   onPressed: Navigator.of(context).pop,
                   child: const Text("Change phone number"),
                 ),
+                const SizedBox(height: PredefinedPadding.yomamaX),
               ],
             ),
           ),
