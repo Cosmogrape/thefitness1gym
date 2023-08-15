@@ -3,6 +3,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:thefitness1gym/global/widgets/mono_eased_gradient.dart';
 import 'package:thefitness1gym/models/discount_info.dart';
 import 'package:thefitness1gym/models/subscription_package.dart';
+import 'package:thefitness1gym/pages/package_checkout_page.dart';
 import 'package:thefitness1gym/values/predefined_padding.dart';
 import 'package:thefitness1gym/values/predefined_radius.dart';
 import 'package:thefitness1gym/widgets/packages_widgets/package_item.dart';
@@ -18,6 +19,15 @@ class PackagesPage extends StatefulWidget {
 }
 
 class _PackagesPageState extends State<PackagesPage> {
+  static const Size packageItemSize = Size(500, 450);
+  PanelController panelController = PanelController();
+  SubscriptionPackage? selectedPackage;
+
+  void openSelection(SubscriptionPackage package) {
+    setState(() => selectedPackage = package);
+    panelController.open();
+  }
+
   static const horizontalPaddingSize = PredefinedPadding.medium;
 
   @override
@@ -28,17 +38,22 @@ class _PackagesPageState extends State<PackagesPage> {
 
     const pad = SizedBox(height: PredefinedPadding.regular);
 
+    final viewportHeight = MediaQuery.of(context).size.height;
+
     return SlidingUpPanel(
+      backdropColor: theme.colorScheme.surface,
+      controller: panelController,
       minHeight: 0,
+      maxHeight: viewportHeight,
+      borderRadius: BorderRadius.circular(PredefinedRadius.large),
       parallaxEnabled: true,
-      panel: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(PredefinedRadius.medium),
-        ),
-        child: const Center(
-          child: Text("Select a package"),
-        ),
-      ),
+      panel: selectedPackage == null
+          ? Container()
+          : PackageCheckoutPage(
+              panelController: panelController,
+              package: selectedPackage!,
+              packageItemSize: packageItemSize,
+            ),
       body: Scaffold(
         appBar: AppBar(
           backgroundColor: theme.colorScheme.background,
@@ -55,49 +70,55 @@ class _PackagesPageState extends State<PackagesPage> {
               initialPage: 1,
               items: [
                 PackageItem(
+                  openSelection: openSelection,
                   package: SubscriptionPackage(
+                    id: "1",
+                    type: SubscriptionPackageType.membership,
                     duration: const Duration(days: 30),
-                    price: 200,
+                    price: 119,
                     currency: "AED",
-                    perks: [
-                      "Free daily cookie",
-                      "Meet me in person",
-                      "Existential crisis",
-                    ],
+                    perks: ["Free daily cookie", "Meet me in person", "Existential crisis"],
                   ),
                 ),
                 PackageItem(
+                  openSelection: openSelection,
                   highlight: true,
                   package: SubscriptionPackage(
-                    duration: const Duration(days: 30),
-                    price: 200,
+                    id: "12",
+                    type: SubscriptionPackageType.membership,
+                    duration: const Duration(days: 60),
+                    price: 199,
                     currency: "AED",
                     discount: DiscountInfo(
                       value: 10,
                       end: DateTime.now().add(const Duration(days: 50)),
+                      symbol: '%',
                     ),
-                    perks: [
-                      "Free daily cookie",
-                      "Meet me in person",
-                      "Existential crisis",
-                    ],
+                    perks: ["Free daily cookie", "Meet me in person", "Existential crisis"],
                   ),
                 ),
                 PackageItem(
+                  openSelection: openSelection,
                   package: SubscriptionPackage(
-                    duration: const Duration(days: 30),
-                    price: 200,
+                    id: "123",
+                    type: SubscriptionPackageType.membership,
+                    duration: const Duration(days: 90),
+                    price: 289,
                     currency: "AED",
                     discount: DiscountInfo(
-                      value: 10,
+                      value: 12,
                       end: DateTime.now().add(const Duration(days: 50)),
+                      symbol: '%',
                     ),
                   ),
                 ),
                 PackageItem(
+                  openSelection: openSelection,
                   package: SubscriptionPackage(
-                    duration: const Duration(days: 30),
-                    price: 200,
+                    id: "1234",
+                    type: SubscriptionPackageType.membership,
+                    duration: const Duration(days: 120),
+                    price: 499,
                     currency: "AED",
                   ),
                 ),
@@ -111,44 +132,54 @@ class _PackagesPageState extends State<PackagesPage> {
             packagesView(
               items: [
                 PackageItem(
+                  openSelection: openSelection,
                   highlight: true,
                   package: SubscriptionPackage(
-                    duration: const Duration(days: 6),
-                    price: 200,
+                    id: "12345",
+                    type: SubscriptionPackageType.personalTraining,
+                    duration: const Duration(days: 7),
+                    price: 239,
                     currency: "AED",
                     discount: DiscountInfo(
                       value: 10,
                       end: DateTime.now().add(const Duration(days: 50)),
+                      symbol: '%',
                     ),
-                    perks: [
-                      "Free daily cookie",
-                      "Meet me in person",
-                      "Existential crisis",
-                    ],
+                    perks: ["Free daily cookie", "Meet me in person", "Existential crisis"],
                   ),
                 ),
                 PackageItem(
+                  openSelection: openSelection,
                   package: SubscriptionPackage(
+                    id: "123456",
+                    type: SubscriptionPackageType.personalTraining,
                     duration: const Duration(days: 30),
-                    price: 200,
+                    price: 349,
                     currency: "AED",
                   ),
                 ),
                 PackageItem(
+                  openSelection: openSelection,
                   package: SubscriptionPackage(
-                    duration: const Duration(days: 30),
-                    price: 200,
+                    id: "1234567",
+                    type: SubscriptionPackageType.personalTraining,
+                    duration: const Duration(days: 60),
+                    price: 779,
                     currency: "AED",
                     discount: DiscountInfo(
-                      value: 10,
+                      value: 50,
                       end: DateTime.now().add(const Duration(days: 1)),
+                      symbol: '%',
                     ),
                   ),
                 ),
                 PackageItem(
+                  openSelection: openSelection,
                   package: SubscriptionPackage(
+                    id: "12345678",
+                    type: SubscriptionPackageType.personalTraining,
                     duration: const Duration(days: 30),
-                    price: 200,
+                    price: 999,
                     currency: "AED",
                   ),
                 ),
@@ -194,8 +225,8 @@ class _PackagesPageState extends State<PackagesPage> {
     const viewportFraction = .75;
     final gradientWidth = MediaQuery.of(context).size.width * (1 - viewportFraction);
     return SizedBox(
-      height: 500,
-      width: 500,
+      height: packageItemSize.height,
+      width: packageItemSize.width,
       child: Stack(
         children: [
           PageView(
