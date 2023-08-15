@@ -59,60 +59,62 @@ class _OtpVerifyPageState extends State<OtpVerifyPage> {
       ),
       body: SafeArea(
         child: Center(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: PredefinedPadding.big + 100,
-              ),
-              Column(
-                children: [
-                  Text(
-                    'Phone number\nverification',
-                    style: theme.textTheme.headlineMedium?.copyWith(color: Colors.white),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: PredefinedPadding.regular),
-                  Text(
-                    "Enter your OTP code here",
-                    style: theme.textTheme.bodyMedium,
-                  )
-                ],
-              ),
-              const SizedBox(height: PredefinedPadding.large),
-              Pinput(
-                onCompleted: (pin) async {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomePage(),
-                    ),
-                  );
-                },
-                length: 4,
-                defaultPinTheme: defaultPinTheme,
-              ),
-              const SizedBox(height: PredefinedPadding.large),
-              Text(
-                "Didn't receive any code?",
-                style: theme.textTheme.bodyMedium,
-              ),
-              const SizedBox(height: PredefinedPadding.small),
-              TextButton(
-                onPressed: !canResend
-                    ? null
-                    : () {
-                        //
-                      },
-                child: Text(
-                  canResend ? "RESEND A NEW CODE" : "(Please wait ${resendTimeRemaining}s to resend)",
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: PredefinedPadding.big + 100,
                 ),
-              ),
-              const SizedBox(height: PredefinedPadding.large),
-              TextButton(
-                onPressed: Navigator.of(context).pop,
-                child: Text("Change phone number"),
-              ),
-            ],
+                Column(
+                  children: [
+                    Text(
+                      'Phone number\nverification',
+                      style: theme.textTheme.headlineMedium?.copyWith(color: Colors.white),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: PredefinedPadding.regular),
+                    Text(
+                      "Enter your OTP code here",
+                      style: theme.textTheme.bodyMedium,
+                    )
+                  ],
+                ),
+                const SizedBox(height: PredefinedPadding.large),
+                Pinput(
+                  onCompleted: (pin) async {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomePage(),
+                      ),
+                    );
+                  },
+                  length: 4,
+                  defaultPinTheme: defaultPinTheme,
+                ),
+                const SizedBox(height: PredefinedPadding.large),
+                Text(
+                  "Didn't receive any code?",
+                  style: theme.textTheme.bodyMedium,
+                ),
+                const SizedBox(height: PredefinedPadding.small),
+                TextButton(
+                  onPressed: !canResend
+                      ? null
+                      : () {
+                          //
+                        },
+                  child: Text(
+                    canResend ? "RESEND A NEW CODE" : "(Please wait ${resendTimeRemaining}s to resend)",
+                  ),
+                ),
+                const SizedBox(height: PredefinedPadding.large),
+                TextButton(
+                  onPressed: Navigator.of(context).pop,
+                  child: const Text("Change phone number"),
+                ),
+              ],
+            ),
           ),
         ),
       ),
