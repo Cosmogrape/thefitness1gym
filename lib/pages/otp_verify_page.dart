@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:thefitness1gym/values/predefined_padding.dart';
@@ -14,6 +16,28 @@ class OtpVerifyPage extends StatefulWidget {
 }
 
 class _OtpVerifyPageState extends State<OtpVerifyPage> {
+  late Timer timer;
+  int resendTimeRemaining = 15;
+  bool get canResend => resendTimeRemaining == 0;
+
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (resendTimeRemaining > 0) {
+        setState(() => resendTimeRemaining--);
+      } else {
+        timer.cancel();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
+  }
+
   final defaultPinTheme = PinTheme(
       width: 56,
       height: 60,
@@ -26,65 +50,72 @@ class _OtpVerifyPageState extends State<OtpVerifyPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButton(),
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
-        title: Text(
-          'Verify your phone',
-          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                color: Colors.white,
-              ),
-        ),
-        centerTitle: true,
       ),
       body: SafeArea(
-          child: Center(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: PredefinedPadding.big + 100,
-            ),
-            Column(
-              children: [
-                Text(
-                  'Verify your\n Phone number',
-                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  'Enter your OTP code here',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                )
-              ],
-            ),
-            const SizedBox(height: PredefinedPadding.large),
-            Pinput(
-              onCompleted: (pin) async {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomePage(),
+        child: Center(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: PredefinedPadding.big + 100,
+              ),
+              Column(
+                children: [
+                  Text(
+                    'Phone number\nverification',
+                    style: theme.textTheme.headlineMedium?.copyWith(color: Colors.white),
+                    textAlign: TextAlign.center,
                   ),
-                );
-              },
-              length: 4,
-              defaultPinTheme: defaultPinTheme,
-            ),
-            const SizedBox(height: PredefinedPadding.large),
-            Text(
-              "Didn't receive any code?",
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            const SizedBox(height: PredefinedPadding.small),
-            Text(
-              "RESEND A NEW CODE",
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),
-            )
-          ],
+                  const SizedBox(height: PredefinedPadding.regular),
+                  Text(
+                    "Enter your OTP code here",
+                    style: theme.textTheme.bodyMedium,
+                  )
+                ],
+              ),
+              const SizedBox(height: PredefinedPadding.large),
+              Pinput(
+                onCompleted: (pin) async {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage(),
+                    ),
+                  );
+                },
+                length: 4,
+                defaultPinTheme: defaultPinTheme,
+              ),
+              const SizedBox(height: PredefinedPadding.large),
+              Text(
+                "Didn't receive any code?",
+                style: theme.textTheme.bodyMedium,
+              ),
+              const SizedBox(height: PredefinedPadding.small),
+              TextButton(
+                onPressed: !canResend
+                    ? null
+                    : () {
+                        //
+                      },
+                child: Text(
+                  canResend ? "RESEND A NEW CODE" : "(Please wait ${resendTimeRemaining}s to resend)",
+                ),
+              ),
+              const SizedBox(height: PredefinedPadding.large),
+              TextButton(
+                onPressed: Navigator.of(context).pop,
+                child: Text("Change phone number"),
+              ),
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }
