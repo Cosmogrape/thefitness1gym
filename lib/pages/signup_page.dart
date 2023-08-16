@@ -180,8 +180,7 @@ class _SignupPageState extends State<SignupPage> {
           duration: duration,
           curve: Curves.ease,
           child: Container(
-            padding:
-                const EdgeInsets.symmetric(vertical: PredefinedPadding.regular, horizontal: PredefinedPadding.medium),
+            padding: const EdgeInsets.symmetric(vertical: PredefinedPadding.regular, horizontal: PredefinedPadding.medium),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(PredefinedRadius.medium),
               color: theme.colorScheme.surface.withOpacity(.75),
