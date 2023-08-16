@@ -68,12 +68,21 @@ class _HomePageState extends State<HomePage> {
           //? not an app bar because this is more flexible
           children: [
             _padded(const YourMembershipCard()),
+            padV,
+            Divider(
+              color: theme.colorScheme.surface,
+              thickness: 4.0,
+              indent: 100,
+              endIndent: 100,
+            ),
+            padV,
             _padded(CalendarReminderCard(
               text: "Aerobatics with Osman in 42m",
               onTap: () {},
             )),
-            padV,
-
+            const SizedBox(
+              height: PredefinedPadding.small,
+            ),
             SizedBox(
               height: scrollerHeight,
               child: Stack(
