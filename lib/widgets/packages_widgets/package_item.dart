@@ -88,7 +88,7 @@ class PackageItem extends StatelessWidget {
                           textAlign: TextAlign.center,
                           text: TextSpan(
                             children: [
-                              if (package.discount != null)
+                              if (package.isDiscounted)
                                 TextSpan(
                                   text: "${package.formatPrice()} ${package.currency}",
                                   style: theme.textTheme.headlineSmall?.copyWith(
