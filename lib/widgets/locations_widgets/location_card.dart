@@ -139,7 +139,7 @@ class LocationCard extends StatelessWidget {
               vertical: PredefinedPadding.regular,
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -198,22 +198,18 @@ class LocationCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                TextButton(
+                ElevatedButton(
                   onPressed: () => MapsLauncher.launchCoordinates(coordinates.latitude, coordinates.longitude),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(PredefinedRadius.small),
-                    child: Container(
-                      padding: const EdgeInsets.all(PredefinedPadding.regular),
-                      alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width,
-                      color: theme.colorScheme.primary,
-                      // alignment: Alignment.center,
-                      child: Text(
-                        "View location",
-                        style: TextStyle(color: theme.colorScheme.onPrimary, fontWeight: FontWeight.bold),
-                      ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: theme.colorScheme.primary,
+                    foregroundColor: theme.colorScheme.onPrimary,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(PredefinedRadius.regular),
                     ),
+                    padding: const EdgeInsets.all(PredefinedPadding.regular),
+                    textStyle: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),
                   ),
+                  child: const Text("View location"),
                 ),
                 Center(
                   child: TextButton(
