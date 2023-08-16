@@ -32,7 +32,6 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  flutter_launcher_icons: ^0.13.1
   path_provider: ^2.0.15
   intl: any
   redux: ^5.0.0
@@ -52,10 +51,10 @@ dependencies:
   phone_number: ^2.0.1
   sliding_up_panel2: ^3.3.0+1
   intl_phone_number_input: ^0.7.3+1
-
-
+  flutter_native_splash: ^2.3.2
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
   flutter_test:
     sdk: flutter
 
@@ -72,8 +71,8 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-  - assets/images/
-  - assets/images/coach/
+    - assets/images/
+    - assets/images/coach/
   uses-material-design: true
   fonts:
     - family: Inter
@@ -98,7 +97,12 @@ flutter:
           weight: 900
 
 flutter_launcher_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "assets/images/logo.png"
-  min_sdk_android: 29 # android min sdk min:16, default 21
+  android: 'launcher_icon'
+  # ios: true
+  image_path: 'assets/images/ic_launcher.png'
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  adaptive_icon_background: 'assets/images/ic_launcher_background.png'
+  adaptive_icon_foreground: 'assets/images/ic_launcher_foreground.png'
+
+flutter_native_splash:
+  color: '#000000'
