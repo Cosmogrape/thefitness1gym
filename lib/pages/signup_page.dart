@@ -78,8 +78,10 @@ class _SignupPageState extends State<SignupPage> {
               labelText: 'Enter your phone number',
               filled: true,
               fillColor: theme.colorScheme.secondary.withBrightness(.1),
-              contentPadding:
-                  const EdgeInsets.symmetric(vertical: PredefinedPadding.small, horizontal: PredefinedPadding.medium),
+              contentPadding: const EdgeInsets.symmetric(
+                vertical: PredefinedPadding.small,
+                horizontal: PredefinedPadding.medium,
+              ),
             ),
             keyboardType: TextInputType.number,
           ),
