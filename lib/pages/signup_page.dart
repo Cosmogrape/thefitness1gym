@@ -73,9 +73,10 @@ class _SignupPageState extends State<SignupPage> {
           borderRadius: BorderRadius.circular(PredefinedRadius.regular),
           child: TextFormField(
             controller: textEditingController,
+            keyboardType: TextInputType.number,
             decoration: InputDecoration(
-              border: InputBorder.none,
               labelText: 'Enter your phone number',
+              border: InputBorder.none,
               filled: true,
               fillColor: theme.colorScheme.secondary.withBrightness(.1),
               contentPadding: const EdgeInsets.symmetric(
@@ -83,7 +84,6 @@ class _SignupPageState extends State<SignupPage> {
                 horizontal: PredefinedPadding.medium,
               ),
             ),
-            keyboardType: TextInputType.number,
           ),
         ),
         const SizedBox(height: PredefinedPadding.medium),
@@ -202,25 +202,42 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          opacity: 0.6,
-          image: AssetImage('assets/images/hot_man.png'),
-        ),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(32),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [heading(context), content(theme)],
+    return Scaffold(
+      body: Stack(
+        children: [
+          Positioned(
+            top: 0,
+            bottom: 0,
+            child: Opacity(
+              opacity: .6,
+              child: Image.asset(
+                'assets/images/hot_man.png',
+                fit: BoxFit.cover,
+                frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                  if (wasSynchronouslyLoaded) return child;
+                  return AnimatedOpacity(
+                    opacity: frame == null ? 0 : 1,
+                    duration: const Duration(seconds: 1),
+                    curve: Curves.easeOut,
+                    child: child,
+                  );
+                },
+                errorBuilder: (context, error, stackTrace) {
+                  return Container();
+                },
+              ),
             ),
           ),
-        ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(32),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [heading(context), content(theme)],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
