@@ -65,10 +65,22 @@ class _CoachItemState extends State<CoachItem> {
                     ),
                     children: [
                       Image.asset(
+                        "assets/images/coach/${widget.image}",
                         key: _imageKey,
                         height: MediaQuery.of(context).size.height,
-                        "assets/images/coach/${widget.image}",
                         fit: BoxFit.cover,
+                        frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                          if (wasSynchronouslyLoaded) return child;
+                          return AnimatedOpacity(
+                            opacity: frame == null ? 0 : 1,
+                            duration: const Duration(seconds: 1),
+                            curve: Curves.easeOut,
+                            child: child,
+                          );
+                        },
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container();
+                        },
                       ),
                     ],
                   ),
@@ -93,10 +105,8 @@ class _CoachItemState extends State<CoachItem> {
                         children: [
                           Text(
                             widget.name,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineLarge
-                                ?.copyWith(color: theme.colorScheme.secondary, fontWeight: FontWeight.w600),
+                            style:
+                                Theme.of(context).textTheme.headlineLarge?.copyWith(color: theme.colorScheme.secondary, fontWeight: FontWeight.w600),
                           ),
                           pad,
                           Align(

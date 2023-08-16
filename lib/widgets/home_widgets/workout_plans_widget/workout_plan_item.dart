@@ -35,6 +35,18 @@ class _WorkoutPlanItemState extends State<WorkoutPlanItem> {
           fit: BoxFit.cover,
           height: 200,
           width: 200,
+          frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+            if (wasSynchronouslyLoaded) return child;
+            return AnimatedOpacity(
+              opacity: frame == null ? 0 : 1,
+              duration: const Duration(seconds: 1),
+              curve: Curves.easeOut,
+              child: child,
+            );
+          },
+          errorBuilder: (context, error, stackTrace) {
+            return Container();
+          },
         ),
       );
     }

@@ -82,12 +82,35 @@ class LocationCard extends StatelessWidget {
                   child: Image.network(
                     image.toString(),
                     fit: BoxFit.cover,
+                    frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                      if (wasSynchronouslyLoaded) return child;
+                      return AnimatedOpacity(
+                        opacity: frame == null ? 0 : 1,
+                        duration: const Duration(seconds: 1),
+                        curve: Curves.easeOut,
+                        child: child,
+                      );
+                    },
                     loadingBuilder: (context, widget, imageChunkEvent) {
                       if (imageChunkEvent != null) return widget;
                       return const Center(child: CircularProgressIndicator());
                     },
                     errorBuilder: (context, error, stackTrace) {
-                      return Image.asset("assets/images/fitness1_cover.jpg");
+                      return Image.asset(
+                        "assets/images/fitness1_cover.jpg",
+                        frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                          if (wasSynchronouslyLoaded) return child;
+                          return AnimatedOpacity(
+                            opacity: frame == null ? 0 : 1,
+                            duration: const Duration(seconds: 1),
+                            curve: Curves.easeOut,
+                            child: child,
+                          );
+                        },
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container();
+                        },
+                      );
                     },
                   ),
                 ),
