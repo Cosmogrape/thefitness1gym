@@ -93,15 +93,10 @@ class _CoachItemState extends State<CoachItem> {
                         children: [
                           Text(
                             widget.name,
-                            style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                              color: theme.colorScheme.secondary,
-                              shadows: [
-                                Shadow(
-                                  color: theme.colorScheme.primary,
-                                  blurRadius: 10,
-                                ),
-                              ],
-                            ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineLarge
+                                ?.copyWith(color: theme.colorScheme.secondary, fontWeight: FontWeight.w600),
                           ),
                           pad,
                           Align(
