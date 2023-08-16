@@ -205,7 +205,7 @@ class _SignupPageState extends State<SignupPage> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          fit: BoxFit.fill,
+          fit: BoxFit.cover,
           opacity: 0.6,
           image: AssetImage('assets/images/hot_man.png'),
         ),
