@@ -44,8 +44,8 @@ class _SignupPageState extends State<SignupPage> {
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
         ),
-        const SizedBox(height: PredefinedPadding.big),
-        ElevatedButton(
+        const SizedBox(height: PredefinedPadding.medium),
+        ElevatedButton.icon(
           onPressed: () {},
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(theme.colorScheme.surface),
@@ -56,10 +56,11 @@ class _SignupPageState extends State<SignupPage> {
             ),
             minimumSize: MaterialStateProperty.all(const Size.fromHeight(PredefinedSize.buttonHeight)),
           ),
-          child: const Text(
+          label: const Text(
             'Fingerprint ID',
             style: TextStyle(color: Colors.white38),
           ),
+          icon: Icon(Icons.fingerprint, color: Colors.amber.withBrightness(0.3)),
         ),
       ],
     );
@@ -77,7 +78,8 @@ class _SignupPageState extends State<SignupPage> {
               labelText: 'Enter your phone number',
               filled: true,
               fillColor: theme.colorScheme.secondary.withBrightness(.1),
-              contentPadding: const EdgeInsets.symmetric(vertical: PredefinedPadding.small, horizontal: PredefinedPadding.medium),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: PredefinedPadding.small, horizontal: PredefinedPadding.medium),
             ),
             keyboardType: TextInputType.number,
           ),
@@ -176,7 +178,8 @@ class _SignupPageState extends State<SignupPage> {
           duration: duration,
           curve: Curves.ease,
           child: Container(
-            padding: const EdgeInsets.symmetric(vertical: PredefinedPadding.regular, horizontal: PredefinedPadding.medium),
+            padding:
+                const EdgeInsets.symmetric(vertical: PredefinedPadding.regular, horizontal: PredefinedPadding.medium),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(PredefinedRadius.medium),
               color: theme.colorScheme.surface.withOpacity(.75),
