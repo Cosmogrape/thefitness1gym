@@ -30,13 +30,32 @@ class SubscriptionPackage {
   final DiscountInfo? discount;
   final List<String>? perks;
 
-  double get discountedPrice {
-    if (discount == null) return price;
-    return price - (discount!.isPercentage ? price * (discount!.value / 100) : discount!.value);
+  /// Use this instead of checking [discount]!=null
+  /// This ensures that the discount is real
+  bool get isDiscounted => discount != null && discount!.isDiscounted;
+
+  /// Value of discount only
+  ///
+  /// Ex:
+  /// - price = 200
+  /// - discount = 10%
+  /// - >> then discountValue = 20
+  double get discountValue {
+    if (discount == null) return 0;
+    if (discount!.isPercentage) return price * (discount!.value / 100);
+    return discount!.value;
   }
 
+  /// The price after discount
+  ///
+  /// Ex:
+  /// - price = 200
+  /// - discount = 10%
+  /// - >> then priceAfterDiscount = 180
+  double get priceAfterDiscount => price - discountValue;
+
   String formatPrice({bool withCurrency = false, bool withDiscount = false, String joint = ''}) {
-    final targetValue = withDiscount ? discountedPrice : price;
+    final targetValue = withDiscount ? priceAfterDiscount : price;
     final value = NumberFormat.currency(
       customPattern: "#,###.##",
       locale: "en_US",
