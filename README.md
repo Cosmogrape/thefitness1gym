@@ -1,16 +1,19 @@
-# thefitness1gym
+# Overview
 
-The Fitness1 Gym
+A simple mobile app frontend for a gym branch called Fitness1
 
-## Getting Started
+## Screenshots
 
-This project is a starting point for a Flutter application.
+Not yet added.
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Not yet added.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Credits
+
+The coach posts from Instagram.
+
+## Disclaimer
+
+This project isn't related to Fitness1 Gym.
