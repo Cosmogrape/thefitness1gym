@@ -66,3 +66,9 @@ The coach posts from Instagram.
 ## Disclaimer
 
 This project isn't related to Fitness1 Gym.
+
+## Contributors
+
+<a href="https://github.com/Cosmogrape/thefitness1gym/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Cosmogrape/thefitness1gym" />
+</a>
